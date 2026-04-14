@@ -28,7 +28,7 @@ const NavBar = () => {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="w-full h-24 absolute top-0 center z-100"
+                className={`w-full h-18 top-0 center z-100 ${isScrolled || isMobileMenuOpen ? "bg-[var(--primary-background-color)] fixed" : "bg-transparent absolute"}`}
             >
                 <motion.div
                     className="w-full flex justify-between items-center 2xl:px-16 xl:px-12 lg:px-10 md:px-12 px-5"
@@ -42,7 +42,7 @@ const NavBar = () => {
                         whileTap={{ scale: 0.95 }}
                     >
                         <Image width={220} height={100} src="/full-logo.svg" alt="logo" className="hidden lg:flex" />
-                        <Image width={45} height={45} src="/logo.svg" alt="logo" className="flex lg:hidden" />
+                        <Image width={40} height={40} src="/logo.svg" alt="logo" className="flex lg:hidden" />
                     </motion.div>
 
                     {/* Desktop Nav Links */}
@@ -58,7 +58,7 @@ const NavBar = () => {
 
                     {/* Desktop Button */}
                     <motion.div className="center gap-2">
-                        <Button className={"center bg-[rgba(240,11,31,0.1)] p-6 rounded-xl"}>
+                        <Button className={"center bg-[rgba(240,11,31,0.1)] md:p-6 p-5 rounded-lg"}>
                             <Image width={16} height={16} alt="svg" src="/Magnifer Minimalistic.svg" />
                         </Button>
                         <div className="hidden lg:flex">
@@ -68,11 +68,11 @@ const NavBar = () => {
                         </div>
                         {/* Mobile Menu Toggle */}
                         <motion.button
-                            className="lg:hidden flex p-3 text-[rgba(255,255,255,.85)] bg-[rgba(240,11,31,1)] rounded-xl"
+                            className="lg:hidden flex p-3 text-[rgba(255,255,255,.85)] bg-[rgba(240,11,31,1)] rounded-lg"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             whileTap={{ scale: 0.9 }}
                         >
-                            {isMobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+                            {isMobileMenuOpen ? <FiX size={18} /> : <FiMenu size={18} />}
                         </motion.button>
                     </motion.div>
 
@@ -85,7 +85,7 @@ const NavBar = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="w-full absolute top-24 z-100 bg-[var(--primary-background-color)] backdrop-blur-md lg:hidden"
+                            className="w-full absolute top-16 z-100 bg-[var(--primary-background-color)] backdrop-blur-md lg:hidden"
                         >
                             <motion.div
                                 initial={{ y: -20, opacity: 0 }}
@@ -102,13 +102,13 @@ const NavBar = () => {
                                         initial={{ y: 20, opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
                                         transition={{ delay: 0.1 + index * 0.05 }}
-                                        className="text-4xl font-bold text-[var(--secondary-text-color)] transition-colors"
+                                        className="text-2xl font-bold text-[var(--secondary-text-color)] transition-colors"
                                     >
                                         {link.name}
                                     </motion.a>
                                 ))}
                                 <div className="flex lg:hidden">
-                                    <Button className={"center bg-[rgba(240,11,31,1)] text-white p-6 py-8 rounded-lg text-[24px] font-semibold"}>
+                                    <Button className={"center bg-[rgba(240,11,31,1)] text-white p-4 py-6 rounded-lg text-[18px] font-semibold"}>
                                         Browse Inventory
                                     </Button>
                                 </div>

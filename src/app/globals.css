@@ -32,7 +32,6 @@ body {
 }
 
 .effect {
-  padding-left: 12px;
   background: linear-gradient(
     90deg,
     rgba(240, 11, 31, 0.2) 0%,

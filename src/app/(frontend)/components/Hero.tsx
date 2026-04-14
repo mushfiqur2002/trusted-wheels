@@ -40,18 +40,18 @@ export default function Hero() {
                         <span className="text-[var(--primary-text-color)]">trusted</span> auto dealership
                     </p>
 
-                    <h1 className="2xl:text-[64px] lg:text-[50px] md:text-[52px] sm:text-[42px] text-[30px] uppercase font-medium">
+                    <h1 className="2xl:text-[64px] lg:text-[50px] md:text-[52px] sm:text-[42px] text-[32px] uppercase font-medium">
                         drive your <span className="effect">dream today</span>
                     </h1>
 
-                    <p className="2xl:text-[18px] md:text-[16px] sm:text-[14px] text-[12px] text-center opacity-60">
+                    <p className="2xl:text-[18px] md:text-[16px] sm:text-[14px] text-[10px] text-center opacity-60">
                         Vancouver’s most trusted dealership. Clear deals, affordable rides,
                         <br />
                         and flexible finance options for everyone
                     </p>
                 </div>
 
-                <div className="max-w-[1440px] mx-auto 2xl:pt-12 pt-6 w-full">
+                <div className="max-w-[1440px] mx-auto md:pt-12 pt-0 w-full">
                     <Carousel
                         opts={{
                             loop: true,
@@ -72,29 +72,88 @@ export default function Hero() {
                                         <div
                                             className={`transition-all duration-500 ${isActive
                                                 ? "scale-100"
-                                                : "scale-50"
+                                                : "scale-50 opacity-50"
                                                 }`}
                                         >
-                                            <Card className="md:w-[840px] w-[700px] md:h-[450px] h-[400px] border-0 shadow-none bg-transparent">
-                                                <CardContent className="px-28 relative">
-                                                    <Image
-                                                        src={car.image}
-                                                        alt={car.name}
-                                                        width={100}
-                                                        height={100}
-                                                        className="object-contain w-full h-full"
-                                                    />
-                                                    <span className="absolute top-0 px-4 py-1 bg-[var(--secondary-background-color)] rounded-full text-[14px]">
-                                                        <p className="capitalize text-white/60">
+                                            <Card className="md:w-[840px] w-[600px] md:h-[450px] h-[420px] border-0 shadow-none bg-transparent">
+                                                <CardContent className="md:px-28 px-22 relative w-full h-full">
+
+                                                    {/* Image wrapper (FIXED BLUR) */}
+                                                    <div className="relative w-full h-full">
+                                                        <Image
+                                                            src={car.image}
+                                                            alt={car.name}
+                                                            fill
+                                                            className="object-contain object-top"
+                                                        />
+                                                    </div>
+
+                                                    {/* bodyStyle */}
+                                                    <span
+                                                        className={`md:flex hidden absolute top-10 left-15 flex justify-start items-start transition-all duration-300 ${isActive
+                                                            ? "opacity-100 translate-y-0"
+                                                            : "opacity-0 translate-y-2 pointer-events-none"
+                                                            }`}
+                                                    >
+                                                        <p className="capitalize text-white/60 px-4 py-1 bg-[var(--secondary-background-color)] rounded-full text-[14px]">
                                                             body styles:
-                                                            <span className="text-white">
+                                                            <span className="text-white pl-1">
                                                                 {car.metaData?.bodyStyle}
                                                             </span>
                                                         </p>
-                                                        <Image src="/Frame 2147238816.svg" alt="svg"/>
+                                                        <Image
+                                                            src="/Frame 2147238816.svg"
+                                                            alt="svg"
+                                                            width={100}
+                                                            height={100}
+                                                            className="mt-3"
+                                                        />
                                                     </span>
-                                                    <span>{car.metaData.fuel}</span>
-                                                    <span>{car.metaData.engine}</span>
+
+                                                    {/* fuel */}
+                                                    <span
+                                                        className={`md:flex hidden absolute top-5 right-50 flex flex-col justify-center items-center transition-all duration-300 ${isActive
+                                                            ? "opacity-100 translate-y-0"
+                                                            : "opacity-0 translate-y-2 pointer-events-none"
+                                                            }`}
+                                                    >
+                                                        <p className="capitalize text-white/60 px-4 py-1 bg-[var(--secondary-background-color)] rounded-full text-[14px]">
+                                                            fuel:
+                                                            <span className="text-white pl-1">
+                                                                {car.metaData?.fuel}
+                                                            </span>
+                                                        </p>
+                                                        <Image
+                                                            src="/Frame 2147238816.svg"
+                                                            alt="svg"
+                                                            width={100}
+                                                            height={100}
+                                                            className="mt-3 origin-top-center rotate-90"
+                                                        />
+                                                    </span>
+
+                                                    {/* engine */}
+                                                    <span
+                                                        className={`md:flex hidden absolute bottom-60 left-25 flex justify-center items-start transition-all duration-300 ${isActive
+                                                            ? "opacity-100 translate-y-0"
+                                                            : "opacity-0 translate-y-2 pointer-events-none"
+                                                            }`}
+                                                    >
+                                                        <p className="capitalize text-white/60 px-4 py-1 bg-[var(--secondary-background-color)] rounded-full text-[14px]">
+                                                            engine:
+                                                            <span className="text-white pl-1">
+                                                                {car.metaData?.engine}
+                                                            </span>
+                                                        </p>
+                                                        <Image
+                                                            src="/Frame 2147238816.svg"
+                                                            alt="svg"
+                                                            width={100}
+                                                            height={100}
+                                                            className="mt-3"
+                                                        />
+                                                    </span>
+
                                                 </CardContent>
                                             </Card>
                                         </div>
@@ -116,9 +175,9 @@ export default function Hero() {
                     <Image src="/Arrow Right.svg" width={22} height={22} alt="svg" />
                 </Button>
 
-                <div className="w-full md:w-[540px] max-w-[540px] md:flex grid grid-cols-2 md:justify-between md:items-center items-start p-4 md:p-6 mx-2 md:mx-6 bg-white shadow-[0px_-5px_5px_1px_rgba(240,_11,_31,_.1)] rounded-t-2xl">
+                <div className="w-full md:w-[540px] max-w-[540px] md:flex grid grid-cols-1 md:justify-between md:items-center items-start p-4 md:p-6 mx-2 md:mx-6 bg-white shadow-[0px_-5px_5px_1px_rgba(240,_11,_31,_.1)] rounded-t-2xl">
 
-                    <div>
+                    <div className="flex justify-between md:flex-col flex-row">
                         <p className="font-semibold text-[20px] text-[rgba(33,33,33,1)]">
                             {carsCarousel[current]?.name}
                         </p>
