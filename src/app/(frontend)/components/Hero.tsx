@@ -6,19 +6,27 @@ import { Button } from "@base-ui/react";
 import Price from "@/components/Price";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { carsCarousel } from "@/app/constants";
-
+import type { EmblaCarouselType } from "embla-carousel";
 export default function Hero() {
     const [current, setCurrent] = useState(0)
-    const [api, setApi] = useState()
+    const [api, setApi] = useState<EmblaCarouselType>()
 
     useEffect(() => {
         if (!api) return
 
-        setCurrent(api.selectedScrollSnap())
+        const onSelect = () => {
+            setCurrent(api.selectedScrollSnap())
+        }
 
-        api.on("select", () => {
+        api.on("select", onSelect)
+
+        requestAnimationFrame(() => {
             setCurrent(api.selectedScrollSnap())
         })
+
+        return () => {
+            api.off("select", onSelect)
+        }
     }, [api])
     return (
         <div className="w-full h-auto 2xl:pt-36 md:pt-32 pt-28 center flex-col relative overflow-hidden">
