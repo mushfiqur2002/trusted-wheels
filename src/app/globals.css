@@ -15,7 +15,7 @@
 
 body {
   width: 100%;
-  max-width: 1440px;
+  max-width: 1920px;
   height: auto;
   margin-left: auto;
   margin-right: auto;
@@ -35,52 +35,52 @@ body {
   background: linear-gradient(
     90deg,
     rgba(240, 11, 31, 0.2) 0%,
-    rgba(255, 255, 255, 0.1) 90%
+    rgba(255, 255, 255, 0.001) 60%
   );
 }
 
-.tile-floor {
+.top-tile-floor {
   inset: 0;
   background-color: transparent;
   overflow: hidden;
 }
 
-.tile-floor::before {
+.top-tile-floor::before {
   content: "";
   position: absolute;
   inset: -0% -100%;
   background-image:
-    linear-gradient(to right, rgba(240, 11, 31, 0.1) 5px, transparent 1px),
-    linear-gradient(to bottom, rgba(240, 11, 31, 0.1) 5px, transparent 1px);
+    linear-gradient(to right, rgba(240, 11, 31, 0.08) 4px, transparent 1px),
+    linear-gradient(to bottom, rgba(240, 11, 31, 0.08) 4px, transparent 1px);
 
   background-size: 80px 80px;
 
-  transform: perspective(800px) rotateX(-45deg);
+  transform: perspective(800px) rotateX(-48deg);
   transform-origin: top;
 
   opacity: 0.5;
 }
 
-.nd-tile-floor {
+.bottom-tile-floor {
   inset: 0;
   background-color: transparent;
   overflow: hidden;
 }
 
-.nd-tile-floor::before {
+.bottom-tile-floor::before {
   content: "";
   position: absolute;
   inset: -5% -100%;
 
   background-image:
-    linear-gradient(to right, rgba(240, 11, 31, .1) 5px, transparent 1px),
-    linear-gradient(to bottom, rgba(240, 11, 31, .1) 5px, transparent 1px);
+    linear-gradient(to right, rgba(240, 11, 31, 0.08) 4px, transparent 1px),
+    linear-gradient(to bottom, rgba(240, 11, 31, 0.08) 4px, transparent 1px);
 
   background-size: 80px 80px;
 
   transform: perspective(800px) rotateX(50deg) scale(1);
   transform-origin: bottom;
 
-  opacity: .7;
+  opacity: 0.7;
   z-index: -111;
 }

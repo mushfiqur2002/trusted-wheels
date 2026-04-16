@@ -84,19 +84,34 @@ export const carsCarousel: Car[] = [
 
 export const cardList = [
     {
-        imageSrc: "/Shield Check.svg",
+        imageSrc: "/svg/Shield Check.svg",
         text: "one price, no haggle"
     },
     {
-        imageSrc: "/Graph Down New.svg",
+        imageSrc: "/svg/Graph Down New.svg",
         text: "Rates as low as 5.99%."
     },
     {
-        imageSrc: "/User Check.svg",
+        imageSrc: "/svg/User Check.svg",
         text: "Non-Commissioned Advisors."
     },
     {
-        imageSrc: "/File Check.svg",
+        imageSrc: "/svg/File Check.svg",
         text: "oAll Credit Applications Accepted."
+    },
+]
+
+export const companyInfoList = [
+    {
+        number: 100,
+        param: "past inspection"
+    },
+    {
+        number: 5,
+        param: "years of experience"
+    },
+    {
+        number: 10000,
+        param: "happy customers"
     },
 ]

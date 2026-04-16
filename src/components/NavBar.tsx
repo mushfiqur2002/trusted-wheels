@@ -6,6 +6,7 @@ import { navLinks } from "@/app/constants";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import CustomButton from "./CustomButton";
 
 
 const NavBar = () => {
@@ -28,11 +29,10 @@ const NavBar = () => {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className={`w-full h-18 top-0 center z-100 ${isScrolled || isMobileMenuOpen ? "bg-[var(--primary-background-color)] fixed" : "bg-transparent absolute"}`}
+                className={`max-w-[1920px] w-full h-18 top-0 center z-100 ${isScrolled || isMobileMenuOpen ? "bg-[var(--primary-background-color)] fixed shadow-[0px_1px_15px_5px_rgba(240,_11,_31,_.06)]" : "bg-transparent absolute"}`}
             >
                 <motion.div
-                    className="w-full flex justify-between items-center 2xl:px-16 xl:px-12 lg:px-10 md:px-12 px-5"
-                    whileHover={{ scale: 1.01 }}
+                    className="max-w-[1440px] w-full flex justify-between items-center 2xl:px-16 xl:px-12 lg:px-10 md:px-12 px-5"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 >
                     {/* Logo */}
@@ -41,15 +41,17 @@ const NavBar = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        <Image width={220} height={100} src="/full-logo.svg" alt="logo" className="hidden lg:flex" />
-                        <Image width={40} height={40} src="/logo.svg" alt="logo" className="flex lg:hidden" />
+                        {isScrolled ?
+                            <Image width={220} height={100} src="svg/full-logo.svg" alt="logo" /> :
+                            <Image width={220} height={100} src="svg/full-logo-white.svg" alt="logo" />
+                        }
                     </motion.div>
 
                     {/* Desktop Nav Links */}
                     <div className="hidden lg:flex">
                         <ul className="center 2xl:gap-12 gap-6">
                             {navLinks.map((link, index) => (
-                                <li key={index} className="text-[#212121]">
+                                <li key={index} className={`font-normal text-md ${isScrolled ? 'text-[#212121]' : 'text-white'}`}>
                                     <Link href={link.href}>{link.name}</Link>
                                 </li>
                             ))}
@@ -57,22 +59,28 @@ const NavBar = () => {
                     </div>
 
                     {/* Desktop Button */}
-                    <motion.div className="center gap-2">
-                        <Button className={"center bg-[rgba(240,11,31,0.1)] md:p-6 p-5 rounded-lg"}>
-                            <Image width={16} height={16} alt="svg" src="/Magnifer Minimalistic.svg" />
-                        </Button>
-                        <div className="hidden lg:flex">
-                            <Button className={"center bg-[rgba(240,11,31,1)] text-white p-6 rounded-lg text-[16px] font-semibold hidden lg:flex"}>
-                                Browse Inventory
-                            </Button>
+                    <motion.div className="">
+                        <div className="hidden lg:flex gap-2">
+                            <CustomButton
+                                path="/"
+                                imageSrc="/svg/Map Point.svg"
+                                onlySVG={true}
+                            />
+                            <CustomButton
+                                path="/"
+                                text="306-952-1207"
+                                imageSrc="/svg/Phone.svg"
+                                types="primary"
+                                reverse={true}
+                            />
                         </div>
                         {/* Mobile Menu Toggle */}
                         <motion.button
-                            className="lg:hidden flex p-3 text-[rgba(255,255,255,.85)] bg-[rgba(240,11,31,1)] rounded-lg"
+                            className="lg:hidden flex"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             whileTap={{ scale: 0.9 }}
                         >
-                            {isMobileMenuOpen ? <FiX size={18} /> : <FiMenu size={18} />}
+                            {isMobileMenuOpen ? <FiX size={28} color="rgba(240,11,31,1)" /> : <Image width={28} height={28} alt="svg" src="/svg/Menu.svg" />}
                         </motion.button>
                     </motion.div>
 
@@ -107,9 +115,14 @@ const NavBar = () => {
                                         {link.name}
                                     </motion.a>
                                 ))}
-                                <div className="flex lg:hidden">
-                                    <Button className={"center bg-[rgba(240,11,31,1)] text-white p-4 py-6 rounded-lg text-[18px] font-semibold"}>
-                                        Browse Inventory
+
+                                <div className="flex lg:hidden gap-2 pt-12">
+                                    <Button className={"center bg-[rgba(240,11,31,0.1)] px-4 py-5 rounded-lg"}>
+                                        <Image width={16} height={16} alt="svg" src="/svg/Map Point.svg" />
+                                    </Button>
+                                    <Button className={"center bg-[rgba(240,11,31,1)] text-white p-5 rounded-lg text-[16px] font-semibold hidden lg:flex"}>
+                                        <Image width={16} height={16} color="white" alt="svg" src="/svg/Phone.svg" />
+                                        <p>306-952-1207</p>
                                     </Button>
                                 </div>
                             </motion.div>

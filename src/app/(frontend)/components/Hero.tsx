@@ -7,6 +7,7 @@ import Price from "@/components/Price";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { carsCarousel } from "@/app/constants";
 import type { EmblaCarouselType } from "embla-carousel";
+import Title from "../../../components/Title";
 export default function Hero() {
     const [current, setCurrent] = useState(0)
     const [api, setApi] = useState<EmblaCarouselType>()
@@ -29,37 +30,36 @@ export default function Hero() {
         }
     }, [api])
     return (
-        <div className="w-full h-auto 2xl:pt-36 md:pt-32 pt-28 center flex-col relative overflow-hidden">
+        <div className="w-full h-auto 2xl:pt-36 md:pt-32 pt-28 center flex-col relative overflow-hidden bg-[linear-gradient(90deg,rgba(22,_22,_22,_1)_0%,_rgba(37,_37,_37,_1)_53%,_rgba(22,_22,_22,_1)_100%)]">
 
             {/* tile floor */}
             <div className="w-full h-full flex flex-col justify-between absolute top-0 inset-0 -z-10">
                 {/* top */}
-                <div className="w-full tile-floor"></div>
+                <div className="w-full top-tile-floor"></div>
 
                 {/* bottom */}
-                <div className="w-full nd-tile-floor"></div>
+                <div className="w-full bottom-tile-floor"></div>
             </div>
 
             {/* carousel */}
-            <div className="center flex-col">
+            <div className="w-full center flex-col">
 
-                <div className="center flex-col text-[var(--secondary-text-color)]">
+                <div className="w-full center flex-col text-[var(--secondary-text-color)]">
                     <p className="capitalize px-3 py-1 mb-1 rounded-full border border-[var(--primary-border-color)] md:text-[12px] text-[10px] bg-[var(--third-background-color)] shadow-[0px_-5px_9px_0px_rgba(0,_0,_0,_.09)]">
                         <span className="text-[var(--primary-text-color)]">trusted</span> auto dealership
                     </p>
 
-                    <h1 className="2xl:text-[64px] lg:text-[50px] md:text-[52px] sm:text-[42px] text-[32px] uppercase font-medium">
-                        drive your <span className="effect">dream today</span>
-                    </h1>
-
-                    <p className="2xl:text-[18px] md:text-[16px] sm:text-[14px] text-[10px] text-center opacity-60">
-                        Vancouver’s most trusted dealership. Clear deals, affordable rides,
-                        <br />
-                        and flexible finance options for everyone
-                    </p>
+                    <Title
+                        header="drive your"
+                        highlighted="dream today"
+                        paragraph="Vancouver’s most trusted dealership. Clear deals, affordable rides, and flexible finance options for everyone"
+                        varient="dark"
+                        heroSection={true}
+                        position="middle"
+                    />
                 </div>
 
-                <div className="max-w-[1440px] mx-auto md:pt-12 pt-0 w-full">
+                <div className="2xl:max-w-[1920px] max-w-[1440px] w-full mx-auto w-full">
                     <Carousel
                         opts={{
                             loop: true,
@@ -75,7 +75,7 @@ export default function Hero() {
                                 return (
                                     <CarouselItem
                                         key={index}
-                                        className="basis-full sm:basis-1/2 lg:basis-1/3 flex justify-center"
+                                        className="md:basis-1/3 basis-full flex justify-center"
                                     >
                                         <div
                                             className={`transition-all duration-500 ${isActive
@@ -83,10 +83,10 @@ export default function Hero() {
                                                 : "scale-50 opacity-50"
                                                 }`}
                                         >
-                                            <Card className="md:w-[840px] w-[600px] md:h-[450px] h-[420px] border-0 shadow-none bg-transparent">
-                                                <CardContent className="md:px-28 px-22 relative w-full h-full">
+                                            <Card className="2xl:w-[860px] xl:w-[800px] lg:w-[550px] w-[500px] 2xl:h-[550px] xl:h-[500px] lg:h-[400px] h-[400px] border-0 shadow-none bg-transparent">
+                                                <CardContent className="relative w-full h-full">
 
-                                                    {/* Image wrapper (FIXED BLUR) */}
+
                                                     <div className="relative w-full h-full">
                                                         <Image
                                                             src={car.image}
@@ -110,7 +110,7 @@ export default function Hero() {
                                                             </span>
                                                         </p>
                                                         <Image
-                                                            src="/Frame 2147238816.svg"
+                                                            src="svg/Frame 2147238816.svg"
                                                             alt="svg"
                                                             width={100}
                                                             height={100}
@@ -132,7 +132,7 @@ export default function Hero() {
                                                             </span>
                                                         </p>
                                                         <Image
-                                                            src="/Frame 2147238816.svg"
+                                                            src="svg/Frame 2147238816.svg"
                                                             alt="svg"
                                                             width={100}
                                                             height={100}
@@ -154,7 +154,7 @@ export default function Hero() {
                                                             </span>
                                                         </p>
                                                         <Image
-                                                            src="/Frame 2147238816.svg"
+                                                            src="svg/Frame 2147238816.svg"
                                                             alt="svg"
                                                             width={100}
                                                             height={100}
@@ -180,7 +180,7 @@ export default function Hero() {
                     onClick={() => api?.scrollPrev()}
                     className="center bg-[rgba(240,11,31,0.1)] px-3 md:px-6 py-4 md:py-3 rounded-xl"
                 >
-                    <Image src="/Arrow Right.svg" width={22} height={22} alt="svg" />
+                    <Image src="svg/Arrow Right.svg" width={22} height={22} alt="svg" />
                 </Button>
 
                 <div className="w-full md:w-[540px] max-w-[540px] md:flex grid grid-cols-1 md:justify-between md:items-center items-start p-4 md:p-6 mx-2 md:mx-6 bg-white shadow-[0px_-5px_5px_1px_rgba(240,_11,_31,_.1)] rounded-t-2xl">
@@ -194,12 +194,12 @@ export default function Hero() {
                         </p>
                     </div>
 
-                    <div className="flex flex-col md:flex-row gap-2 w-full md:w-auto mt-2 md:mt-0">
-                        <Button className="w-full md:w-auto center bg-[rgba(240,11,31,0.1)] text-[rgba(240,11,31,1)] px-6 py-3 rounded-lg text-[16px] font-semibold">
+                    <div className="flex gap-2 w-auto mt-2 md:mt-0">
+                        <Button className="w-auto center bg-[rgba(240,11,31,0.1)] text-[rgba(240,11,31,1)] px-6 py-3 rounded-lg text-[16px] font-semibold">
                             Details
                         </Button>
 
-                        <Button className="w-full md:w-auto center bg-[rgba(240,11,31,1)] text-white px-6 py-3 rounded-lg text-[16px] font-semibold">
+                        <Button className="md:w-auto w-full center bg-[rgba(240,11,31,1)] text-white px-6 py-3 rounded-lg text-[16px] font-semibold">
                             Contact Us
                         </Button>
                     </div>
@@ -210,7 +210,7 @@ export default function Hero() {
                     className="center bg-[rgba(240,11,31,0.1)] px-3 md:px-6 py-4 md:py-3 rounded-xl"
                 >
                     <Image
-                        src="/Arrow Right.svg"
+                        src="svg/Arrow Right.svg"
                         width={22}
                         height={22}
                         alt="svg"

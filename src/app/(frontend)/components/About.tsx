@@ -1,25 +1,27 @@
 "use client"
-import { cardList } from '@/app/constants'
+import { cardList, companyInfoList } from '@/app/constants'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import Title from './Title'
+import Title from '../../../components/Title'
 import { Button } from '@/components/ui/button'
+import NumberFormat from '../../../components/NumberFormat'
+import CustomButton from '../../../components/CustomButton'
 export default function About() {
     const [activeTab, setActiveTab] = useState<"brands" | "types">("brands");
     return (
-        <div className='w-full h-auto md:px-12 px-6 md:py-22 py-16 text-[var(--secondary-text-color)] flex flex-col md:gap-22 gap-16'>
+        <div className='max-w-[1440px] mx-auto w-full h-auto md:px-12 px-6 md:py-22 py-16 text-[var(--secondary-text-color)] flex flex-col md:gap-22 gap-16'>
             {/* first section value propositions */}
             <div className='flex flex-col lg:gap-16 gap-8'>
                 <div>
                     <Title header='Why Choose' highlighted='trustedwheels?' paragraph={`We don't just sell cars; we build lasting relationships.`} />
                 </div>
 
-                <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
                     {cardList.map((item, index) => {
                         return (
                             <div
                                 key={index}
-                                className="w-full min-h-[120px] p-5 bg-white rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300"
+                                className="sm:static sticky top-24 w-full min-h-[120px] p-5 bg-white rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300"
                             >
                                 <div className="w-fit h-fit bg-[rgba(240,11,31,0.08)] p-[10px] rounded-md">
                                     <Image
@@ -91,7 +93,7 @@ export default function About() {
                 </div>
 
                 <div className='center'>
-                    <Button className={`md:text-[16px] text-[14px] text-[rgba(240,11,31,1)] border-[rgba(240,11,31,.3)] capitalize font-semibold bg-[rgba(240,11,31,.1)] md:p-6 p-5 `}>view more</Button>
+                    <CustomButton text='view more' path='/' imageSrc='/svg/Arrow Left.svg' />
                 </div>
             </div>
 
@@ -102,28 +104,26 @@ export default function About() {
                 </div>
 
                 <div className='grid lg:grid-cols-2 grid-cols-1 xl:gap-12 gap-6'>
-                    <div className='w-full lg:h-[463px] md:h-[300px] h-[200px] rounded-4xl overflow-hidden'>
-                        <img src="/woman-enjoying-her-financially-independence-while-buying-car 1.png" className='w-full h-full object-cover xl:object-center lg:object-right object-top' alt='image' />
+                    <div className='w-full lg:h-[463px] md:h-[300px] h-[200px] lg:rounded-4xl rounded-xl overflow-hidden'>
+                        <img src="/images/woman-enjoying-her-financially-independence-while-buying-car 1.png" className='w-full h-full object-cover xl:object-center lg:object-right object-top' alt='image' />
                     </div>
                     <div className='center flex-col lg:gap-12 gap-6'>
-                        <div className='w-full grid grid-cols-3 bg-white md:p-6 p-4 rounded-xl'>
-                            <div className='flex flex-col justify-center items-start'>
-                                <p className='md:text-[32px] text-[28px] font-semibold'>100<span className='text-[rgba(240,11,31,1)]'>+</span></p>
-                                <p className='md:text-[16px] text-[12px] font-normal capitalize'>point inspection</p>
-                            </div>
-                            <div className='flex flex-col justify-center items-start'>
-                                <p className='md:text-[32px] text-[28px] font-semibold'>5<span className='text-[rgba(240,11,31,1)]'>+</span></p>
-                                <p className='md:text-[16px] text-[12px] font-normal capitalize'>years of experience</p>
-                            </div>
-                            <div className='flex flex-col justify-center items-start'>
-                                <p className='md:text-[32px] text-[28px] font-semibold'>10K<span className='text-[rgba(240,11,31,1)]'>+</span></p>
-                                <p className='md:text-[16px] text-[12px] font-normal capitalize'>happy customers</p>
-                            </div>
+                        <div className='w-full grid sm:grid-cols-3 grid-cols-1 bg-white md:p-6 p-4 rounded-xl md:gap-0 gap-6'>
+                            {
+                                companyInfoList.map((item, index) => {
+                                    return (
+                                        <div key={index} className='flex flex-col justify-center md:items-start items-center'>
+                                            <p className='flex md:text-[32px] text-[28px] font-semibold'><NumberFormat value={item.number} /><span className='text-[rgba(240,11,31,1)]'>+</span></p>
+                                            <p className='md:text-[16px] text-[12px] font-normal capitalize'>{item.param}</p>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                         <div className='flex flex-col gap-6'>
                             <p className='md:text-[24px] text-[16px] font-medium text-justify'>We are committed to making your car-buying experience simple, honest, and stress-free. Every vehicle is carefully selected and inspected by experienced professionals to ensure quality you can trust. From start to finish, our focus is on transparency and customer satisfaction.</p>
                             <div className='flex lg:justify-end justify-center'>
-                                <Button className={`md:text-[16px] text-[14px] text-[rgba(240,11,31,1)] border-[rgba(240,11,31,.3)] capitalize font-semibold bg-[rgba(240,11,31,.1)] md:p-6 p-5 `}>view more</Button>
+                                <CustomButton path='/' text='read more' imageSrc='/svg/Arrow Left.svg' />
                             </div>
                         </div>
                     </div>
