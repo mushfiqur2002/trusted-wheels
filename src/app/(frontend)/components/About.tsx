@@ -1,7 +1,7 @@
 "use client"
 import { cardList, companyInfoList } from '@/app/constants'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Title from '../../../components/Title'
 import { Button } from '@/components/ui/button'
 import NumberFormat from '../../../components/NumberFormat'
@@ -9,9 +9,9 @@ import CustomButton from '../../../components/CustomButton'
 export default function About() {
     const [activeTab, setActiveTab] = useState<"brands" | "types">("brands");
     return (
-        <div className='max-w-[1440px] mx-auto w-full h-auto md:px-12 px-6 md:py-22 py-16 text-[var(--secondary-text-color)] flex flex-col md:gap-22 gap-16'>
+        <div className='max-w-[1440px] mx-auto w-full h-auto md:py-22 py-16 text-[var(--secondary-text-color)] flex flex-col md:gap-22 gap-16'>
             {/* first section value propositions */}
-            <div className='flex flex-col lg:gap-16 gap-8'>
+            <div className='flex flex-col lg:gap-16 gap-8 md:px-12 px-6'>
                 <div>
                     <Title header='Why Choose' highlighted='trustedwheels?' paragraph={`We don't just sell cars; we build lasting relationships.`} />
                 </div>
@@ -44,7 +44,7 @@ export default function About() {
             </div>
 
             {/* 2nd section -> inventory */}
-            <div className='w-full flex flex-col lg:gap-16 md:gap-6 gap-4'>
+            <div className='w-full flex flex-col lg:gap-16 md:gap-6 gap-4 md:px-12 px-6'>
                 <div className='flex justify-between lg:items-center md:items-start items-center lg:flex-row flex-col lg:gap-0 md:gap-6 gap-4'>
                     <Title header='Find Your' highlighted='Perfect Fit' paragraph='Shop our extensive inventory by your favorite brand or vehicle type.' />
                     <div className="relative flex w-fit p-1 bg-white rounded-lg">
@@ -98,7 +98,7 @@ export default function About() {
             </div>
 
             {/* 3rd section -> trust building  */}
-            <div className='w-full flex flex-col lg:gap-16 gap-8'>
+            <div className='w-full flex flex-col lg:gap-16 gap-8 md:px-12 px-6'>
                 <div>
                     <Title header='Transparency and' highlighted='care in every deal' paragraph='Every vehicle goes through an extensive inspection process so you can drive away with absolute confidence.' />
                 </div>
@@ -108,11 +108,11 @@ export default function About() {
                         <img src="/images/woman-enjoying-her-financially-independence-while-buying-car 1.png" className='w-full h-full object-cover xl:object-center lg:object-right object-top' alt='image' />
                     </div>
                     <div className='center flex-col lg:gap-12 gap-6'>
-                        <div className='w-full grid sm:grid-cols-3 grid-cols-1 bg-white md:p-6 p-4 rounded-xl md:gap-0 gap-6'>
+                        <div className='relative w-full grid sm:grid-cols-3 grid-cols-1 bg-white md:p-6 p-4 rounded-xl md:gap-0 gap-6'>
                             {
                                 companyInfoList.map((item, index) => {
                                     return (
-                                        <div key={index} className='flex flex-col justify-center md:items-start items-center'>
+                                        <div key={index} className='w-full h-full bg-white md:static sticky top-24 flex flex-col justify-center md:items-start items-center'>
                                             <p className='flex md:text-[32px] text-[28px] font-semibold'><NumberFormat value={item.number} /><span className='text-[rgba(240,11,31,1)]'>+</span></p>
                                             <p className='md:text-[16px] text-[12px] font-normal capitalize'>{item.param}</p>
                                         </div>
@@ -121,10 +121,67 @@ export default function About() {
                             }
                         </div>
                         <div className='flex flex-col gap-6'>
-                            <p className='md:text-[24px] text-[16px] font-medium text-justify'>We are committed to making your car-buying experience simple, honest, and stress-free. Every vehicle is carefully selected and inspected by experienced professionals to ensure quality you can trust. From start to finish, our focus is on transparency and customer satisfaction.</p>
+                            <p className='md:text-[22px] text-[16px] font-medium text-justify'>We are committed to making your car-buying experience simple, honest, and stress-free. Every vehicle is carefully selected and inspected by experienced professionals to ensure quality you can trust. From start to finish, our focus is on transparency and customer satisfaction.</p>
                             <div className='flex lg:justify-end justify-center'>
                                 <CustomButton path='/' text='read more' imageSrc='/svg/Arrow Left.svg' />
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* 4th section */}
+            <div className='flex flex-col gap-12 bg-[var(--secondary-background-color)] md:px-12 px-6 md:py-12 py-8'>
+                <div>
+                    <Title header='financing' highlighted='made simple' paragraph='Great credit, bad credit, or no credit? Our experienced finance managers will go' varient='dark' />
+                </div>
+
+                <div className='grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6'>
+                    <div className='relative w-full h-[314px] flex flex-col justify-between items-start bg-white rounded-2xl p-8'>
+                        <div className='flex flex-col gap-2'>
+                            <h1 className='text-[24px] font-semibold'>Apply for Financing</h1>
+                            <p className='text-[18px]'>Get pre-approved quickly and find the best payment plan that fits your budget.</p>
+                        </div>
+                        <div>
+                            <CustomButton
+                                path='/'
+                                types='primary'
+                                text='apply now'
+                                imageSrc='/svg/Arrow Right White.svg'
+                            />
+                        </div>
+                        <div className="absolute bottom-0 right-10">
+                            <Image
+                                src="/images/Frame.png"
+                                alt="svg"
+                                width={320}
+                                height={320}
+                                className="w-[250px] md:w-[300px] lg:w-[320px] h-auto"
+                            />
+                        </div>
+                    </div>
+
+                    <div className='relative w-full h-[314px] flex flex-col justify-between items-start bg-white rounded-2xl p-8'>
+                        <div className='flex flex-col gap-2'>
+                            <h1 className='text-[24px] font-semibold'>Appraise Your Trade-In</h1>
+                            <p className='text-[18px]'>Get an instant estimate for your current vehicle and trade it in for something better.</p>
+                        </div>
+                        <div>
+                            <CustomButton
+                                path='/'
+                                types='primary'
+                                text='get your value'
+                                imageSrc='/svg/Arrow Right White.svg'
+                            />
+                        </div>
+                        <div className="absolute bottom-0 right-10">
+                            <Image
+                                src="/images/Frame.png"
+                                alt="svg"
+                                width={320}
+                                height={320}
+                                className="w-[250px] md:w-[300px] lg:w-[320px] h-auto"
+                            />
                         </div>
                     </div>
                 </div>

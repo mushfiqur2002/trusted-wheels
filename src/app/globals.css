@@ -9,6 +9,7 @@
 
   --primary-text-color: #f00b1f;
   --secondary-text-color: #212121;
+  --third-text-color: rgba(143, 143, 143, 1);
 
   --primary-border-color: #f00b1f1a;
 }
@@ -50,12 +51,12 @@ body {
   position: absolute;
   inset: -0% -100%;
   background-image:
-    linear-gradient(to right, rgba(240, 11, 31, 0.08) 4px, transparent 1px),
-    linear-gradient(to bottom, rgba(240, 11, 31, 0.08) 4px, transparent 1px);
+    linear-gradient(to right, rgba(240, 11, 31, 0.085) 4px, transparent 1px),
+    linear-gradient(to bottom, rgba(240, 11, 31, 0.085) 4px, transparent 1px);
 
   background-size: 80px 80px;
 
-  transform: perspective(800px) rotateX(-48deg);
+  transform: perspective(800px) rotateX(-58deg);
   transform-origin: top;
 
   opacity: 0.5;
@@ -73,8 +74,8 @@ body {
   inset: -5% -100%;
 
   background-image:
-    linear-gradient(to right, rgba(240, 11, 31, 0.08) 4px, transparent 1px),
-    linear-gradient(to bottom, rgba(240, 11, 31, 0.08) 4px, transparent 1px);
+    linear-gradient(to right, rgba(240, 11, 31, 0.11) 4px, transparent 1px),
+    linear-gradient(to bottom, rgba(240, 11, 31, 0.11) 4px, transparent 1px);
 
   background-size: 80px 80px;
 
@@ -82,5 +83,23 @@ body {
   transform-origin: bottom;
 
   opacity: 0.7;
-  z-index: -111;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  33% {
+    transform: translate(-48%, -52%) scale(1.05);
+  }
+  66% {
+    transform: translate(-52%, -48%) scale(0.95);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.blob {
+  animation: blob 5s infinite ease-in-out;
 }

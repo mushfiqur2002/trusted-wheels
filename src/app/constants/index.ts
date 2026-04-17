@@ -1,4 +1,4 @@
-export type Car = {
+export type CarType = {
     name: string
     price: number
     image: string
@@ -11,15 +11,63 @@ export type Car = {
     }
 }
 
+export type TestimonialType = {
+    imageSrc: string,
+    name: string,
+    location: string,
+    comment: string,
+    review: number
+}
+
+export type SocailType = {
+    profileImageSrc: string,
+    postImageSrc: string,
+    name: string,
+}
+
 export const navLinks = [
     { name: "Home", href: "/" },
     { name: "Inventory", href: "/inventory" },
     { name: "Financing", href: "/financing" },
     { name: "Trade-In", href: "/trade-in" },
     { name: "Contact", href: "/contact" },
-];
+]
 
-export const carsCarousel: Car[] = [
+export const cardList = [
+    {
+        imageSrc: "/svg/Shield Check.svg",
+        text: "one price, no haggle"
+    },
+    {
+        imageSrc: "/svg/Graph Down New.svg",
+        text: "Rates as low as 5.99%."
+    },
+    {
+        imageSrc: "/svg/User Check.svg",
+        text: "Non-Commissioned Advisors."
+    },
+    {
+        imageSrc: "/svg/File Check.svg",
+        text: "oAll Credit Applications Accepted."
+    },
+]
+
+export const companyInfoList = [
+    {
+        number: 100,
+        param: "past inspection"
+    },
+    {
+        number: 5,
+        param: "years of experience"
+    },
+    {
+        number: 10000,
+        param: "happy customers"
+    },
+]
+
+export const carsCarousel: CarType[] = [
     {
         name: "BMW i7",
         price: 119300,
@@ -82,36 +130,75 @@ export const carsCarousel: Car[] = [
     },
 ]
 
-export const cardList = [
+export const testimonialList: TestimonialType[] = [
     {
-        imageSrc: "/svg/Shield Check.svg",
-        text: "one price, no haggle"
+        imageSrc: '/socail/profile/image01.png',
+        name: 'john d.',
+        location: 'winchester us',
+        comment: 'Lorem ipsum dolor sit amet consectetur. Tincidunt quisque nisl turpis egestas enim lorem. Dui faucibus enim gravida consequat aliquet',
+        review: 5
     },
     {
-        imageSrc: "/svg/Graph Down New.svg",
-        text: "Rates as low as 5.99%."
+        imageSrc: '/socail/profile/image02.png',
+        name: 'john d.',
+        location: 'winchester us',
+        comment: 'Lorem ipsum dolor sit amet consectetur. Tincidunt quisque nisl turpis egestas enim lorem. Dui faucibus enim gravida consequat aliquet',
+        review: 3
     },
     {
-        imageSrc: "/svg/User Check.svg",
-        text: "Non-Commissioned Advisors."
+        imageSrc: '/socail/profile/image03.png',
+        name: 'john d.',
+        location: 'winchester us',
+        comment: 'Lorem ipsum dolor sit amet consectetur. Tincidunt quisque nisl turpis egestas enim lorem. Dui faucibus enim gravida consequat aliquet',
+        review: 4
     },
     {
-        imageSrc: "/svg/File Check.svg",
-        text: "oAll Credit Applications Accepted."
+        imageSrc: '/socail/profile/image04.png',
+        name: 'john d.',
+        location: 'winchester us',
+        comment: 'Lorem ipsum dolor sit amet consectetur. Tincidunt quisque nisl turpis egestas enim lorem. Dui faucibus enim gravida consequat aliquet',
+        review: 4
+    },
+    {
+        imageSrc: '/socail/profile/image01.png',
+        name: 'john d.',
+        location: 'winchester us',
+        comment: 'Lorem ipsum dolor sit amet consectetur. Tincidunt quisque nisl turpis egestas enim lorem. Dui faucibus enim gravida consequat aliquet',
+        review: 5
+    },
+    {
+        imageSrc: '/socail/profile/image02.png',
+        name: 'john d.',
+        location: 'winchester us',
+        comment: 'Lorem ipsum dolor sit amet consectetur. Tincidunt quisque nisl turpis egestas enim lorem. Dui faucibus enim gravida consequat aliquet',
+        review: 4
     },
 ]
 
-export const companyInfoList = [
+export const socailList: SocailType[] = [
     {
-        number: 100,
-        param: "past inspection"
+        profileImageSrc: "/socail/profile/image03.png",
+        postImageSrc: "/socail/post/image 3011.png",
+        name: "jhon d."
     },
     {
-        number: 5,
-        param: "years of experience"
+        profileImageSrc: "/socail/profile/image03.png",
+        postImageSrc: "/socail/post/image 3012.png",
+        name: "jhon d."
     },
     {
-        number: 10000,
-        param: "happy customers"
+        profileImageSrc: "/socail/profile/image03.png",
+        postImageSrc: "/socail/post/image 3011.png",
+        name: "jhon d."
+    },
+    {
+        profileImageSrc: "/socail/profile/image03.png",
+        postImageSrc: "/socail/post/image 3012.png",
+        name: "jhon d."
+    },
+    {
+        profileImageSrc: "/socail/profile/image03.png",
+        postImageSrc: "/socail/post/image 3011.png",
+        name: "jhon d."
     },
 ]

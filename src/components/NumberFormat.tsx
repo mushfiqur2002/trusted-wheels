@@ -20,8 +20,8 @@ export default function NumberFormat({ value }: NumberFormatProps) {
     }
 
     return (
-        <div>
+        <span>
             {num.toFixed(1).replace(/\.0$/, '')}{suffix}
-        </div>
+        </span>
     )
 }

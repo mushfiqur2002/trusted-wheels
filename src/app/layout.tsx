@@ -30,7 +30,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col"
         cz-shortcut-listen="true"
-        data-new-gr-c-s-check-loaded="14.1282.0"
+        data-new-gr-c-s-check-loaded="14.1283.0"
         data-gr-ext-installed="">
         <NavBar />
         {children}

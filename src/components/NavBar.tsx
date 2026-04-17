@@ -41,9 +41,9 @@ const NavBar = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        {isScrolled ?
-                            <Image width={220} height={100} src="svg/full-logo.svg" alt="logo" /> :
-                            <Image width={220} height={100} src="svg/full-logo-white.svg" alt="logo" />
+                        {isScrolled || isMobileMenuOpen ?
+                            <Image width={200} height={100} src="svg/full-logo.svg" alt="logo" /> :
+                            <Image width={200} height={100} src="svg/full-logo-white.svg" alt="logo" />
                         }
                     </motion.div>
 
@@ -65,6 +65,7 @@ const NavBar = () => {
                                 path="/"
                                 imageSrc="/svg/Map Point.svg"
                                 onlySVG={true}
+                                navbar={true}
                             />
                             <CustomButton
                                 path="/"
@@ -72,6 +73,7 @@ const NavBar = () => {
                                 imageSrc="/svg/Phone.svg"
                                 types="primary"
                                 reverse={true}
+                                navbar={true}
                             />
                         </div>
                         {/* Mobile Menu Toggle */}
@@ -93,7 +95,7 @@ const NavBar = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="w-full absolute top-16 z-100 bg-[var(--primary-background-color)] backdrop-blur-md lg:hidden"
+                            className="w-full absolute top-14 z-100 bg-[var(--primary-background-color)] backdrop-blur-md lg:hidden"
                         >
                             <motion.div
                                 initial={{ y: -20, opacity: 0 }}
