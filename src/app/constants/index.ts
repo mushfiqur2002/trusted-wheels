@@ -182,12 +182,12 @@ export const socailList: SocailType[] = [
         name: "jhon d."
     },
     {
-        profileImageSrc: "/socail/profile/image03.png",
+        profileImageSrc: "/socail/profile/image01.png",
         postImageSrc: "/socail/post/image 3012.png",
         name: "jhon d."
     },
     {
-        profileImageSrc: "/socail/profile/image03.png",
+        profileImageSrc: "/socail/profile/image02.png",
         postImageSrc: "/socail/post/image 3011.png",
         name: "jhon d."
     },
@@ -197,7 +197,7 @@ export const socailList: SocailType[] = [
         name: "jhon d."
     },
     {
-        profileImageSrc: "/socail/profile/image03.png",
+        profileImageSrc: "/socail/profile/image01.png",
         postImageSrc: "/socail/post/image 3011.png",
         name: "jhon d."
     },

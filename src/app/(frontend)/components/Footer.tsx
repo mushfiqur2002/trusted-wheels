@@ -1,11 +1,17 @@
+"use client"
 import Title from "@/components/Title";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+
+
 
 export default function Footer() {
+    const Map = dynamic(() => import("@/components/Map"), {
+        ssr: false,
+    })
     return (
         <div className="w-full center flex-col md:pt-22 pt-16">
             {/* first section */}
-            <div>
+            <div className="w-full">
                 {/* title  */}
                 <div>
                     <Title
@@ -17,16 +23,10 @@ export default function Footer() {
                 </div>
 
                 {/* base map  */}
-                <div>
+                <div className="">
                     {/* actual map  */}
-                    <div className="w-[1920px] transform">
-                        <Image
-                            src="/images/Basemap image.png"
-                            alt="map"
-                            width={1920}
-                            height={600}
-                            className="w-full h-auto object-cover"
-                        />
+                    <div className="w-full h-full overflow-hidden">
+                        <Map />
                     </div>
 
                 </div>
