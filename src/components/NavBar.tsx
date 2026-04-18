@@ -29,7 +29,7 @@ const NavBar = () => {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className={`max-w-[1920px] w-full h-18 top-0 center z-100 ${isScrolled || isMobileMenuOpen ? "bg-[var(--primary-background-color)] fixed shadow-[0px_1px_15px_5px_rgba(240,_11,_31,_.06)]" : "bg-transparent absolute"}`}
+                className={`max-w-[1920px] w-full h-18 top-0 center z-100000000 ${isScrolled || isMobileMenuOpen ? "bg-[var(--primary-background-color)] fixed shadow-[0px_1px_15px_5px_rgba(240,_11,_31,_.06)]" : "bg-transparent absolute"}`}
             >
                 <motion.div
                     className="max-w-[1440px] w-full flex justify-between items-center 2xl:px-16 xl:px-12 lg:px-10 md:px-12 px-5"

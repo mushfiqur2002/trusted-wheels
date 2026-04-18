@@ -202,3 +202,18 @@ export const socailList: SocailType[] = [
         name: "jhon d."
     },
 ]
+
+export const socailLink = [
+    {
+        icon: '/svg/X.svg',
+        path: '/'
+    },
+    {
+        icon: '/svg/FaceBook.svg',
+        path: '/'
+    },
+    {
+        icon: '/svg/InstaIcon.svg',
+        path: '/'
+    }
+]
