@@ -41,7 +41,7 @@ function OffsetView() {
 
     useEffect(() => {
         // move map UP → marker appears LOWER
-        map.panBy([0, -150]) // [x, y]
+        map.panBy([0, -100]) // [x, y]
     }, [map])
 
     return null
@@ -51,7 +51,7 @@ export default function Map() {
     const [pos, setPos] = useState({ x: 0, y: 0 })
     const latlng: [number, number] = [10.505, -0.09]
     return (
-        <div className="w-full h-[700px] relative">
+        <div className="w-full lg:h-[700px] md:h-[600px] h-[550px] relative">
             <MapContainer
                 center={latlng}
                 zoom={13}

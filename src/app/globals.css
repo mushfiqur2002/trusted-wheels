@@ -26,6 +26,29 @@ body {
   background-color: var(--primary-background-color);
 }
 
+/* Width of the scrollbar */
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track styling */
+body::-webkit-scrollbar-track {
+  background: var(--primary-background-color);
+  border-radius: 10px;
+}
+
+/* Thumb styling */
+body::-webkit-scrollbar-thumb {
+  background: var(--primary-text-color);
+  border-radius: 10px;
+  border:.5px solid var(--primary-background-color)
+}
+
+/* Hover effect for thumb */
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-background-color);
+}
+
 .center {
   display: flex;
   justify-content: center;

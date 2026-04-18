@@ -42,8 +42,8 @@ export default function Footer() {
             </div>
 
             {/* footer */}
-            <div className="w-full h-auto absolute -bottom-50 z-2">
-                <div className="lg:mx-12 md:mx-6 mx-0 md:p-12 p-6 bg-[var(--secondary-background-color)] md:rounded-tr-4xl md:rounded-tl-4xl rounded-none">
+            <div className="w-full h-auto md:absolute lg:-bottom-50 md:-bottom-80 z-2">
+                <div className="lg:mx-12 md:mx-6 mx-0 md:px-12 px-6 py-12 bg-[var(--secondary-background-color)] md:rounded-tr-4xl md:rounded-tl-4xl rounded-none">
                     <div className="w-full flex justify-between items-start text-white lg:flex-row flex-col lg:gap-0 gap-6">
                         <div className="flex flex-col md:gap-2 gap-3 md:items-start items-center">
                             <Image
@@ -72,7 +72,7 @@ export default function Footer() {
                             </div>
 
                             {/* line */}
-                            <div className="md:hidden flex w-full center" >
+                            <div className="md:hidden! flex w-full center" >
                                 <div className="w-[95%] h-[1.5px] bg-white/20 rounded-full my-8" />
                             </div>
 
