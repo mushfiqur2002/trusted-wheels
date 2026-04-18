@@ -35,14 +35,26 @@ function MarkerTracker({ latlng, setPos }: MarkerTrackerProps) {
     return null
 }
 
+
+function OffsetView() {
+    const map = useMap()
+
+    useEffect(() => {
+        // move map UP → marker appears LOWER
+        map.panBy([0, -150]) // [x, y]
+    }, [map])
+
+    return null
+}
+
 export default function Map() {
     const [pos, setPos] = useState({ x: 0, y: 0 })
     const latlng: [number, number] = [10.505, -0.09]
     return (
-        <div className="w-full h-[600px] relative">
+        <div className="w-full h-[700px] relative">
             <MapContainer
-                center={[10.505, -0.09]}
-                zoom={10}
+                center={latlng}
+                zoom={13}
                 scrollWheelZoom={false}
                 className="w-full h-full"
             >
@@ -50,11 +62,9 @@ export default function Map() {
                     attribution="&copy; OpenStreetMap contributors"
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-
                 <MarkerTracker latlng={latlng} setPos={setPos} />
+                <OffsetView />
             </MapContainer>
-
-            {/* ✅ REMOVE center positioning */}
             <AnimatedMarker pos={pos} />
         </div>
     )
