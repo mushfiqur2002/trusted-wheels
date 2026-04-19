@@ -1,41 +1,47 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { Urbanist } from 'next/font/google'
-import NavBar from "@/components/NavBar";
+"use client"
+
+import "./globals.css"
+import { Urbanist } from "next/font/google"
+import { useEffect, useState } from "react"
+import Intro from "@/components/Intro"
+import RouteLoader from "@/components/RouteLoader"
 
 const urbanist = Urbanist({
-  subsets: ['latin'],
+  subsets: ["latin"],
+  variable: "--font-urbanist",
 })
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-// src/app/layout.tsx
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const [showIntro, setShowIntro] = useState<null | boolean>(null)
+
+  useEffect(() => {
+    const visited = localStorage.getItem("visited")
+    setShowIntro(!visited)
+  }, [])
+
+  const handleFinish = () => {
+    localStorage.setItem("visited", "true")
+    setShowIntro(false)
+  }
+
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col"
-        cz-shortcut-listen="true"
-        data-new-gr-c-s-check-loaded="14.1284.0"
-        data-gr-ext-installed="">
-        <NavBar />
-        {children}
+    <html lang="en" className={urbanist.variable}>
+      <body
+        suppressHydrationWarning
+        className="min-h-full font-[var(--font-urbanist)]"
+      >
+        {showIntro === true && <Intro onFinish={handleFinish} />}
+        {showIntro === false && (
+          <>
+            <RouteLoader />
+            {children}
+          </>
+        )}
       </body>
-    </html >
+    </html>
   )
 }
-

@@ -1,7 +1,7 @@
 "use client"
 
 import "leaflet/dist/leaflet.css"
-import { MapContainer, TileLayer, Marker } from "react-leaflet"
+import { MapContainer, TileLayer } from "react-leaflet"
 import AnimatedMarker from "./AnimatedMarker"
 
 import { useMap } from "react-leaflet"

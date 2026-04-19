@@ -42,8 +42,8 @@ const NavBar = () => {
                         whileTap={{ scale: 0.95 }}
                     >
                         {isScrolled || isMobileMenuOpen ?
-                            <Image width={200} height={100} src="svg/full-logo.svg" alt="logo" /> :
-                            <Image width={200} height={100} src="svg/full-logo-white.svg" alt="logo" />
+                            <Image width={220} height={100} src="svg/full-logo.svg" alt="logo" /> :
+                            <Image width={220} height={100} src="svg/full-logo-white.svg" alt="logo" />
                         }
                     </motion.div>
 
@@ -119,13 +119,20 @@ const NavBar = () => {
                                 ))}
 
                                 <div className="flex lg:hidden gap-2 pt-12">
-                                    <Button className={"center bg-[rgba(240,11,31,0.1)] px-4 py-5 rounded-lg"}>
-                                        <Image width={16} height={16} alt="svg" src="/svg/Map Point.svg" />
-                                    </Button>
-                                    <Button className={"center bg-[rgba(240,11,31,1)] text-white p-5 rounded-lg text-[16px] font-semibold hidden lg:flex"}>
-                                        <Image width={16} height={16} color="white" alt="svg" src="/svg/Phone.svg" />
-                                        <p>306-952-1207</p>
-                                    </Button>
+                                    <CustomButton
+                                        path="/"
+                                        imageSrc="/svg/Map Point.svg"
+                                        onlySVG={true}
+                                        navbar={true}
+                                    />
+                                    <CustomButton
+                                        path="/"
+                                        text="306-952-1207"
+                                        imageSrc="/svg/Phone.svg"
+                                        types="primary"
+                                        reverse={true}
+                                        navbar={true}
+                                    />
                                 </div>
                             </motion.div>
                         </motion.div>
