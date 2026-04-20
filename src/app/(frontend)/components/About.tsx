@@ -105,7 +105,7 @@ export default function About() {
 
                 <div className='grid lg:grid-cols-2 grid-cols-1 xl:gap-12 gap-6'>
                     <div className='w-full lg:h-[463px] md:h-[300px] h-[200px] lg:rounded-4xl rounded-xl overflow-hidden'>
-                        <img src="/images/section image/woman-enjoying-her-financially-independence-while-buying-car 1.png" className='w-full h-full object-cover xl:object-center lg:object-right object-top' alt='image' />
+                        <img src="/images/section/woman-enjoying-her-financially-independence-while-buying-car 1.png" className='w-full h-full object-cover xl:object-center lg:object-right object-top' alt='image' />
                     </div>
                     <div className='center flex-col lg:gap-12 gap-6'>
                         <div className='relative w-full grid sm:grid-cols-3 grid-cols-1 bg-white md:p-6 p-4 rounded-xl md:gap-0 gap-6'>
