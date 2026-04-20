@@ -1,4 +1,5 @@
-import React from 'react'
+import { motion } from "framer-motion"
+
 type HeadingType = {
     header: string,
     highlighted: string,
@@ -13,11 +14,30 @@ export default function Title({ header, highlighted, paragraph, heroSection = fa
                         ${varient === 'light' ? 'text-[rgba(33,33,33,1)]' : 'text-white'}
                         ${position === 'middle' ? 'items-center px-2' : 'items-start'}`}
         >
-            <h1 className={`font-medium leading-tight ${heroSection ? 'xl:text-[52px] lg:text-[48px] sm:text-[42px] text-[32px] text-center uppercase px-2' : 'text-[28px] md:text-[30px] lg:text-[36px] capitalize'}`}>
+
+
+            <h1
+                className={`font-medium leading-tight ${heroSection
+                    ? "xl:text-[52px] lg:text-[48px] sm:text-[42px] text-[32px] text-center uppercase px-2"
+                    : "text-[28px] md:text-[30px] lg:text-[36px] capitalize"
+                    }`}
+            >
                 {header}
-                <span className="effect ml-1 sm:ml-2 pl-1 sm:pl-2 inline-block">
-                    {highlighted}
-                </span>
+
+                {heroSection ? (
+                    <motion.span
+                        className="effect ml-1 sm:ml-2 pl-1 sm:pl-2 inline-block"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        {highlighted}
+                    </motion.span>
+                ) : (
+                    <span className="effect ml-1 sm:ml-2 pl-1 sm:pl-2 inline-block">
+                        {highlighted}
+                    </span>
+                )}
             </h1>
 
             <p className={`md:mt-2 mt-1 max-w-[600px] font-extralight 

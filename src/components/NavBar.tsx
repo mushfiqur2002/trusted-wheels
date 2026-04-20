@@ -1,11 +1,10 @@
 "use client"
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { FiMenu, FiX } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion"
+import { FiX } from "react-icons/fi";
 import { navLinks } from "@/app/constants";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./ui/button";
 import CustomButton from "./CustomButton";
 
 

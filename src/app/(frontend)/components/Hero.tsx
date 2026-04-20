@@ -9,6 +9,8 @@ import { carsCarousel } from "@/app/constants";
 import type { EmblaCarouselType } from "embla-carousel";
 import Title from "../../../components/Title";
 import CustomButton from "@/components/CustomButton";
+import { motion } from "motion/react";
+
 export default function Hero() {
     const [current, setCurrent] = useState(0)
     const [api, setApi] = useState<EmblaCarouselType>()
@@ -76,7 +78,11 @@ export default function Hero() {
                         />
                     </div>
 
-                    <div className="2xl:max-w-[1920px] max-w-[1440px] w-full mx-auto w-full xl:pt-6 pt-2">
+                    <motion.div
+                        initial={{ y: 200, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1, ease: [0.22, 1, 0.9, 1] }}
+                        className="2xl:max-w-[1920px] max-w-[1440px] w-full mx-auto w-full xl:pt-6 pt-2">
                         <Carousel
                             opts={{
                                 loop: true,
@@ -187,7 +193,7 @@ export default function Hero() {
                                 })}
                             </CarouselContent>
                         </Carousel>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* carousel info */}
