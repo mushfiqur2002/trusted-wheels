@@ -37,7 +37,6 @@ export default function RootLayout({
         {showIntro === true && <Intro onFinish={handleFinish} />}
         {showIntro === false && (
           <>
-            <RouteLoader />
             {children}
           </>
         )}
