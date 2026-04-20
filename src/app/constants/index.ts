@@ -71,7 +71,7 @@ export const carsCarousel: CarType[] = [
     {
         name: "BMW i7",
         price: 119300,
-        image: "/images/carousel02.png",
+        image: "/images/carousel/carousel02.png",
         metaData: {
             bodyStyle: "Sedan",
             fuel: "Electric",
@@ -83,7 +83,7 @@ export const carsCarousel: CarType[] = [
     {
         name: "Audi A6",
         price: 56900,
-        image: "/images/carousel02.png",
+        image: "/images/carousel/carousel02.png",
         metaData: {
             bodyStyle: "Sedan",
             fuel: "Petrol",
@@ -95,7 +95,7 @@ export const carsCarousel: CarType[] = [
     {
         name: "Tesla Model S",
         price: 79990,
-        image: "/images/carousel02.png",
+        image: "/images/carousel/carousel02.png",
         metaData: {
             bodyStyle: "Sedan",
             fuel: "Electric",
@@ -107,7 +107,7 @@ export const carsCarousel: CarType[] = [
     {
         name: "Mercedes EQS",
         price: 104400,
-        image: "/images/carousel02.png",
+        image: "/images/carousel/carousel02.png",
         metaData: {
             bodyStyle: "Luxury Sedan",
             fuel: "Electric",
@@ -119,7 +119,7 @@ export const carsCarousel: CarType[] = [
     {
         name: "Porsche Taycan",
         price: 90500,
-        image: "/images/carousel02.png",
+        image: "/images/carousel/carousel02.png",
         metaData: {
             bodyStyle: "Sports Sedan",
             fuel: "Electric",
