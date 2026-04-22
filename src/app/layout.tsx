@@ -16,12 +16,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const [showIntro, setShowIntro] = useState<null | boolean>(null)
-
-  useEffect(() => {
+  const [showIntro, setShowIntro] = useState<null | boolean>(() => {
+    if (typeof window === "undefined") return null
     const visited = localStorage.getItem("visited")
-    setShowIntro(!visited)
-  }, [])
+    return !visited
+  })
 
   const handleFinish = () => {
     localStorage.setItem("visited", "true")

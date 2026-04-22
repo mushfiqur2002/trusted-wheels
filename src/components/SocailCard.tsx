@@ -1,4 +1,4 @@
-import { SocailType } from "@/app/constants";
+import { SocailType } from "@/constants";
 import Image from "next/image";
 
 export default function SocailCard({ profileImageSrc, postImageSrc, name }: SocailType) {

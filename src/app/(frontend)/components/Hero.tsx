@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "@base-ui/react";
 import Price from "@/components/Price";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import { carsCarousel } from "@/app/constants";
+import { carsCarousel } from "@/constants";
 import type { EmblaCarouselType } from "embla-carousel";
 import Title from "../../../components/Title";
 import CustomButton from "@/components/CustomButton";
@@ -33,7 +33,7 @@ export default function Hero() {
         }
     }, [api])
     return (
-        <div className="w-full h-auto md:pt-30 pt-28 center flex-col relative overflow-hidden bg-[linear-gradient(90deg,rgba(22,_22,_22,_1)_0%,_rgba(37,_37,_37,_1)_53%,_rgba(22,_22,_22,_1)_100%)] z-1">
+        <div className="w-full h-auto md:pt-28 pt-20 center flex-col relative overflow-hidden bg-[linear-gradient(90deg,rgba(22,_22,_22,_1)_0%,_rgba(37,_37,_37,_1)_53%,_rgba(22,_22,_22,_1)_100%)] z-1">
 
             {/* tile floor */}
             <div className="w-full h-full flex flex-col justify-between absolute top-0 inset-0 z-2">

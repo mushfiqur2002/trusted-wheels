@@ -1,4 +1,4 @@
-import { TestimonialType } from "@/app/constants";
+import { TestimonialType } from "@/constants";
 import Image from "next/image";
 
 export default function TestimonialCard({ imageSrc, name, location, comment, review }: TestimonialType) {

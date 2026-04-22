@@ -2,13 +2,15 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion"
 import { FiX } from "react-icons/fi";
-import { navLinks } from "@/app/constants";
+import { navLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import CustomButton from "./CustomButton";
 
-
-const NavBar = () => {
+export type PropsType = {
+    change?: boolean
+}
+const NavBar = ({ change = false }: PropsType) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -42,7 +44,11 @@ const NavBar = () => {
                     >
                         {isScrolled || isMobileMenuOpen ?
                             <Image width={220} height={100} src="svg/full-logo.svg" alt="logo" /> :
-                            <Image width={220} height={100} src="svg/full-logo-white.svg" alt="logo" />
+                            (
+                                change ?
+                                    <Image width={220} height={100} src="svg/full-logo.svg" alt="logo" /> :
+                                    <Image width={220} height={100} src="svg/full-logo-white.svg" alt="logo" />
+                            )
                         }
                     </motion.div>
 
@@ -50,7 +56,7 @@ const NavBar = () => {
                     <div className="hidden lg:flex">
                         <ul className="center 2xl:gap-12 gap-6">
                             {navLinks.map((link, index) => (
-                                <li key={index} className={`font-normal text-md ${isScrolled ? 'text-[#212121]' : 'text-white'}`}>
+                                <li key={index} className={`font-normal text-md ${isScrolled ? 'text-[#212121]' : (change ? 'text-[#212121]' : 'text-white')}`}>
                                     <Link href={link.href}>{link.name}</Link>
                                 </li>
                             ))}
@@ -138,8 +144,6 @@ const NavBar = () => {
                     )}
                 </AnimatePresence>
             </motion.nav>
-
-
         </>
     );
 };

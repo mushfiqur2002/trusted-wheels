@@ -1,5 +1,5 @@
 "use client"
-import { socailList, testimonialList } from '@/app/constants'
+import { socailList, testimonialList } from '@/constants'
 import SocailCard from '@/components/SocailCard'
 import TestimonialCard from '@/components/TestimonialCard'
 import Title from '@/components/Title'

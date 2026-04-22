@@ -1,9 +1,11 @@
 "use client"
-import { socailLink } from "@/app/constants";
+import { socailLink } from "@/constants";
 import Title from "@/components/Title";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion"
+
 
 
 
@@ -42,7 +44,12 @@ export default function Footer() {
             </div>
 
             {/* footer */}
-            <div className="w-full h-auto md:absolute lg:-bottom-50 md:-bottom-80 z-2">
+            <motion.div
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: .35, ease: "easeIn", }}
+                className="w-full h-auto md:absolute lg:-bottom-50 md:-bottom-80 z-2">
                 <div className="lg:mx-12 md:mx-6 mx-0 md:px-12 px-6 py-12 bg-[var(--secondary-background-color)] md:rounded-tr-4xl md:rounded-tl-4xl rounded-none">
                     <div className="w-full flex justify-between items-start text-white lg:flex-row flex-col lg:gap-0 gap-6">
                         <div className="flex flex-col md:gap-2 gap-3 md:items-start items-center">
@@ -142,7 +149,7 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }

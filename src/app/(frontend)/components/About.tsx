@@ -1,11 +1,12 @@
 "use client"
-import { cardList, companyInfoList } from '@/app/constants'
+import { cardList, companyInfoList } from '@/constants'
 import Image from 'next/image'
 import { useState } from 'react'
 import Title from '../../../components/Title'
 import { Button } from '@/components/ui/button'
 import NumberFormat from '../../../components/NumberFormat'
 import CustomButton from '../../../components/CustomButton'
+import { motion } from "framer-motion"
 export default function About() {
     const [activeTab, setActiveTab] = useState<"brands" | "types">("brands");
     return (
@@ -104,8 +105,8 @@ export default function About() {
                 </div>
 
                 <div className='grid lg:grid-cols-2 grid-cols-1 xl:gap-12 gap-6'>
-                    <div className='w-full lg:h-[463px] md:h-[300px] h-[200px] lg:rounded-4xl rounded-xl overflow-hidden'>
-                        <img src="/images/section/woman-enjoying-her-financially-independence-while-buying-car 1.png" className='w-full h-full object-cover xl:object-center lg:object-right object-top' alt='image' />
+                    <div className='relative w-full lg:h-[463px] md:h-[300px] h-[200px] lg:rounded-4xl rounded-xl overflow-hidden'>
+                        <Image fill src="/images/section/woman-enjoying-her-financially-independence-while-buying-car 1.png" alt='image' objectFit="cover" objectPosition="center" />
                     </div>
                     <div className='center flex-col lg:gap-12 gap-6'>
                         <div className='relative w-full grid sm:grid-cols-3 grid-cols-1 bg-white md:p-6 p-4 rounded-xl md:gap-0 gap-6'>
@@ -120,12 +121,17 @@ export default function About() {
                                 })
                             }
                         </div>
-                        <div className='flex flex-col gap-6'>
+                        <motion.div
+                            initial={{ y: 100, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
+                            className='flex flex-col gap-6'>
                             <p className='md:text-[22px] text-[16px] font-medium text-justify'>We are committed to making your car-buying experience simple, honest, and stress-free. Every vehicle is carefully selected and inspected by experienced professionals to ensure quality you can trust. From start to finish, our focus is on transparency and customer satisfaction.</p>
                             <div className='flex lg:justify-end justify-center'>
                                 <CustomButton path='/' text='read more' imageSrc='/svg/Arrow Left.svg' />
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>
