@@ -3,6 +3,12 @@ import Image from "next/image";
 import { useState } from "react"
 import { Checkbox } from "./ui/checkbox";
 import { carInfo } from "@/constants";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion"
 
 export default function Fitlter() {
     const uniqueBodyStyle = [...new Set(carInfo.map(car => car.bodyStyle))]
@@ -26,7 +32,7 @@ export default function Fitlter() {
             <div className="w-full">
                 {/* inpute range */}
                 <div className="w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg">
-                    <p className="capitalize text-[16px] text-medium font-medium">price</p>
+                    <p className="capitalize text-[18px] text-medium font-medium">price</p>
                     <label htmlFor="username">{price}</label>
                     <input
                         type="range"
@@ -36,12 +42,11 @@ export default function Fitlter() {
                         onChange={(e) => setPrice(Number(e.target.value))}
                         style={{
                             background: `linear-gradient(
-      to right,
-      #212121 0%,
-      #212121 ${(price / max) * 96}%,
-      #f5f5f5 ${(price / max) * 96}%,
-      #f5f5f5 100%
-    )`,
+                            toright,
+                                        #212121 0%,
+                                        #212121 ${(price / max) * 96}%,
+                                        #f5f5f5 ${(price / max) * 96}%,
+                                        #f5f5f5 100%)`,
                         }}
                         className="
     w-full cursor-pointer appearance-none rounded-full
@@ -70,50 +75,65 @@ export default function Fitlter() {
     [&::-moz-range-thumb]:bg-[#f5f5f5]
     [&::-moz-range-thumb]:border
     [&::-moz-range-thumb]:border-[rgba(240,31,11,1)]
-  "
+                        "
                     />
                 </div>
-                {/* body type */}
-                <div className="w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg">
-                    <div className="w-full flex justify-between items-center">
-                        <p className="capitalize text-[16px] font-medium">body style</p>
-                        <div>
-                            <Image
-                                width={16}
-                                height={16}
-                                alt="svg"
-                                src="/svg/Alt Arrow Down.svg"
-                                className="rotate-180"
-                            />
-                        </div>
-                    </div>
-                    <div className="mt-2 space-y-2">
-                        {uniqueBodyStyle.map((car: string, index: number) => {
-                            const isChecked = selected.includes(car)
 
-                            return (
-                                <div key={index} className="flex items-center gap-2">
-                                    <Checkbox
-                                        checked={isChecked}
-                                        onCheckedChange={() => toggle(car)}
-                                        id={`${index}`}
-                                        className="cursor-pointer"
-                                    />
+                <Accordion className={`gap-4 mt-4`}>
+                    {/* body type */}
+                    <AccordionItem
+                        className={`w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
+                        value="shipping">
+                        <AccordionTrigger>
+                            <p className="capitalize text-[18px] font-medium">body style</p>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            <div className="mt-2 space-y-2">
+                                {uniqueBodyStyle.map((car: string, index: number) => {
+                                    const isChecked = selected.includes(car)
 
-                                    <label
-                                        htmlFor={`${index}`}
-                                        className={`uppercase text-[18px] font-medium cursor-pointer transition-colors ${isChecked
-                                            ? "text-[rgba(33,33,33,1)]"
-                                            : "text-[rgba(0,0,0,.35)]"
-                                            }`}
-                                    >
-                                        {car}
-                                    </label>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
+                                    return (
+                                        <div key={index} className="flex items-center gap-2">
+                                            <Checkbox
+                                                checked={isChecked}
+                                                onCheckedChange={() => toggle(car)}
+                                                id={`${index}`}
+                                                className="cursor-pointer"
+                                            />
+
+                                            <label
+                                                htmlFor={`${index}`}
+                                                className={`uppercase text-[18px] font-medium cursor-pointer transition-colors ${isChecked
+                                                    ? "text-[rgba(33,33,33,1)]"
+                                                    : "text-[rgba(0,0,0,.35)]"
+                                                    }`}
+                                            >
+                                                {car}
+                                            </label>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="returns">
+                        <AccordionTrigger>What is your return policy?</AccordionTrigger>
+                        <AccordionContent>
+                            Returns accepted within 30 days. Items must be unused and in original
+                            packaging. Refunds processed within 5-7 business days.
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="support">
+                        <AccordionTrigger>How can I contact customer support?</AccordionTrigger>
+                        <AccordionContent>
+                            Reach us via email, live chat, or phone. We respond within 24 hours
+                            during business days.
+                        </AccordionContent>
+                    </AccordionItem>
+                </Accordion>
+
             </div>
         </div>
     )
