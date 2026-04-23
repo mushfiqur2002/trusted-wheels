@@ -43,11 +43,11 @@ const NavBar = ({ change = false }: PropsType) => {
                         whileTap={{ scale: 0.95 }}
                     >
                         {isScrolled || isMobileMenuOpen ?
-                            <Image width={220} height={100} src="svg/full-logo.svg" alt="logo" /> :
+                            <Image width={220} height={100} src="/svg/full-logo.svg" alt="logo" /> :
                             (
                                 change ?
-                                    <Image width={220} height={100} src="svg/full-logo.svg" alt="logo" /> :
-                                    <Image width={220} height={100} src="svg/full-logo-white.svg" alt="logo" />
+                                    <Image width={220} height={100} src="/svg/full-logo.svg" alt="logo" /> :
+                                    <Image width={220} height={100} src="/svg/full-logo-white.svg" alt="logo" />
                             )
                         }
                     </motion.div>

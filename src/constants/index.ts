@@ -11,49 +11,66 @@ export type CarType = {
     }
 }
 
+// 🔹 Specs
+export type CarSpecs = {
+    engine?: string
+    cylinders?: number
+    transmission?: string
+    drive?: string
+    fuelType?: string
+}
+
+// 🔹 Appearance
+export type CarAppearance = {
+    exteriorColor?: string
+    interiorColor?: string
+    doors?: number
+    seats?: number
+}
+
+// 🔹 Options (grouped features)
+export type CarOption = {
+    title?: string
+    items?: string[]
+}
+
+// 🔹 Images
+export type CarImages = {
+    display?: string
+    gallery?: string[]
+}
+
+// 🔹 Main Car Type
 export type CarInfo = {
     id?: string
     slug?: string
 
-    brand: string
-    model: string
-    year: number
-    title: string
+    brand?: string
+    model?: string
+    year?: number
+    title?: string
 
-    price: number
-    discount: number
-    quantity: number
+    price?: number
+    discount?: number
+    quantity?: number
 
     location?: string
     vin?: string
-    mileage: number
+    mileage?: number
 
-    condition: string
-    bodyStyle: string
+    condition?: string
+    bodyStyle?: string
 
-    engine: string
-    cylinders: number
-    transmission?: string
-    drive?: string
-    fuelType?: string
-
-    exteriorColor: string
-    interiorColor: string
-
-    doors: number
-    seats: number
+    specs?: CarSpecs
+    appearance?: CarAppearance
 
     description?: string
     notes?: string[]
     features?: string[]
 
-    options?: {
-        title?: string
-        items?: string[]
-    }[]
+    options?: CarOption[]
 
-    displayImage?: string
-    images?: string[]
+    images?: CarImages
 
     createdAt?: string
     updatedAt?: string
@@ -287,27 +304,35 @@ export const carInfo: CarInfo[] = [
         condition: "Used",
         bodyStyle: "SUV",
 
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
+        specs: {
+            engine: "2.0L",
+            cylinders: 4,
+            transmission: "Automatic",
+            drive: "AWD",
+            fuelType: "Petrol",
+        },
 
-        exteriorColor: "White",
-        interiorColor: "Gray",
+        appearance: {
+            exteriorColor: "White",
+            interiorColor: "Gray",
+            doors: 4,
+            seats: 5,
+        },
 
-        doors: 4,
-        seats: 5,
+        description: "Hit the road in 2026 Nissan Kicks SV, ready for everyday adventures.",
 
-        description: "Hit the road in 2026 Nissan Kicks SV...",
         notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
+            "Clean Carfax, no claim",
+            "Rates starting as low as 5.79%",
         ],
+
         features: [
             "AWD",
             "Keyless entry",
-            "Push button start"
+            "Push button start",
+            "Heated steering wheel",
+            "Panoramic sunroof",
+            "Digital dash cluster",
         ],
 
         options: [
@@ -316,1299 +341,99 @@ export const carInfo: CarInfo[] = [
                 items: [
                     "Side impact beams",
                     "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
+                    "Emergency braking",
+                ],
+            },
+            {
+                title: "Comfort",
+                items: [
+                    "Heated seats",
+                    "Dual-zone climate control",
+                ],
+            },
         ],
 
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
+        images: {
+            display: "/images/cars_info/display.png",
+            gallery: [
+                "/images/cars_info/showcase01.png",
+                "/images/cars_info/showcase03.png",
+                "/images/cars_info/showcase04.png",
+                "/images/cars_info/showcase01.png",
+                "/images/cars_info/showcase04.png",
+                "/images/cars_info/showcase03.png",
+            ],
+        },
+
+        createdAt: "2026-01-01",
     },
+
     {
         id: "2",
-        slug: "2026-nissan-kicks-sv-awd",
+        slug: "2023-toyota-rav4-xle",
 
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
+        brand: "Toyota",
+        model: "RAV4",
+        year: 2023,
+        title: "Toyota RAV4 XLE",
 
-        price: 10495,
-        discount: 0,
-        quantity: 3,
+        price: 25900,
+        discount: 10,
+        quantity: 5,
 
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
+        location: "Toronto, ON",
+        vin: "2T3W1RFV8PC123456",
+        mileage: 42000,
 
         condition: "Used",
         bodyStyle: "SUV",
 
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
+        specs: {
+            engine: "2.5L",
+            cylinders: 4,
+            transmission: "Automatic",
+            drive: "AWD",
+            fuelType: "Petrol",
+        },
 
-        exteriorColor: "White",
-        interiorColor: "Gray",
+        appearance: {
+            exteriorColor: "Black",
+            interiorColor: "Beige",
+            doors: 4,
+            seats: 5,
+        },
 
-        doors: 4,
-        seats: 5,
+        description: "Reliable SUV with modern tech and comfort.",
 
-        description: "Hit the road in 2026 Nissan Kicks SV...",
         notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
+            "One owner",
+            "Low mileage",
         ],
+
         features: [
             "AWD",
-            "Keyless entry",
-            "Push button start"
+            "Lane assist",
+            "Adaptive cruise control",
         ],
 
         options: [
             {
                 title: "Safety",
                 items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
+                    "Blind spot monitor",
+                    "Rear cross traffic alert",
+                ],
+            },
         ],
 
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "3",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "4",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "5",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 0,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "6",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "7",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "8",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "9",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "10",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "11",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "12",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "13",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "14",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "15",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "16",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "17",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "18",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "19",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "20",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
-    },
-    {
-        id: "21",
-        slug: "2026-nissan-kicks-sv-awd",
-
-        brand: "Nissan",
-        model: "Kicks",
-        year: 2026,
-        title: "Nissan Kicks SV AWD",
-
-        price: 10495,
-        discount: 30,
-        quantity: 3,
-
-        location: "Saskatoon, SK",
-        vin: "3N8AP6CB5TL386420",
-        mileage: 213000,
-
-        condition: "Used",
-        bodyStyle: "SUV",
-
-        engine: "2.0L",
-        cylinders: 4,
-        transmission: "Automatic",
-        drive: "AWD",
-        fuelType: "Petrol",
-
-        exteriorColor: "White",
-        interiorColor: "Gray",
-
-        doors: 4,
-        seats: 5,
-
-        description: "Hit the road in 2026 Nissan Kicks SV...",
-        notes: [
-            "Clean carfax, no claim",
-            "Rates starting as low as 5.79%"
-        ],
-        features: [
-            "AWD",
-            "Keyless entry",
-            "Push button start"
-        ],
-
-        options: [
-            {
-                title: "Safety",
-                items: [
-                    "Side impact beams",
-                    "Blind spot warning",
-                    "Emergency braking"
-                ]
-            }
-        ],
-
-        displayImage: "/images/cars_info/display.png",
-        images: [
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase03.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase01.png",
-            "/images/cars_info/showcase04.png",
-            "/images/cars_info/showcase03.png",
-        ]
+        images: {
+            display: "/images/cars_info/display.png",
+            gallery: [
+                "/images/cars_info/showcase02.png",
+                "/images/cars_info/showcase03.png",
+            ],
+        },
+
+        createdAt: "2025-12-01",
     },
 ]

@@ -24,7 +24,7 @@ export default function Fitlter() {
     }
 
     return (
-        <div className="w-full h-auto px-5 py-4 rounded-xl flex flex-col">
+        <div className="w-full px-5 py-4 rounded-xl flex flex-col">
             <h1 className="capitalize text-[20px] font-semibold">Filter</h1>
             <div className="w-full mt-2">
                 {/* inpute range */}
