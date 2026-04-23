@@ -1,11 +1,12 @@
 "use client"
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
 import Title from "@/components/Title";
 import Fitlter from "@/components/Fitlter";
+import CarCard from "@/components/CarCard";
+import { useCars } from "@/app/hooks/cars/useCars";
 
 export default function Hero() {
+    const { totalCar } = useCars({})
     return (
         <div className="text-[var(--secondary-text-color)] bg-[var(--primary-background-color)]">
             {/* hero part  */}
@@ -83,17 +84,17 @@ export default function Hero() {
                     </div>
 
                     <div className="w-[200px] flex items-center justify-end">
-                        <p className="text-[var(--primary-text-color)] text-[18px] font-semibold">60 Vehicles</p>
+                        <p className="text-[var(--primary-text-color)] text-[18px] font-semibold">{totalCar} Vehicles</p>
                     </div>
                 </div>
                 {/* lower section */}
                 <div className="grid grid-cols-[auto_1fr] gap-12">
                     {/* filter */}
-                    <div className="w-[320px] bg-white">
+                    <div className="w-[320px] h-fit bg-white">
                         <Fitlter />
                     </div>
                     <div>
-                        <h1>display</h1>
+                        <CarCard />
                     </div>
                 </div>
             </div>

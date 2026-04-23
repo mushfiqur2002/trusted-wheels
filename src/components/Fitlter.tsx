@@ -1,5 +1,4 @@
 "use client"
-import Image from "next/image";
 import { useState } from "react"
 import { Checkbox } from "./ui/checkbox";
 import { carInfo } from "@/constants";
@@ -14,8 +13,6 @@ export default function Fitlter() {
     const uniqueBodyStyle = [...new Set(carInfo.map(car => car.bodyStyle))]
     const min = 0, max = 1000;
     const [price, setPrice] = useState<number>(500);
-    console.log(uniqueBodyStyle);
-
     const [selected, setSelected] = useState<string[]>([])
 
     const toggle = (car: string) => {
@@ -88,7 +85,8 @@ export default function Fitlter() {
                         </AccordionTrigger>
                         <AccordionContent>
                             <div className="mt-2 space-y-2">
-                                {uniqueBodyStyle.map((car: string, index: number) => {
+                                {uniqueBodyStyle.map((car: string | undefined, index: number) => {
+                                    if (!car) return null
                                     const isChecked = selected.includes(car)
 
                                     return (
