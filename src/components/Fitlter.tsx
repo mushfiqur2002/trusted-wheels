@@ -27,22 +27,21 @@ export default function Fitlter() {
     }
 
     return (
-        <div className="px-5 py-4 rounded-xl flex flex-col">
+        <div className="w-full h-auto px-5 py-4 rounded-xl flex flex-col">
             <h1 className="capitalize text-[20px] font-semibold">Filter</h1>
-            <div className="w-full">
+            <div className="w-full mt-2">
                 {/* inpute range */}
                 <div className="w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg">
-                    <p className="capitalize text-[18px] text-medium font-medium">price</p>
+                    <p className="capitalize text-[18.5px] text-medium font-medium">price</p>
                     <label htmlFor="username">{price}</label>
-                    <input
-                        type="range"
+                    <input type="range"
                         min={min}
                         max={max}
                         step={100}
                         onChange={(e) => setPrice(Number(e.target.value))}
                         style={{
                             background: `linear-gradient(
-                            toright,
+                            to right,
                                         #212121 0%,
                                         #212121 ${(price / max) * 96}%,
                                         #f5f5f5 ${(price / max) * 96}%,
@@ -80,10 +79,10 @@ export default function Fitlter() {
                 </div>
 
                 <Accordion className={`gap-4 mt-4`}>
-                    {/* body type */}
+                    {/* body style */}
                     <AccordionItem
-                        className={`w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
-                        value="shipping">
+                        className={`w-full p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
+                        value="body style">
                         <AccordionTrigger>
                             <p className="capitalize text-[18px] font-medium">body style</p>
                         </AccordionTrigger>
@@ -117,19 +116,68 @@ export default function Fitlter() {
                         </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="returns">
-                        <AccordionTrigger>What is your return policy?</AccordionTrigger>
+                    {/* made by */}
+                    <AccordionItem
+                        className={`w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
+                        value="made by">
+                        <AccordionTrigger>
+                            <p className="capitalize text-[18px] font-medium">made by</p>
+                        </AccordionTrigger>
                         <AccordionContent>
                             Returns accepted within 30 days. Items must be unused and in original
                             packaging. Refunds processed within 5-7 business days.
                         </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="support">
-                        <AccordionTrigger>How can I contact customer support?</AccordionTrigger>
+                    {/* fuel type */}
+                    <AccordionItem
+                        className={`w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
+                        value="fuel type">
+                        <AccordionTrigger>
+                            <p className="capitalize text-[18px] font-medium">fuel type</p>
+                        </AccordionTrigger>
                         <AccordionContent>
-                            Reach us via email, live chat, or phone. We respond within 24 hours
-                            during business days.
+                            Returns accepted within 30 days. Items must be unused and in original
+                            packaging. Refunds processed within 5-7 business days.
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    {/* year */}
+                    <AccordionItem
+                        className={`w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
+                        value="year">
+                        <AccordionTrigger>
+                            <p className="capitalize text-[18px] font-medium">year</p>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            Returns accepted within 30 days. Items must be unused and in original
+                            packaging. Refunds processed within 5-7 business days.
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    {/* transmission */}
+                    <AccordionItem
+                        className={`w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
+                        value="transmission">
+                        <AccordionTrigger>
+                            <p className="capitalize text-[18px] font-medium">transmission</p>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            Returns accepted within 30 days. Items must be unused and in original
+                            packaging. Refunds processed within 5-7 business days.
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    {/* engine cylinder */}
+                    <AccordionItem
+                        className={`w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
+                        value="engine cylinder">
+                        <AccordionTrigger>
+                            <p className="capitalize text-[18px] font-medium">engine cylinders</p>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            Returns accepted within 30 days. Items must be unused and in original
+                            packaging. Refunds processed within 5-7 business days.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>

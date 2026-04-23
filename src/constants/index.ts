@@ -11,6 +11,54 @@ export type CarType = {
     }
 }
 
+export type CarInfo = {
+    id?: string
+    slug?: string
+
+    brand?: string
+    model?: string
+    year?: number
+    title?: string
+
+    price?: number
+    discount?: number
+    quantity?: number
+
+    location?: string
+    vin?: string
+    mileage?: number
+
+    condition?: string
+    bodyStyle?: string
+
+    engine?: string
+    cylinders?: number
+    transmission?: string
+    drive?: string
+    fuelType?: string
+
+    exteriorColor?: string
+    interiorColor?: string
+
+    doors?: number
+    seats?: number
+
+    description?: string
+    notes?: string[]
+    features?: string[]
+
+    options?: {
+        title?: string
+        items?: string[]
+    }[]
+
+    displayImage?: string
+    images?: string[]
+
+    createdAt?: string
+    updatedAt?: string
+}
+
 export type TestimonialType = {
     imageSrc: string,
     name: string,
@@ -218,140 +266,453 @@ export const socailLink = [
     }
 ]
 
-export const carInfo = [
+export const carInfo: CarInfo[] = [
     {
         id: "1",
-        title: "2026 Nissan Kicks SV AWD",
+        slug: "2026-nissan-kicks-sv-awd",
+
+        brand: "Nissan",
+        model: "Kicks",
+        year: 2026,
+        title: "Nissan Kicks SV AWD",
+
         price: 10495,
+        discount: 30,
+        quantity: 3,
+
         location: "Saskatoon, SK",
         vin: "3N8AP6CB5TL386420",
         mileage: 213000,
+
         condition: "Used",
         bodyStyle: "SUV",
+
         engine: "2.0L",
         cylinders: 4,
         transmission: "Automatic",
         drive: "AWD",
         fuelType: "Petrol",
+
         exteriorColor: "White",
         interiorColor: "Gray",
+
         doors: 4,
         seats: 5,
-        description: "Hit the road in 2026 Nissan Kicks SV, ready for everyday adventures.",
-        images: [
-            "/cars/kicks-main.jpg",
-            "/cars/kicks-1.jpg",
-            "/cars/kicks-2.jpg",
-            "/cars/kicks-3.jpg",
-            "/cars/kicks-4.jpg",
-        ],
-    },
 
+        description: "Hit the road in 2026 Nissan Kicks SV...",
+        notes: [
+            "Clean carfax, no claim",
+            "Rates starting as low as 5.79%"
+        ],
+        features: [
+            "AWD",
+            "Keyless entry",
+            "Push button start"
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Side impact beams",
+                    "Blind spot warning",
+                    "Emergency braking"
+                ]
+            }
+        ],
+
+        displayImage: "/images/cars_info/display.png",
+        images: [
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase03.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase03.png",
+        ]
+    },
     {
         id: "2",
-        title: "2023 Toyota RAV4 XLE",
-        price: 25900,
-        location: "Toronto, ON",
-        vin: "2T3W1RFV8PC123456",
-        mileage: 42000,
+        slug: "2026-nissan-kicks-sv-awd",
+
+        brand: "Nissan",
+        model: "Kicks",
+        year: 2026,
+        title: "Nissan Kicks SV AWD",
+
+        price: 10495,
+        discount: 30,
+        quantity: 3,
+
+        location: "Saskatoon, SK",
+        vin: "3N8AP6CB5TL386420",
+        mileage: 213000,
+
         condition: "Used",
-        bodyStyle: "truck",
-        engine: "2.5L",
+        bodyStyle: "SUV",
+
+        engine: "2.0L",
         cylinders: 4,
         transmission: "Automatic",
         drive: "AWD",
         fuelType: "Petrol",
-        exteriorColor: "Black",
-        interiorColor: "Beige",
+
+        exteriorColor: "White",
+        interiorColor: "Gray",
+
         doors: 4,
         seats: 5,
-        description: "Reliable SUV with modern tech and comfort.",
-        images: [
-            "/cars/rav4-main.jpg",
-            "/cars/rav4-1.jpg",
-            "/cars/rav4-2.jpg",
-            "/cars/rav4-3.jpg",
-        ],
-    },
 
+        description: "Hit the road in 2026 Nissan Kicks SV...",
+        notes: [
+            "Clean carfax, no claim",
+            "Rates starting as low as 5.79%"
+        ],
+        features: [
+            "AWD",
+            "Keyless entry",
+            "Push button start"
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Side impact beams",
+                    "Blind spot warning",
+                    "Emergency braking"
+                ]
+            }
+        ],
+
+        displayImage: "/images/cars_info/display.png",
+        images: [
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase03.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase03.png",
+        ]
+    },
     {
         id: "3",
-        title: "2022 Honda CR-V Touring",
-        price: 27999,
-        location: "Calgary, AB",
-        vin: "5J6RW2H98NL654321",
-        mileage: 38000,
+        slug: "2026-nissan-kicks-sv-awd",
+
+        brand: "Nissan",
+        model: "Kicks",
+        year: 2026,
+        title: "Nissan Kicks SV AWD",
+
+        price: 10495,
+        discount: 30,
+        quantity: 3,
+
+        location: "Saskatoon, SK",
+        vin: "3N8AP6CB5TL386420",
+        mileage: 213000,
+
         condition: "Used",
-        bodyStyle: "shedam",
-        engine: "1.5L Turbo",
+        bodyStyle: "SUV",
+
+        engine: "2.0L",
         cylinders: 4,
         transmission: "Automatic",
         drive: "AWD",
         fuelType: "Petrol",
-        exteriorColor: "Silver",
-        interiorColor: "Black",
+
+        exteriorColor: "White",
+        interiorColor: "Gray",
+
         doors: 4,
         seats: 5,
-        description: "Spacious SUV with premium interior and smooth drive.",
-        images: [
-            "/cars/crv-main.jpg",
-            "/cars/crv-1.jpg",
-            "/cars/crv-2.jpg",
-        ],
-    },
 
+        description: "Hit the road in 2026 Nissan Kicks SV...",
+        notes: [
+            "Clean carfax, no claim",
+            "Rates starting as low as 5.79%"
+        ],
+        features: [
+            "AWD",
+            "Keyless entry",
+            "Push button start"
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Side impact beams",
+                    "Blind spot warning",
+                    "Emergency braking"
+                ]
+            }
+        ],
+
+        displayImage: "/images/cars_info/display.png",
+        images: [
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase03.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase03.png",
+        ]
+    },
     {
         id: "4",
-        title: "2021 BMW X3 xDrive30i",
-        price: 34999,
-        location: "Vancouver, BC",
-        vin: "WBX57DP05M9F98765",
-        mileage: 31000,
+        slug: "2026-nissan-kicks-sv-awd",
+
+        brand: "Nissan",
+        model: "Kicks",
+        year: 2026,
+        title: "Nissan Kicks SV AWD",
+
+        price: 10495,
+        discount: 30,
+        quantity: 3,
+
+        location: "Saskatoon, SK",
+        vin: "3N8AP6CB5TL386420",
+        mileage: 213000,
+
         condition: "Used",
         bodyStyle: "SUV",
-        engine: "2.0L Turbo",
+
+        engine: "2.0L",
         cylinders: 4,
         transmission: "Automatic",
         drive: "AWD",
         fuelType: "Petrol",
-        exteriorColor: "Blue",
-        interiorColor: "Brown",
+
+        exteriorColor: "White",
+        interiorColor: "Gray",
+
         doors: 4,
         seats: 5,
-        description: "Luxury SUV with powerful performance and comfort.",
-        images: [
-            "/cars/bmw-main.jpg",
-            "/cars/bmw-1.jpg",
-            "/cars/bmw-2.jpg",
-            "/cars/bmw-3.jpg",
-        ],
-    },
 
+        description: "Hit the road in 2026 Nissan Kicks SV...",
+        notes: [
+            "Clean carfax, no claim",
+            "Rates starting as low as 5.79%"
+        ],
+        features: [
+            "AWD",
+            "Keyless entry",
+            "Push button start"
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Side impact beams",
+                    "Blind spot warning",
+                    "Emergency braking"
+                ]
+            }
+        ],
+
+        displayImage: "/images/cars_info/display.png",
+        images: [
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase03.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase03.png",
+        ]
+    },
     {
         id: "5",
-        title: "2020 Audi Q5 Premium",
-        price: 31999,
-        location: "Montreal, QC",
-        vin: "WA1ANAFY0L2045678",
-        mileage: 45000,
+        slug: "2026-nissan-kicks-sv-awd",
+
+        brand: "Nissan",
+        model: "Kicks",
+        year: 2026,
+        title: "Nissan Kicks SV AWD",
+
+        price: 10495,
+        discount: 30,
+        quantity: 3,
+
+        location: "Saskatoon, SK",
+        vin: "3N8AP6CB5TL386420",
+        mileage: 213000,
+
         condition: "Used",
         bodyStyle: "SUV",
-        engine: "2.0L Turbo",
+
+        engine: "2.0L",
         cylinders: 4,
         transmission: "Automatic",
         drive: "AWD",
         fuelType: "Petrol",
-        exteriorColor: "Gray",
-        interiorColor: "Black",
+
+        exteriorColor: "White",
+        interiorColor: "Gray",
+
         doors: 4,
         seats: 5,
-        description: "Premium compact SUV with advanced tech and smooth ride.",
-        images: [
-            "/cars/audi-main.jpg",
-            "/cars/audi-1.jpg",
-            "/cars/audi-2.jpg",
-            "/cars/audi-3.jpg",
-            "/cars/audi-4.jpg",
+
+        description: "Hit the road in 2026 Nissan Kicks SV...",
+        notes: [
+            "Clean carfax, no claim",
+            "Rates starting as low as 5.79%"
         ],
+        features: [
+            "AWD",
+            "Keyless entry",
+            "Push button start"
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Side impact beams",
+                    "Blind spot warning",
+                    "Emergency braking"
+                ]
+            }
+        ],
+
+        displayImage: "/images/cars_info/display.png",
+        images: [
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase03.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase03.png",
+        ]
+    },
+    {
+        id: "6",
+        slug: "2026-nissan-kicks-sv-awd",
+
+        brand: "Nissan",
+        model: "Kicks",
+        year: 2026,
+        title: "Nissan Kicks SV AWD",
+
+        price: 10495,
+        discount: 30,
+        quantity: 3,
+
+        location: "Saskatoon, SK",
+        vin: "3N8AP6CB5TL386420",
+        mileage: 213000,
+
+        condition: "Used",
+        bodyStyle: "SUV",
+
+        engine: "2.0L",
+        cylinders: 4,
+        transmission: "Automatic",
+        drive: "AWD",
+        fuelType: "Petrol",
+
+        exteriorColor: "White",
+        interiorColor: "Gray",
+
+        doors: 4,
+        seats: 5,
+
+        description: "Hit the road in 2026 Nissan Kicks SV...",
+        notes: [
+            "Clean carfax, no claim",
+            "Rates starting as low as 5.79%"
+        ],
+        features: [
+            "AWD",
+            "Keyless entry",
+            "Push button start"
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Side impact beams",
+                    "Blind spot warning",
+                    "Emergency braking"
+                ]
+            }
+        ],
+
+        displayImage: "/images/cars_info/display.png",
+        images: [
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase03.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase03.png",
+        ]
+    },
+    {
+        id: "7",
+        slug: "2026-nissan-kicks-sv-awd",
+
+        brand: "Nissan",
+        model: "Kicks",
+        year: 2026,
+        title: "Nissan Kicks SV AWD",
+
+        price: 10495,
+        discount: 30,
+        quantity: 3,
+
+        location: "Saskatoon, SK",
+        vin: "3N8AP6CB5TL386420",
+        mileage: 213000,
+
+        condition: "Used",
+        bodyStyle: "SUV",
+
+        engine: "2.0L",
+        cylinders: 4,
+        transmission: "Automatic",
+        drive: "AWD",
+        fuelType: "Petrol",
+
+        exteriorColor: "White",
+        interiorColor: "Gray",
+
+        doors: 4,
+        seats: 5,
+
+        description: "Hit the road in 2026 Nissan Kicks SV...",
+        notes: [
+            "Clean carfax, no claim",
+            "Rates starting as low as 5.79%"
+        ],
+        features: [
+            "AWD",
+            "Keyless entry",
+            "Push button start"
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Side impact beams",
+                    "Blind spot warning",
+                    "Emergency braking"
+                ]
+            }
+        ],
+
+        displayImage: "/images/cars_info/display.png",
+        images: [
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase03.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase01.png",
+            "/images/cars_info/showcase04.png",
+            "/images/cars_info/showcase03.png",
+        ]
     },
 ]
