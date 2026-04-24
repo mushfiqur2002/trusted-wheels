@@ -362,6 +362,9 @@ export const carInfo: CarInfo[] = [
                 "/images/cars_info/showcase01.png",
                 "/images/cars_info/showcase04.png",
                 "/images/cars_info/showcase03.png",
+                "/images/cars_info/showcase03.png",
+                "/images/cars_info/showcase03.png",
+                "/images/cars_info/showcase03.png",
             ],
         },
 
@@ -429,7 +432,7 @@ export const carInfo: CarInfo[] = [
         images: {
             display: "/images/cars_info/display.png",
             gallery: [
-                "/images/cars_info/showcase02.png",
+                "/images/cars_info/showcase01.png",
                 "/images/cars_info/showcase03.png",
             ],
         },
