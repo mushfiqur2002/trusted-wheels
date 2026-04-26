@@ -220,6 +220,7 @@ export default function Hero() {
                             <CustomButton
                                 path="/"
                                 text="Details"
+                                types="secondary"
                             />
 
                             <CustomButton

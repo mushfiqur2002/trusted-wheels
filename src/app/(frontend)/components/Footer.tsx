@@ -56,7 +56,7 @@ export default function Footer() {
                             <Image
                                 width={200}
                                 height={100}
-                                src="svg/full-logo-white.svg"
+                                src="/svg/full-logo-white.svg"
                                 alt="logo"
                             />
                             <p className="lg:max-w-[470px] w-auto text-[16px] font-thin md:text-start text-center">We’re here to help you find the right car visit our showroom or reach out today.</p>

@@ -5,7 +5,6 @@ import Image from "next/image"
 
 
 export default function ImageGallery({ gallery }: { gallery: string[] }) {
-    console.log(gallery);
     const divRef = useRef<HTMLDivElement | null>(null);
 
     const [percentage, setPercentage] = useState({ x: 0, y: 0 });
@@ -28,61 +27,54 @@ export default function ImageGallery({ gallery }: { gallery: string[] }) {
 
         setPercentage({ x: parseFloat(xPercent.toFixed(2)), y: parseFloat(yPercent.toFixed(2)) });
     }
-
-    console.log(percentage);
-
-
     return (
-        <div className="w-full grid grid-cols-2">
-            <div className="flex flex-col gap-4">
-                <div className="w-full h-[450px] rounded-lg overflow-hidden center relative cursor-zoom-in">
-                    {/* MAIN IMAGE */}
-                    <div
-                        className="w-full h-full"
-                        ref={divRef}
-                        onMouseEnter={() => setHover(true)}
-                        onMouseLeave={() => setHover(false)}
-                        onMouseMove={handleMouseMove}
-                    >
-                        <Image
-                            src={gallery[active]}
-                            alt="car"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                    <div
-                        className={`absolute inset-0 pointer-events-none bg-no-repeat transition-opacity duration-200 ${hover ? 'opacity-100' : 'opacity-0'}`}
-                        style={{
-                            backgroundImage: `url(${gallery[active]})`,
-                            backgroundSize: "200%",
-                            backgroundPosition: `${percentage.x}% ${percentage.y}%`,
-                        }}
+        <div className="flex flex-col gap-4">
+            <div className="w-full lg:h-[450px] md:h-[400px] h-[300px] rounded-lg overflow-hidden center relative cursor-zoom-in">
+                {/* MAIN IMAGE */}
+                <div
+                    className="w-full h-full"
+                    ref={divRef}
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                    onMouseMove={handleMouseMove}
+                >
+                    <Image
+                        src={gallery[active]}
+                        alt="car"
+                        fill
+                        className="object-cover"
                     />
                 </div>
-                {/* THUMBNAILS */}
-                <div className="w-full flex gap-4 cursor-pointer overflow-x-auto scroll-smooth no-scrollbar">
-                    {gallery.map((img, index) => (
-                        <div
-                            key={index}
-                            onClick={() => setActive(index)}
-                            className={`relative w-28 h-28 flex-shrink-0 border-2 rounded-xl overflow-hidden ${active === index
-                                ? "border-red-500"
-                                : "border-transparent brightness-60"
-                                }`}
-
-                        >
-                            <Image
-                                src={img}
-                                alt="thumb"
-                                fill
-                                className="object-cover rounded-md"
-                            />
-                        </div>
-                    ))}
-                </div>
+                <div
+                    className={`absolute inset-0 pointer-events-none bg-no-repeat transition-opacity duration-200 ${hover ? 'opacity-100' : 'opacity-0'}`}
+                    style={{
+                        backgroundImage: `url(${gallery[active]})`,
+                        backgroundSize: "200%",
+                        backgroundPosition: `${percentage.x}% ${percentage.y}%`,
+                    }}
+                />
             </div>
-            <div></div>
+            {/* THUMBNAILS */}
+            <div className="w-full flex gap-4 cursor-pointer overflow-x-auto scroll-smooth no-scrollbar">
+                {gallery.map((img, index) => (
+                    <div
+                        key={index}
+                        onClick={() => setActive(index)}
+                        className={`relative lg:w-28 md:w-24 w-20 lg:h-28 md:h-24 h-20 flex-shrink-0 border-2 rounded-xl overflow-hidden ${active === index
+                            ? "border-red-500"
+                            : "border-transparent brightness-60"
+                            }`}
+
+                    >
+                        <Image
+                            src={img}
+                            alt="thumb"
+                            fill
+                            className="object-cover rounded-md"
+                        />
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

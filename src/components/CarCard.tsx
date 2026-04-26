@@ -76,7 +76,11 @@ export default function CarCard() {
                                                 )
                                             }
                                         </p>
-                                        <CustomButton path={`/inventory/${item.id}-${item.slug}`} text='details' />
+                                        <CustomButton
+                                            path={`/inventory/${item.id}-${item.slug}`}
+                                            text='details'
+                                            types='secondary'
+                                        />
                                     </div>
                                 </div>
                             </div>

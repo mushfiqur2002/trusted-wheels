@@ -71,6 +71,7 @@ const NavBar = ({ change = false }: PropsType) => {
                                 imageSrc="/svg/Map Point.svg"
                                 onlySVG={true}
                                 navbar={true}
+                                types="secondary"
                             />
                             <CustomButton
                                 path="/"
@@ -129,6 +130,7 @@ const NavBar = ({ change = false }: PropsType) => {
                                         imageSrc="/svg/Map Point.svg"
                                         onlySVG={true}
                                         navbar={true}
+                                        types="secondary"
                                     />
                                     <CustomButton
                                         path="/"
