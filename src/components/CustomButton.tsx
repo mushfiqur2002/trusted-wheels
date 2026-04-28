@@ -6,7 +6,7 @@ type LinkProps = {
     path: string
     text?: string
     imageSrc?: string,
-    types: 'primary' | 'secondary' | 'normal',
+    types?: 'primary' | 'secondary' | 'normal',
     reverse?: boolean,
     onlySVG?: boolean,
     exception?: boolean,
