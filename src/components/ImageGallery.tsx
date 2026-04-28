@@ -28,7 +28,7 @@ export default function ImageGallery({ gallery }: { gallery: string[] }) {
         setPercentage({ x: parseFloat(xPercent.toFixed(2)), y: parseFloat(yPercent.toFixed(2)) });
     }
     return (
-        <div className="flex flex-col gap-4">
+        <div className="grid gap-4">
             <div className="w-full lg:h-[450px] md:h-[400px] h-[300px] rounded-lg overflow-hidden center relative cursor-zoom-in">
                 {/* MAIN IMAGE */}
                 <div

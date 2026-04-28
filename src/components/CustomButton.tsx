@@ -27,7 +27,7 @@ export default function CustomButton({
 }: LinkProps) {
     return (
         <Button
-            className={`flex md:text-[16px] text-[14px] capitalize font-semibold cursor-pointer 
+            className={`flex md:text-[16px] text-[14px] capitalize font-semibold cursor-pointer!
                 ${types === 'secondary' && 'text-[rgba(240,11,31,1)] border-[rgba(240,11,31,.3)] bg-[rgba(240,11,31,.1)]'}
                 ${types === 'primary' && 'bg-[rgba(240,11,31,1)] border-[rgba(240, 11, 31, .3)] text-white'}
                 ${types === 'normal' && 'bg-white border-[rgba(33,33,33,.3)] text-[rgba(33,33,33,1)]'}

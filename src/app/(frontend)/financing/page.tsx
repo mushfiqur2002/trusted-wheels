@@ -1,12 +1,11 @@
-import React from 'react'
-import Hero from './components/Hero'
-import Cards from './components/Cards'
+import Form from "./components/Form";
+import Hero from "./components/Hero";
 
-export default function Inventory() {
+export default function page() {
     return (
         <div className='className="text-[var(--secondary-text-color)] bg-[var(--primary-background-color)]'>
             <Hero />
-            <Cards />
+            <Form />
         </div>
     )
 }
