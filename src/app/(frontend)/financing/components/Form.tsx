@@ -78,7 +78,7 @@ export default function Form() {
                             Personal Information
                         </h1>
 
-                        <div className="grid grid-cols-2 gap-6">
+                        <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
                             {/* First Name */}
                             <div className="flex flex-col gap-1.5">
                                 <label className={labelStyle}>
@@ -173,7 +173,7 @@ export default function Form() {
                             Current Residence
                         </h1>
 
-                        <div className="grid grid-cols-2 gap-6">
+                        <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
                             {/* Address */}
                             <div className="flex flex-col gap-1.5">
                                 <label className={labelStyle}>
@@ -229,7 +229,7 @@ export default function Form() {
                     </div>
 
                     {/* Submit Button */}
-                    <div className="flex justify-end">
+                    <div className="flex center justify-end!">
                         <button
                             type="submit"
                             disabled={loading}
