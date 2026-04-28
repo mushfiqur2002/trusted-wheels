@@ -94,7 +94,11 @@ export default function About() {
                 </div>
 
                 <div className='center'>
-                    <CustomButton text='view more' path='/' imageSrc='/svg/Arrow Left.svg' />
+                    <CustomButton
+                        text='view more' path='/'
+                        imageSrc='/svg/Arrow Left.svg'
+                        types='secondary'
+                    />
                 </div>
             </div>
 
@@ -129,7 +133,12 @@ export default function About() {
                             className='flex flex-col gap-6'>
                             <p className='md:text-[22px] text-[16px] font-medium text-justify'>We are committed to making your car-buying experience simple, honest, and stress-free. Every vehicle is carefully selected and inspected by experienced professionals to ensure quality you can trust. From start to finish, our focus is on transparency and customer satisfaction.</p>
                             <div className='flex lg:justify-end justify-center'>
-                                <CustomButton path='/' text='read more' imageSrc='/svg/Arrow Left.svg' />
+                                <CustomButton
+                                    path='/' text='read more'
+                                    imageSrc='/svg/Arrow Left.svg'
+                                    types='secondary'
+
+                                />
                             </div>
                         </motion.div>
                     </div>
