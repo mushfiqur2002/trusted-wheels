@@ -39,7 +39,7 @@ export default function Hero() {
                 </div>
 
                 {/* image */}
-                <div className="w-full h-auto relative center">
+                <div className="w-full h-auto relative top-0 center">
                     <div className='relative center w-fit xl:h-[450px] lg:h-[400px] md:h-[300px] h-[250px] lg:rounded-4xl rounded-xl overflow-hidden'>
                         <img src="/images/section/business-concept-portrait-handsome-business-man-happy-working-with-annual-report-white-background-copy-space 2.png" alt='image' className="w-full h-full object-cover " />
                     </div>
