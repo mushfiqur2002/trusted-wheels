@@ -80,7 +80,7 @@ export default function Fitlter() {
                     <AccordionItem
                         className={`w-full p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
                         value="body style">
-                        <AccordionTrigger>
+                        <AccordionTrigger className={'p-0'}>
                             <p className="capitalize text-[18px] font-medium">body style</p>
                         </AccordionTrigger>
                         <AccordionContent>
@@ -118,7 +118,7 @@ export default function Fitlter() {
                     <AccordionItem
                         className={`w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
                         value="made by">
-                        <AccordionTrigger>
+                        <AccordionTrigger className={'p-0'}>
                             <p className="capitalize text-[18px] font-medium">made by</p>
                         </AccordionTrigger>
                         <AccordionContent>
@@ -131,7 +131,7 @@ export default function Fitlter() {
                     <AccordionItem
                         className={`w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
                         value="fuel type">
-                        <AccordionTrigger>
+                        <AccordionTrigger className={'p-0'}>
                             <p className="capitalize text-[18px] font-medium">fuel type</p>
                         </AccordionTrigger>
                         <AccordionContent>
@@ -144,7 +144,7 @@ export default function Fitlter() {
                     <AccordionItem
                         className={`w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
                         value="year">
-                        <AccordionTrigger>
+                        <AccordionTrigger className={'p-0'}>
                             <p className="capitalize text-[18px] font-medium">year</p>
                         </AccordionTrigger>
                         <AccordionContent>
@@ -157,7 +157,7 @@ export default function Fitlter() {
                     <AccordionItem
                         className={`w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
                         value="transmission">
-                        <AccordionTrigger>
+                        <AccordionTrigger className={'p-0'}>
                             <p className="capitalize text-[18px] font-medium">transmission</p>
                         </AccordionTrigger>
                         <AccordionContent>
@@ -170,7 +170,7 @@ export default function Fitlter() {
                     <AccordionItem
                         className={`w-full h-auto p-3 shadow-[0px_0px_1px_1px_rgba(0,_0,_0,_0.1)] rounded-lg border-none`}
                         value="engine cylinder">
-                        <AccordionTrigger>
+                        <AccordionTrigger className={'p-0'}>
                             <p className="capitalize text-[18px] font-medium">engine cylinders</p>
                         </AccordionTrigger>
                         <AccordionContent>
