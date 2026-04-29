@@ -65,7 +65,7 @@ export default function Footer() {
                         <div className="w-full flex md:flex-row flex-col lg:justify-end md:justify-between justify-center lg:gap-12 md:gap-24 md:bg-transparent bg-white/10 md:p-0 p-6 md:rounded-none rounded-xl">
                             {/* hours  */}
                             <div className="flex flex-col lg:gap-6 gap-3">
-                                <h1 className="text-[20px] font-semibold capitalize lg:text-end md:text-start">our hours</h1>
+                                <h1 className="md:text-[20px] text-[18px] font-semibold capitalize lg:text-end md:text-start">our hours</h1>
                                 <div className="flex lg:flex-col md:flex-row flex-col md:gap-3 gap-2">
                                     <div className="flex md:flex-col flex-row md:justify-start justify-between lg:items-end md:items-start items-center">
                                         <h2 className="text-[16px] font-normal capitalize">monday-satrday</h2>
@@ -85,7 +85,7 @@ export default function Footer() {
 
                             {/* contacts */}
                             <div className="flex flex-col lg:gap-6 gap-3">
-                                <h1 className="text-[20px] font-semibold capitalize lg:text-end md:text-end">our contacts</h1>
+                                <h1 className="md:text-[20px] text-[18px] font-semibold capitalize lg:text-end md:text-end">our contacts</h1>
                                 <div className="flex md:flex-col flex-row md:justify-start justify-between  lg:gap-3 gap-1">
                                     <h2 className="center md:justify-end! gap-1 text-[16px] font-normal">
                                         <span>
@@ -110,7 +110,7 @@ export default function Footer() {
 
                     <div className="w-full flex md:flex-row flex-col justify-between items-center text-white md:mt-12 mt-6 md:gap-0 gap-4">
                         <div className="flex flex-col gap-1">
-                            <h1 className="text-[20px] font-semibold capitalize md:text-start text-center">our hours</h1>
+                            <h1 className="md:text-[20px] text-[18px] font-semibold capitalize md:text-start text-center">our hours</h1>
                             <p className="center md:justify-start! gap-1 md:text-[14px] text-[16px] font-thin capitalize">
                                 <span>
                                     <Image

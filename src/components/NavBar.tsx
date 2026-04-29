@@ -6,6 +6,7 @@ import { navLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import CustomButton from "./CustomButton";
+import { usePathname } from "next/navigation";
 
 export type PropsType = {
     change?: boolean
@@ -13,6 +14,7 @@ export type PropsType = {
 const NavBar = ({ change = false }: PropsType) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -55,11 +57,25 @@ const NavBar = ({ change = false }: PropsType) => {
                     {/* Desktop Nav Links */}
                     <div className="hidden lg:flex">
                         <ul className="center 2xl:gap-12 gap-6">
-                            {navLinks.map((link, index) => (
-                                <li key={index} className={`font-normal text-md ${isScrolled ? 'text-[#212121]' : (change ? 'text-[#212121]' : 'text-white')}`}>
-                                    <Link href={link.href}>{link.name}</Link>
-                                </li>
-                            ))}
+                            {navLinks.map((link, index) => {
+                                const isActive = pathname === link.href;
+
+                                return (
+                                    <li
+                                        key={index}
+                                        className={`font-normal text-md ${isActive
+                                            ? "text-[rgba(240,11,31,1)]"
+                                            : isScrolled
+                                                ? "text-[#212121]"
+                                                : change
+                                                    ? "text-[#212121]"
+                                                    : "text-white"
+                                            }`}
+                                    >
+                                        <Link href={link.href}>{link.name}</Link>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
 
@@ -110,19 +126,22 @@ const NavBar = ({ change = false }: PropsType) => {
                                 transition={{ delay: 0.1 }}
                                 className="flex flex-col items-center justify-center w-full h-[100vh] gap-6"
                             >
-                                {navLinks.map((link, index) => (
-                                    <motion.a
-                                        key={link.name}
-                                        href={link.href}
-                                        onClick={closeMobileMenu}
-                                        initial={{ y: 20, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{ delay: 0.1 + index * 0.05 }}
-                                        className="text-2xl font-bold text-[var(--secondary-text-color)] transition-colors"
-                                    >
-                                        {link.name}
-                                    </motion.a>
-                                ))}
+                                {navLinks.map((link, index) => {
+                                    const isActive = pathname === link.href;
+                                    return (
+                                        <motion.a
+                                            key={index}
+                                            href={link.href}
+                                            onClick={closeMobileMenu}
+                                            className={`text-2xl font-bold transition-colors ${isActive
+                                                ? "text-[rgba(240,11,31,1)]"
+                                                : "text-[var(--secondary-text-color)]"
+                                                }`}
+                                        >
+                                            {link.name}
+                                        </motion.a>
+                                    );
+                                })}
 
                                 <div className="flex lg:hidden gap-2 pt-12">
                                     <CustomButton

@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function SocailCard({ profileImageSrc, postImageSrc, name }: SocailType) {
     return (
-        <div className="xl:w-[380px] w-[300px] h-full rounded-xl bg-white py-[24px] flex flex-col items-start justify-between overflow-hidden gap-4">
+        <div className="xl:w-[380px] w-[300px] h-full rounded-xl bg-white py-4 flex flex-col items-start justify-between overflow-hidden gap-4">
             {/* header */}
-            <div className="w-full flex justify-between items-center px-[24px]">
+            <div className="w-full flex justify-between items-center px-4">
                 <div className="center gap-2">
                     <div className="w-[48px] h-[48px] rounded-full overflow-hidden">
                         <Image
@@ -35,7 +35,7 @@ export default function SocailCard({ profileImageSrc, postImageSrc, name }: Soca
             </div>
 
             {/* svg */}
-            <div className="w-full flex justify-between items-center px-[24px]">
+            <div className="w-full flex justify-between items-center px-4">
                 <div className="flex gap-3">
                     <Image
                         width={20}
