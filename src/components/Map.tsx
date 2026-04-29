@@ -11,6 +11,24 @@ interface MarkerTrackerProps {
     latlng: [number, number]
     setPos: (point: { x: number; y: number } | ((prev: { x: number; y: number }) => { x: number; y: number })) => void
 }
+function GlobalKeyboardZoom() {
+    const map = useMap();
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "+" || e.key === "=") {
+                map.zoomIn();
+            } else if (e.key === "-") {
+                map.zoomOut();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [map]);
+
+    return null;
+}
 
 function MarkerTracker({ latlng, setPos }: MarkerTrackerProps) {
     const map = useMap()
@@ -64,6 +82,7 @@ export default function Map() {
                 />
                 <MarkerTracker latlng={latlng} setPos={setPos} />
                 <OffsetView />
+                <GlobalKeyboardZoom />
             </MapContainer>
             <AnimatedMarker pos={pos} />
         </div>
