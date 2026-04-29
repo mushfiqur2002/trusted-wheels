@@ -78,7 +78,7 @@ export default function Form() {
                             Personal Information
                         </h1>
 
-                        <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
+                        <div className="grid md:grid-cols-2 grid-cols-1 md:gap-6 gap-3">
                             {/* First Name */}
                             <div className="flex flex-col gap-1.5">
                                 <label className={labelStyle}>
@@ -173,7 +173,7 @@ export default function Form() {
                             Current Residence
                         </h1>
 
-                        <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
+                        <div className="grid md:grid-cols-2 grid-cols-1 md:gap-6 gap-3">
                             {/* Address */}
                             <div className="flex flex-col gap-1.5">
                                 <label className={labelStyle}>

@@ -44,7 +44,7 @@ export default function Title({ header, highlighted, paragraph, heroSection = fa
                 className={`md:mt-2 mt-1 max-w-[600px] font-extralight 
                 ${heroSection ? 'text-[10px] sm:text-[14px] md:text-[16px] 2xl:text-[18px] text-center font-thin tracking-widest px-2' : 'text-[12px] sm:text-[14px] md:text-[16px] font-semibold text-[rgba(33,33,33,.6)]'}
                 ${position === 'middle' ? 'text-center' : 'md:text-start text-center'}
-                ${varient === 'light' ? 'text-[rgba(33,33,33,.6)]' : 'text-white/70'}
+                ${varient === 'light' ? 'text-[rgba(33,33,33,1)] font-semibold' : 'text-white/70'}
                 `}>
                 {paragraph}
             </motion.p>

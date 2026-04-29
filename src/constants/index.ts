@@ -94,8 +94,7 @@ export const navLinks = [
     { name: "Home", href: "/" },
     { name: "Inventory", href: "/inventory" },
     { name: "Financing", href: "/financing" },
-    { name: "Trade-In", href: "/trade-in" },
-    { name: "Contact", href: "/contact" },
+    { name: "About Us", href: "/about" }
 ]
 
 export const cardList = [
