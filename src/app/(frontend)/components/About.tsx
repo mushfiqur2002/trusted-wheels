@@ -167,7 +167,7 @@ export default function About() {
                         </div>
                         <div className="absolute bottom-0 right-10">
                             <Image
-                                src="/images/Frame.png"
+                                src="/images/section/Frame.png"
                                 alt="svg"
                                 width={320}
                                 height={320}
@@ -191,7 +191,7 @@ export default function About() {
                         </div>
                         <div className="absolute bottom-0 right-10">
                             <Image
-                                src="/images/Frame.png"
+                                src="/images/section/Frame.png"
                                 alt="svg"
                                 width={320}
                                 height={320}
