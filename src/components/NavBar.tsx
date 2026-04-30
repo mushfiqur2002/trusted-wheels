@@ -32,7 +32,7 @@ const NavBar = ({ change = false }: PropsType) => {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className={`max-w-[1920px] w-full h-18 top-0 center z-100000000 ${isScrolled || isMobileMenuOpen ? "bg-[var(--primary-background-color)] fixed shadow-[0px_1px_15px_5px_rgba(240,_11,_31,_.06)]" : "bg-transparent absolute"}`}
+                className={`max-w-[1920px] w-full h-20 top-0 center z-100000000 ${isScrolled || isMobileMenuOpen ? "bg-[var(--primary-background-color)] fixed shadow-[0px_1px_15px_5px_rgba(240,_11,_31,_.06)]" : "bg-transparent absolute"}`}
             >
                 <motion.div
                     className="max-w-[1440px] w-full flex justify-between items-center 2xl:px-16 xl:px-12 lg:px-10 md:px-12 px-5"
@@ -83,19 +83,20 @@ const NavBar = ({ change = false }: PropsType) => {
                     <motion.div className="">
                         <div className="hidden lg:flex gap-2">
                             <CustomButton
-                                path="/"
+                                path={process.env.NEXT_PUBLIC_MAP_LINK || 'https://www.google.com/maps'}
+                                blankTarget={true}
                                 imageSrc="/svg/Map Point.svg"
                                 onlySVG={true}
                                 navbar={true}
                                 types="secondary"
                             />
                             <CustomButton
-                                path="/"
-                                text="306-952-1207"
                                 imageSrc="/svg/Phone.svg"
                                 types="primary"
                                 reverse={true}
                                 navbar={true}
+                                contact={true}
+                                blankTarget={true}
                             />
                         </div>
                         {/* Mobile Menu Toggle */}
@@ -145,7 +146,8 @@ const NavBar = ({ change = false }: PropsType) => {
 
                                 <div className="flex lg:hidden gap-2 pt-12">
                                     <CustomButton
-                                        path="/"
+                                        path={process.env.NEXT_PUBLIC_MAP_LINK || 'https://www.google.com/maps'}
+                                        blankTarget={true}
                                         imageSrc="/svg/Map Point.svg"
                                         onlySVG={true}
                                         navbar={true}

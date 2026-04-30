@@ -67,7 +67,7 @@ function OffsetView() {
 
 export default function Map() {
     const [pos, setPos] = useState({ x: 0, y: 0 })
-    const latlng: [number, number] = [10.505, -0.09]
+    const latlng: [number, number] = [23.793277151862455, 90.35327911362343]
     return (
         <div className="w-full lg:h-[700px] md:h-[600px] h-[550px] relative">
             <MapContainer

@@ -47,7 +47,8 @@ export default function MapCard() {
                         </span>
                     </p>
                     <CustomButton
-                        path='/'
+                        path={process.env.NEXT_PUBLIC_MAP_LINK || 'https://www.google.com/maps'}
+                        blankTarget={true}
                         text='Get Direction'
                         imageSrc='/svg/Arrow Right White.svg'
                         types='primary'

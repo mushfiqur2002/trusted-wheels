@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion"
+import CustomButton from "@/components/CustomButton";
 
 
 
@@ -131,16 +132,12 @@ export default function Footer() {
                                     socailLink.map((item, index) => {
                                         return (
                                             <li key={index}>
-                                                <Link href={item.path}>
-                                                    <div className="md:p-4 p-3 bg-white/10 rounded-xl">
-                                                        <Image
-                                                            width={18}
-                                                            height={18}
-                                                            alt="svg"
-                                                            src={item.icon}
-                                                        />
-                                                    </div>
-                                                </Link>
+                                                <CustomButton
+                                                    path="/"
+                                                    imageSrc={item.icon}
+                                                    onlySVG={true}
+                                                    types="socail"
+                                                />
                                             </li>
                                         )
                                     })
