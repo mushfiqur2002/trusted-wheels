@@ -154,12 +154,12 @@ const NavBar = ({ change = false }: PropsType) => {
                                         types="secondary"
                                     />
                                     <CustomButton
-                                        path="/"
-                                        text="306-952-1207"
                                         imageSrc="/svg/Phone.svg"
                                         types="primary"
                                         reverse={true}
                                         navbar={true}
+                                        contact={true}
+                                        blankTarget={true}
                                     />
                                 </div>
                             </motion.div>
