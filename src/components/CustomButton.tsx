@@ -29,7 +29,6 @@ export default function CustomButton({
     contact = false
 }: LinkProps) {
     const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
-    const businessMessage = process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ?? '';
     return (
         <Link
             className={`flex items-center justify-center gap-2 md:text-[16px] text-[14px] capitalize font-semibold cursor-pointer! rounded-lg
@@ -43,7 +42,7 @@ export default function CustomButton({
                 ${fullWidth ? 'w-full!' : 'w-auto'}
                 ${reverse ? 'flex-row-reverse' : 'flex-row'}
                 `}
-            href={contact ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(businessMessage)}` : path || '/'}
+            href={contact ? `https://wa.me/${whatsappNumber}` : path || '/'}
             target={blankTarget ? '_blank' : '_self'}
         >
             {text && (

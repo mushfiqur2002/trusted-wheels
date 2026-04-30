@@ -95,7 +95,8 @@ export default function About() {
 
                 <div className='center'>
                     <CustomButton
-                        text='view more' path='/'
+                        text='view more'
+                        path='/inventory'
                         imageSrc='/svg/Arrow Left.svg'
                         types='secondary'
                     />
