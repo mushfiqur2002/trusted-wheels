@@ -1,6 +1,6 @@
 "use client"
 import CarCard from '@/components/CarCard'
-import Fitlter from '@/components/Fitlter'
+import Filter from '@/components/Filter'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { useCars } from "@/app/hooks/cars/useCars";
@@ -82,7 +82,7 @@ export default function Cards() {
             <div className={`w-full flex flex-row xl:gap-6 gap-3 relative ${isClicked ? 'flex-col!' : 'flex-row'}`}>
                 {/* filter */}
                 <div className={`sticky top-16 xl:w-[320px] lg:w-[200px] w-full h-fit bg-white lg:flex hidden ${isClicked ? 'flex! relative! top-0!' : 'hidden'}`}>
-                    <Fitlter />
+                    <Filter />
                 </div>
 
                 {/* car card  */}

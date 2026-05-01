@@ -1,5 +1,5 @@
 "use client"
-import { cardList, companyInfoList } from '@/constants'
+import { cardList, carInfo, companyInfoList } from '@/constants'
 import Image from 'next/image'
 import { useState } from 'react'
 import Title from '../../../components/Title'
@@ -83,7 +83,14 @@ export default function About() {
                         activeTab === "brands" ?
                             (
                                 <div className='w-full center bg-white py-12'>
-                                    <h1 className='text-2xl capitalize'>brands</h1>
+                                    {/* {
+                                        carInfo.map((item, index) => (
+                                            <div key={index} className='w-full h-full bg-white md:static sticky top-24 flex flex-col justify-center md:items-start items-center'>
+                                                <p className='flex md:text-[32px] text-[28px] font-semibold'><NumberFormat value={item.number} /><span className='text-[rgba(240,11,31,1)]'>+</span></p>
+                                                <p className='md:text-[16px] text-[12px] font-normal capitalize'>{item.param}</p>
+                                            </div>
+                                        ))
+                                    } */}
                                 </div>
                             ) : (
                                 <div className='w-full center bg-white py-12'>
@@ -135,7 +142,8 @@ export default function About() {
                             <p className='md:text-[22px] text-[16px] font-medium text-justify'>We are committed to making your car-buying experience simple, honest, and stress-free. Every vehicle is carefully selected and inspected by experienced professionals to ensure quality you can trust. From start to finish, our focus is on transparency and customer satisfaction.</p>
                             <div className='flex lg:justify-end justify-center'>
                                 <CustomButton
-                                    path='/' text='read more'
+                                    path='/about'
+                                    text='read more'
                                     imageSrc='/svg/Arrow Left.svg'
                                     types='secondary'
 
@@ -160,7 +168,7 @@ export default function About() {
                         </div>
                         <div>
                             <CustomButton
-                                path='/'
+                                path='/financing'
                                 types='primary'
                                 text='apply now'
                                 imageSrc='/svg/Arrow Right White.svg'
@@ -184,7 +192,7 @@ export default function About() {
                         </div>
                         <div>
                             <CustomButton
-                                path='/'
+                                path='/financing'
                                 types='primary'
                                 text='get your value'
                                 imageSrc='/svg/Arrow Right White.svg'

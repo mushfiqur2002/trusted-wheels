@@ -224,8 +224,8 @@ export default function Hero() {
                             />
 
                             <CustomButton
-                                path="/"
-                                text="contact us"
+                                path="/about"
+                                text="about us"
                                 types="primary"
                                 exception={true}
                             />
