@@ -12,7 +12,8 @@ type LinkProps = {
     navbar?: boolean,
     fullWidth?: boolean,
     blankTarget?: boolean,
-    contact?: boolean
+    contact?: boolean,
+    contactButText?: boolean
 }
 
 export default function CustomButton({
@@ -26,7 +27,8 @@ export default function CustomButton({
     navbar = false,
     fullWidth = false,
     blankTarget = false,
-    contact = false
+    contact = false,
+    contactButText = false
 }: LinkProps) {
     const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
     return (
@@ -42,10 +44,10 @@ export default function CustomButton({
                 ${fullWidth ? 'w-full!' : 'w-auto'}
                 ${reverse ? 'flex-row-reverse' : 'flex-row'}
                 `}
-            href={contact ? `https://wa.me/${whatsappNumber}` : path || '/'}
+            href={contact || contactButText ? `https://wa.me/${whatsappNumber}` : path || '/'}
             target={blankTarget ? '_blank' : '_self'}
         >
-            {text && (
+            {text || contactButText && (
                 <p>{text}</p>
             )}
             {contact && (

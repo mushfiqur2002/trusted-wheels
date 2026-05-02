@@ -13,8 +13,6 @@ export default function Form() {
     }, [popup])
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
-        setLoading(true)
         setPopup(null)
 
         const form = e.currentTarget
@@ -22,7 +20,8 @@ export default function Form() {
         const data = Object.fromEntries(formData)
 
         try {
-            const res = await fetch("/api/contact", {
+            setLoading(true)
+            const res = await fetch("/api/apply", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -46,8 +45,7 @@ export default function Form() {
         }
     }
 
-    const inputStyle =
-        "w-full p-4 shadow-[0px_0px_0px_1px_rgba(33,33,33,.15)] rounded-lg border-none outline-none text-[18px] focus:shadow-[0px_0px_0px_2px_rgba(0,0,0,0.4)] transition"
+    const inputStyle = "w-full p-4 shadow-[0px_0px_0px_1px_rgba(33,33,33,.15)] rounded-lg border-none outline-none text-[18px] focus:shadow-[0px_0px_0px_2px_rgba(0,0,0,0.4)] transition"
 
     const labelStyle =
         "capitalize text-[18px] font-medium flex items-center justify-start gap-1"

@@ -1,12 +1,16 @@
 import Image from 'next/image'
 import CustomButton from './CustomButton'
-import { useCars } from '@/app/hooks/cars/useCars'
 import { useState } from 'react'
 import { Button } from './ui/button'
+import { CarInfo } from '@/constants';
 
-export default function CarCard() {
+interface CarCardProps {
+    data: CarInfo[];
+    totalPage: number;
+}
+
+export default function CarCard({ data, totalPage }: CarCardProps) {
     const [page, setPage] = useState(1)
-    const { data, totalPage } = useCars({ page })
     return (
         <div className='flex flex-col'>
             <div className='w-full grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4'>
@@ -16,10 +20,10 @@ export default function CarCard() {
                             key={index}
                             className='w-full h-full bg-white p-3 relative rounded-lg shadow-[0px_0px_10px_2px_rgba(0,_0,_0,_0.025)]'
                         >
-                            <div className='absolute top-5 left-5'>
+                            <div className='absolute top-5 left-5 z-2'>
                                 <Image
                                     alt='image'
-                                    src="/images/brand/ford.png"
+                                    src={`/images/brand/${item.brand?.toLowerCase()}.png`}
                                     width={50}
                                     height={50}
                                     className='object-contain'
@@ -27,7 +31,7 @@ export default function CarCard() {
                             </div>
                             <div>
                                 <div className='w-full h-[160px] center bg-[#F5F5F5] rounded-lg overflow-hidden relative'>
-                                    <Image fill src={item.images?.display || "/images/placeholder.png"} alt="Car image" className="object-contain" />
+                                    <Image fill src={item.images?.display || "/images/placeholder.png"} alt="Car image" className="object-contain py-4" />
                                 </div>
                                 <div className='flex flex-col gap-3 mt-2'>
                                     <h1 className='text-[20px] font-semibold'>{item.title}</h1>

@@ -1,18 +1,17 @@
 "use client"
-import { cardList, carInfo, companyInfoList } from '@/constants'
+import { cardList, companyInfoList } from '@/constants'
 import Image from 'next/image'
-import { useState } from 'react'
 import Title from '../../../components/Title'
-import { Button } from '@/components/ui/button'
 import NumberFormat from '../../../components/NumberFormat'
 import CustomButton from '../../../components/CustomButton'
 import { motion } from "framer-motion"
+import { uniqueBrand } from '@/constants/filterData'
 export default function About() {
-    const [activeTab, setActiveTab] = useState<"brands" | "types">("brands");
+    // const [activeTab, setActiveTab] = useState<"brands" | "types">("brands");
     return (
-        <div className='max-w-[1440px] mx-auto w-full h-auto md:py-22 py-16 text-[var(--secondary-text-color)] flex flex-col md:gap-22 gap-16'>
+        <div className='max-w-[1440px] mx-auto w-full h-auto lg:py-22 md:py-16 py-12 text-[var(--secondary-text-color)] flex flex-col lg:gap-22 md:gap-16 gap-12'>
             {/* first section value propositions */}
-            <div className='flex flex-col lg:gap-16 gap-8 md:px-12 px-6'>
+            <div className='flex flex-col lg:gap-16 gap-8 md:px-8 px-6'>
                 <div>
                     <Title header='Why Choose' highlighted='trustedwheels?' paragraph={`We don't just sell cars; we build lasting relationships.`} />
                 </div>
@@ -45,17 +44,17 @@ export default function About() {
             </div>
 
             {/* 2nd section -> inventory */}
-            <div className='w-full flex flex-col lg:gap-16 md:gap-6 gap-4 md:px-12 px-6'>
-                <div className='flex justify-between lg:items-center md:items-start items-center lg:flex-row flex-col lg:gap-0 md:gap-6 gap-4'>
+            <div className='w-full flex flex-col lg:gap-16 md:gap-12 gap-8 md:px-8 px-6'>
+                <div className='flex justify-between lg:items-center md:items-start items-center lg:gap-0 md:gap-6 gap-4'>
                     <Title header='Find Your' highlighted='Perfect Fit' paragraph='Shop our extensive inventory by your favorite brand or vehicle type.' />
-                    <div className="relative flex w-fit p-1 bg-white rounded-lg">
 
-                        {/* Sliding Background */}
+                    {/* slider for brands and types */}
+                    {/* <div className="relative flex w-fit p-1 bg-white rounded-lg">
+                        
                         <div
                             className={`absolute top-1 bottom-1 w-1/2 rounded-md bg-[rgba(240,11,31,1)] transition-all duration-300 ${activeTab === "brands" ? "left-1" : "left-[49%]"}`}
                         />
 
-                        {/* Buttons */}
                         <Button
                             onClick={() => setActiveTab("brands")}
                             className={`relative z-10 capitalize px-8 py-6 md:text-[16px] text-[14px] font-semibold bg-transparent shadow-none ${activeTab === "brands"
@@ -75,29 +74,41 @@ export default function About() {
                         >
                             explore types
                         </Button>
-                    </div>
+                    </div> */}
+                    <div className='text-white px-6 py-4 md:text-[16px] text-[14px] font-semibold capitalize bg-[rgba(240,11,31,1)] rounded-lg'>explore brands</div>
+
                 </div>
 
-                <div className=''>
+                <div className='w-full grid lg:grid-cols-4 grid-cols-3 gap-4'>
                     {
-                        activeTab === "brands" ?
-                            (
-                                <div className='w-full center bg-white py-12'>
-                                    {/* {
-                                        carInfo.map((item, index) => (
-                                            <div key={index} className='w-full h-full bg-white md:static sticky top-24 flex flex-col justify-center md:items-start items-center'>
-                                                <p className='flex md:text-[32px] text-[28px] font-semibold'><NumberFormat value={item.number} /><span className='text-[rgba(240,11,31,1)]'>+</span></p>
-                                                <p className='md:text-[16px] text-[12px] font-normal capitalize'>{item.param}</p>
-                                            </div>
-                                        ))
-                                    } */}
+                        uniqueBrand.map((item, index) => (
+                            <div
+                                key={index}
+                                className='bg-white rounded-lg center flex-col px-3.5 py-3 cursor-pointer hover:bg-[rgba(240,11,31,.1)] hover:shadow-[0px_0px_5px_.5px_rgba(240,11,31,.2)] transition-shadow duration-300'
+                                onClick={() => (window.location.href = `/inventory?brand=${item?.toLocaleLowerCase()}`)}>
+                                <div className='w-full center justify-between!'>
+                                    <h1 className='capitalize font-semibold text-[18px]'>{item}</h1>
+                                    <Image
+                                        width={16}
+                                        height={16}
+                                        alt='svg'
+                                        src="/svg/Arrow up-right.svg"
+                                    />
                                 </div>
-                            ) : (
-                                <div className='w-full center bg-white py-12'>
-                                    <h1 className='text-2xl capitalize'>types</h1>
+                                <div className='w-full rounded-lg h-[130px] bg-[#f5f5f5] mt-3 center relative'>
+                                    <Image
+                                        fill
+                                        src={`/images/brand/${item?.toLowerCase()}.png`}
+                                        alt='brands'
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        className='p-8'
+                                    />
                                 </div>
-                            )
+                            </div>
+                        ))
                     }
+
                 </div>
 
                 <div className='center'>
@@ -111,7 +122,7 @@ export default function About() {
             </div>
 
             {/* 3rd section -> trust building  */}
-            <div className='w-full flex flex-col lg:gap-16 gap-8 md:px-12 px-6'>
+            <div className='w-full flex flex-col lg:gap-16 gap-8 md:px-8 px-6'>
                 <div>
                     <Title header='Transparency and' highlighted='care in every deal' paragraph='Every vehicle goes through an extensive inspection process so you can drive away with absolute confidence.' />
                 </div>
@@ -155,7 +166,7 @@ export default function About() {
             </div>
 
             {/* 4th section */}
-            <div className='flex flex-col gap-12 bg-[var(--secondary-background-color)] md:px-12 px-6 md:py-12 py-8'>
+            <div className='flex flex-col gap-12 bg-[var(--secondary-background-color)] md:px-8 px-6 md:py-12 py-8'>
                 <div>
                     <Title header='financing' highlighted='made simple' paragraph='Great credit, bad credit, or no credit? Our experienced finance managers will go' varient='dark' />
                 </div>

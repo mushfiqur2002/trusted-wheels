@@ -11,7 +11,7 @@ export type CarType = {
     }
 }
 
-// 🔹 Specs
+//  Specs
 export type CarSpecs = {
     engine?: string
     cylinders?: number
@@ -20,7 +20,7 @@ export type CarSpecs = {
     fuelType?: string
 }
 
-// 🔹 Appearance
+//  Appearance
 export type CarAppearance = {
     exteriorColor?: string
     interiorColor?: string
@@ -28,13 +28,13 @@ export type CarAppearance = {
     seats?: number
 }
 
-// 🔹 Options (grouped features)
+//  Options (grouped features)
 export type CarOption = {
     title?: string
     items?: string[]
 }
 
-// 🔹 Images
+//  Images
 export type CarImages = {
     display?: string
     gallery?: string[]
@@ -44,6 +44,7 @@ export type CarImages = {
 export type CarInfo = {
     id?: string
     slug?: string
+    carousel?: boolean
 
     brand?: string
     model?: string
@@ -71,9 +72,6 @@ export type CarInfo = {
     options?: CarOption[]
 
     images?: CarImages
-
-    createdAt?: string
-    updatedAt?: string
 }
 
 export type TestimonialType = {
@@ -128,69 +126,6 @@ export const companyInfoList = [
     {
         number: 10000,
         param: "happy customers"
-    },
-]
-
-export const carsCarousel: CarType[] = [
-    {
-        name: "BMW i7",
-        price: 119300,
-        image: "/images/carousel/carousel02.png",
-        metaData: {
-            bodyStyle: "Sedan",
-            fuel: "Electric",
-            transmission: "Automatic",
-            engine: "Dual Motor AWD",
-            mileage: "296 miles",
-        },
-    },
-    {
-        name: "Audi A6",
-        price: 56900,
-        image: "/images/carousel/carousel02.png",
-        metaData: {
-            bodyStyle: "Sedan",
-            fuel: "Petrol",
-            transmission: "Automatic",
-            engine: "2.0L Turbo",
-            mileage: "30 mpg",
-        },
-    },
-    {
-        name: "Tesla Model S",
-        price: 79990,
-        image: "/images/carousel/carousel02.png",
-        metaData: {
-            bodyStyle: "Sedan",
-            fuel: "Electric",
-            transmission: "Automatic",
-            engine: "Dual Motor",
-            mileage: "405 miles",
-        },
-    },
-    {
-        name: "Mercedes EQS",
-        price: 104400,
-        image: "/images/carousel/carousel02.png",
-        metaData: {
-            bodyStyle: "Luxury Sedan",
-            fuel: "Electric",
-            transmission: "Automatic",
-            engine: "Single Motor RWD",
-            mileage: "350 miles",
-        },
-    },
-    {
-        name: "Porsche Taycan",
-        price: 90500,
-        image: "/images/carousel/carousel02.png",
-        metaData: {
-            bodyStyle: "Sports Sedan",
-            fuel: "Electric",
-            transmission: "Automatic",
-            engine: "Dual Motor AWD",
-            mileage: "246 miles",
-        },
     },
 ]
 
@@ -286,6 +221,7 @@ export const carInfo: CarInfo[] = [
     {
         id: "1",
         slug: "2026-nissan-kicks-sv-awd",
+        carousel: true,
 
         brand: "Nissan",
         model: "Kicks",
@@ -353,7 +289,7 @@ export const carInfo: CarInfo[] = [
         ],
 
         images: {
-            display: "/images/cars_info/display.png",
+            display: "/images/carousel/carousel03.png",
             gallery: [
                 "/images/cars_info/showcase01.png",
                 "/images/cars_info/showcase03.png",
@@ -366,13 +302,499 @@ export const carInfo: CarInfo[] = [
                 "/images/cars_info/showcase03.png",
             ],
         },
-
-        createdAt: "2026-01-01",
     },
-
     {
         id: "2",
         slug: "2023-toyota-rav4-xle",
+        carousel: true,
+
+        brand: "Toyota",
+        model: "RAV4",
+        year: 2023,
+        title: "Toyota RAV4 XLE",
+
+        price: 25900,
+        discount: 10,
+        quantity: 5,
+
+        location: "Toronto, ON",
+        vin: "2T3W1RFV8PC123456",
+        mileage: 42000,
+
+        condition: "Used",
+        bodyStyle: "SUV",
+
+        specs: {
+            engine: "2.5L",
+            cylinders: 4,
+            transmission: "Automatic",
+            drive: "AWD",
+            fuelType: "Petrol",
+        },
+
+        appearance: {
+            exteriorColor: "Black",
+            interiorColor: "Beige",
+            doors: 4,
+            seats: 5,
+        },
+
+        description: "Reliable SUV with modern tech and comfort.",
+
+        notes: [
+            "One owner",
+            "Low mileage",
+        ],
+
+        features: [
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Blind spot monitor",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                ],
+            },
+            {
+                title: "Comfort",
+                items: [
+                    "Heated seats",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                ],
+            },
+        ],
+
+        images: {
+            display: "/images/carousel/carousel02.png",
+            gallery: [
+                "/images/cars_info/showcase01.png",
+                "/images/cars_info/showcase03.png",
+            ],
+        },
+    },
+    {
+        id: "3",
+        slug: "2023-toyota-rav4-xle",
+        carousel: true,
+
+        brand: "Toyota",
+        model: "RAV4",
+        year: 2023,
+        title: "Toyota RAV4 XLE",
+
+        price: 25900,
+        discount: 10,
+        quantity: 5,
+
+        location: "Toronto, ON",
+        vin: "2T3W1RFV8PC123456",
+        mileage: 42000,
+
+        condition: "Used",
+        bodyStyle: "SUV",
+
+        specs: {
+            engine: "2.5L",
+            cylinders: 4,
+            transmission: "Automatic",
+            drive: "AWD",
+            fuelType: "Petrol",
+        },
+
+        appearance: {
+            exteriorColor: "Black",
+            interiorColor: "Beige",
+            doors: 4,
+            seats: 5,
+        },
+
+        description: "Reliable SUV with modern tech and comfort.",
+
+        notes: [
+            "One owner",
+            "Low mileage",
+        ],
+
+        features: [
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Blind spot monitor",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                ],
+            },
+            {
+                title: "Comfort",
+                items: [
+                    "Heated seats",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                ],
+            },
+        ],
+
+        images: {
+            display: "/images/carousel/carousel02.png",
+            gallery: [
+                "/images/cars_info/showcase01.png",
+                "/images/cars_info/showcase03.png",
+            ],
+        },
+    },
+    {
+        id: "4",
+        slug: "2023-toyota-rav4-xle",
+        carousel: true,
+
+        brand: "Toyota",
+        model: "RAV4",
+        year: 2023,
+        title: "Toyota RAV4 XLE",
+
+        price: 25900,
+        discount: 10,
+        quantity: 5,
+
+        location: "Toronto, ON",
+        vin: "2T3W1RFV8PC123456",
+        mileage: 42000,
+
+        condition: "Used",
+        bodyStyle: "SUV",
+
+        specs: {
+            engine: "2.5L",
+            cylinders: 4,
+            transmission: "Automatic",
+            drive: "AWD",
+            fuelType: "Petrol",
+        },
+
+        appearance: {
+            exteriorColor: "Black",
+            interiorColor: "Beige",
+            doors: 4,
+            seats: 5,
+        },
+
+        description: "Reliable SUV with modern tech and comfort.",
+
+        notes: [
+            "One owner",
+            "Low mileage",
+        ],
+
+        features: [
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Blind spot monitor",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                ],
+            },
+            {
+                title: "Comfort",
+                items: [
+                    "Heated seats",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                ],
+            },
+        ],
+
+        images: {
+            display: "/images/carousel/carousel02.png",
+            gallery: [
+                "/images/cars_info/showcase01.png",
+                "/images/cars_info/showcase03.png",
+            ],
+        },
+    },
+    {
+        id: "5",
+        slug: "2023-toyota-rav4-xle",
+        carousel: true,
+
+        brand: "Toyota",
+        model: "RAV4",
+        year: 2023,
+        title: "Toyota RAV4 XLE",
+
+        price: 25900,
+        discount: 10,
+        quantity: 5,
+
+        location: "Toronto, ON",
+        vin: "2T3W1RFV8PC123456",
+        mileage: 42000,
+
+        condition: "Used",
+        bodyStyle: "SUV",
+
+        specs: {
+            engine: "2.5L",
+            cylinders: 4,
+            transmission: "Automatic",
+            drive: "AWD",
+            fuelType: "Petrol",
+        },
+
+        appearance: {
+            exteriorColor: "Black",
+            interiorColor: "Beige",
+            doors: 4,
+            seats: 5,
+        },
+
+        description: "Reliable SUV with modern tech and comfort.",
+
+        notes: [
+            "One owner",
+            "Low mileage",
+        ],
+
+        features: [
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Blind spot monitor",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                ],
+            },
+            {
+                title: "Comfort",
+                items: [
+                    "Heated seats",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                ],
+            },
+        ],
+
+        images: {
+            display: "/images/carousel/carousel03.png",
+            gallery: [
+                "/images/cars_info/showcase01.png",
+                "/images/cars_info/showcase03.png",
+            ],
+        },
+    },
+    {
+        id: "6",
+        slug: "2023-toyota-rav4-xle",
+        carousel: false,
 
         brand: "Toyota",
         model: "RAV4",
@@ -490,7 +912,493 @@ export const carInfo: CarInfo[] = [
                 "/images/cars_info/showcase03.png",
             ],
         },
+    },
+    {
+        id: "7",
+        slug: "2023-toyota-rav4-xle",
+        carousel: false,
 
-        createdAt: "2025-12-01",
+        brand: "Toyota",
+        model: "RAV4",
+        year: 2023,
+        title: "Toyota RAV4 XLE",
+
+        price: 25900,
+        discount: 10,
+        quantity: 5,
+
+        location: "Toronto, ON",
+        vin: "2T3W1RFV8PC123456",
+        mileage: 42000,
+
+        condition: "Used",
+        bodyStyle: "SUV",
+
+        specs: {
+            engine: "2.5L",
+            cylinders: 4,
+            transmission: "Automatic",
+            drive: "AWD",
+            fuelType: "Petrol",
+        },
+
+        appearance: {
+            exteriorColor: "Black",
+            interiorColor: "Beige",
+            doors: 4,
+            seats: 5,
+        },
+
+        description: "Reliable SUV with modern tech and comfort.",
+
+        notes: [
+            "One owner",
+            "Low mileage",
+        ],
+
+        features: [
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Blind spot monitor",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                ],
+            },
+            {
+                title: "Comfort",
+                items: [
+                    "Heated seats",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                ],
+            },
+        ],
+
+        images: {
+            display: "/images/cars_info/display.png",
+            gallery: [
+                "/images/cars_info/showcase01.png",
+                "/images/cars_info/showcase03.png",
+            ],
+        },
+    },
+    {
+        id: "8",
+        slug: "2023-toyota-rav4-xle",
+        carousel: false,
+
+        brand: "Toyota",
+        model: "RAV4",
+        year: 2023,
+        title: "Toyota RAV4 XLE",
+
+        price: 25900,
+        discount: 10,
+        quantity: 5,
+
+        location: "Toronto, ON",
+        vin: "2T3W1RFV8PC123456",
+        mileage: 42000,
+
+        condition: "Used",
+        bodyStyle: "SUV",
+
+        specs: {
+            engine: "2.5L",
+            cylinders: 4,
+            transmission: "Automatic",
+            drive: "AWD",
+            fuelType: "Petrol",
+        },
+
+        appearance: {
+            exteriorColor: "Black",
+            interiorColor: "Beige",
+            doors: 4,
+            seats: 5,
+        },
+
+        description: "Reliable SUV with modern tech and comfort.",
+
+        notes: [
+            "One owner",
+            "Low mileage",
+        ],
+
+        features: [
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Blind spot monitor",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                ],
+            },
+            {
+                title: "Comfort",
+                items: [
+                    "Heated seats",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                ],
+            },
+        ],
+
+        images: {
+            display: "/images/cars_info/display.png",
+            gallery: [
+                "/images/cars_info/showcase01.png",
+                "/images/cars_info/showcase03.png",
+            ],
+        },
+    },
+    {
+        id: "9",
+        slug: "2023-toyota-rav4-xle",
+        carousel: true,
+
+        brand: "Toyota",
+        model: "RAV4",
+        year: 2023,
+        title: "Toyota RAV4 XLE",
+
+        price: 25900,
+        discount: 10,
+        quantity: 5,
+
+        location: "Toronto, ON",
+        vin: "2T3W1RFV8PC123456",
+        mileage: 42000,
+
+        condition: "Used",
+        bodyStyle: "SUV",
+
+        specs: {
+            engine: "2.5L",
+            cylinders: 4,
+            transmission: "Automatic",
+            drive: "AWD",
+            fuelType: "Petrol",
+        },
+
+        appearance: {
+            exteriorColor: "Black",
+            interiorColor: "Beige",
+            doors: 4,
+            seats: 5,
+        },
+
+        description: "Reliable SUV with modern tech and comfort.",
+
+        notes: [
+            "One owner",
+            "Low mileage",
+        ],
+
+        features: [
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Blind spot monitor",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                ],
+            },
+            {
+                title: "Comfort",
+                items: [
+                    "Heated seats",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                ],
+            },
+        ],
+
+        images: {
+            display: "/images/cars_info/display.png",
+            gallery: [
+                "/images/cars_info/showcase01.png",
+                "/images/cars_info/showcase03.png",
+            ],
+        },
+    },
+    {
+        id: "10",
+        slug: "2023-toyota-rav4-xle",
+        carousel: false,
+
+        brand: "Toyota",
+        model: "RAV4",
+        year: 2023,
+        title: "Toyota RAV4 XLE",
+
+        price: 25900,
+        discount: 10,
+        quantity: 5,
+
+        location: "Toronto, ON",
+        vin: "2T3W1RFV8PC123456",
+        mileage: 42000,
+
+        condition: "Used",
+        bodyStyle: "SUV",
+
+        specs: {
+            engine: "2.5L",
+            cylinders: 4,
+            transmission: "Automatic",
+            drive: "AWD",
+            fuelType: "Petrol",
+        },
+
+        appearance: {
+            exteriorColor: "Black",
+            interiorColor: "Beige",
+            doors: 4,
+            seats: 5,
+        },
+
+        description: "Reliable SUV with modern tech and comfort.",
+
+        notes: [
+            "One owner",
+            "Low mileage",
+        ],
+
+        features: [
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+            "AWD",
+            "Lane assist",
+            "Adaptive cruise control",
+        ],
+
+        options: [
+            {
+                title: "Safety",
+                items: [
+                    "Blind spot monitor",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                    "Rear cross traffic alert",
+                ],
+            },
+            {
+                title: "Comfort",
+                items: [
+                    "Heated seats",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                    "Dual-zone climate control",
+                ],
+            },
+        ],
+
+        images: {
+            display: "/images/cars_info/display.png",
+            gallery: [
+                "/images/cars_info/showcase01.png",
+                "/images/cars_info/showcase03.png",
+            ],
+        },
     },
 ]

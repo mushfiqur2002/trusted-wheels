@@ -6,5 +6,7 @@ const uniqueTransmission = [...new Set(carInfo.map(car => car.specs?.transmissio
 const uniqueEngine = [...new Set(carInfo.map(car => car.specs?.engine))]
 const uniqueBrand = [...new Set(carInfo.map(car => car.brand))]
 
+const carousel = carInfo.filter(car => car.carousel === true)
 
-export { uniqueBodyStyle, uniqueFuelType, uniqueTransmission, uniqueEngine, uniqueBrand }
+
+export { uniqueBodyStyle, uniqueFuelType, uniqueTransmission, uniqueEngine, uniqueBrand, carousel }

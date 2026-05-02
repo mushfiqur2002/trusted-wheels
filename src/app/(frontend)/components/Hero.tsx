@@ -5,11 +5,11 @@ import Image from "next/image";
 import { Button } from "@base-ui/react";
 import Price from "@/components/Price";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import { carsCarousel } from "@/constants";
 import type { EmblaCarouselType } from "embla-carousel";
 import Title from "../../../components/Title";
 import CustomButton from "@/components/CustomButton";
 import { motion } from "motion/react";
+import { carousel } from "@/constants/filterData";
 
 export default function Hero() {
     const [current, setCurrent] = useState(0)
@@ -32,6 +32,7 @@ export default function Hero() {
             api.off("select", onSelect)
         }
     }, [api])
+
     return (
         <div className="w-full h-auto md:pt-28 pt-20 center flex-col relative overflow-hidden bg-[linear-gradient(90deg,rgba(22,_22,_22,_1)_0%,_rgba(37,_37,_37,_1)_53%,_rgba(22,_22,_22,_1)_100%)] z-1">
 
@@ -82,114 +83,85 @@ export default function Hero() {
                         initial={{ y: 200, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 1, ease: [0.22, 1, 0.9, 1] }}
-                        className="2xl:max-w-[1920px] max-w-[1440px] w-full mx-auto w-full xl:pt-6 pt-2">
+                        className="w-full max-w-[1920px] mx-auto px-4 md:px-6 lg:px-8 pt-4"
+                    >
                         <Carousel
                             opts={{
                                 loop: true,
                                 align: "center",
                             }}
                             setApi={setApi}
-                            className="w-full h-auto overflow-hidden"
+                            className="w-full"
                         >
-                            <CarouselContent>
-                                {carsCarousel.map((car, index: number) => {
-                                    const isActive = index === current
+                            <CarouselContent className="-ml-2 md:-ml-4">
+                                {carousel.map((car, index) => {
+                                    const isActive = index === current;
 
                                     return (
                                         <CarouselItem
                                             key={index}
-                                            className="md:basis-1/3 basis-full flex justify-center"
+                                            className="pl-2 md:pl-4 basis-[85%] sm:basis-[60%] md:basis-[45%] lg:basis-[45%] flex justify-center"
                                         >
                                             <div
-                                                className={`transition-all duration-500 ${isActive
-                                                    ? "scale-100"
-                                                    : "scale-50 opacity-50"
+                                                className={`w-full transition-all duration-500 ease-out ${isActive
+                                                    ? "scale-100 opacity-100"
+                                                    : "scale-60 opacity-60"
                                                     }`}
                                             >
-                                                <Card className="2xl:w-[860px] xl:w-[800px] lg:w-[550px] sm:w-[450px] w-[400px] 2xl:h-[550px] xl:h-[500px] lg:h-[400px] md:h-[350px] h-[325px] border-0 shadow-none bg-transparent">
+                                                <Card className="w-full h-[300px] md:h-[320px] lg:h-[400px] xl:h-[460px] border-0 shadow-none bg-transparent">
                                                     <CardContent className="relative w-full h-full">
 
-
-                                                        <div className="relative w-full h-full">
+                                                        {/* Image */}
+                                                        <div className="relative w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[420px]">
                                                             <Image
-                                                                src={car.image}
-                                                                alt={car.name}
+                                                                src={car.images?.display || "/fallback.png"}
+                                                                alt="car"
                                                                 fill
                                                                 className="object-contain object-top"
                                                             />
                                                         </div>
 
-                                                        {/* bodyStyle */}
-                                                        <span
-                                                            className={`md:flex hidden absolute top-10 left-15 flex justify-start items-start transition-all duration-300 ${isActive
+                                                        {/* BODY STYLE */}
+                                                        <div
+                                                            className={`hidden lg:flex absolute top-0 left-4 transition-all duration-300 ${isActive
                                                                 ? "opacity-100 translate-y-0"
-                                                                : "opacity-0 translate-y-2 pointer-events-none"
+                                                                : "opacity-0 translate-y-2"
                                                                 }`}
                                                         >
-                                                            <p className="capitalize text-white/60 px-4 py-1 bg-[var(--secondary-background-color)] rounded-full text-[14px]">
-                                                                body styles:
-                                                                <span className="text-white pl-1">
-                                                                    {car.metaData?.bodyStyle}
-                                                                </span>
+                                                            <p className="text-[14px] lg:text-[16px] text-white/60 px-4 py-1.5 bg-black rounded-full capitalize shadow-[0px_0px_1px_1px_rgba(240,11,31,.5)]">
+                                                                body style : <span className="text-white">{car.bodyStyle}</span>
                                                             </p>
-                                                            <Image
-                                                                src="svg/Frame 2147238816.svg"
-                                                                alt="svg"
-                                                                width={100}
-                                                                height={100}
-                                                                className="mt-3"
-                                                            />
-                                                        </span>
+                                                        </div>
 
-                                                        {/* fuel */}
-                                                        <span
-                                                            className={`md:flex hidden absolute top-5 right-50 flex flex-col justify-center items-center transition-all duration-300 ${isActive
+                                                        {/* FUEL */}
+                                                        <div
+                                                            className={`hidden lg:flex absolute top-12 right-4 transition-all duration-300 ${isActive
                                                                 ? "opacity-100 translate-y-0"
-                                                                : "opacity-0 translate-y-2 pointer-events-none"
+                                                                : "opacity-0 translate-y-2"
                                                                 }`}
                                                         >
-                                                            <p className="capitalize text-white/60 px-4 py-1 bg-[var(--secondary-background-color)] rounded-full text-[14px]">
-                                                                fuel:
-                                                                <span className="text-white pl-1">
-                                                                    {car.metaData?.fuel}
-                                                                </span>
+                                                            <p className="text-[14px] lg:text-[16px] text-white/60 px-4 py-1.5 bg-black rounded-full capitalize shadow-[0px_0px_1px_.5px_rgba(240,11,31,.5)]">
+                                                                fuel type : <span className="text-white">{car.specs?.fuelType}</span>
                                                             </p>
-                                                            <Image
-                                                                src="svg/Frame 2147238816.svg"
-                                                                alt="svg"
-                                                                width={100}
-                                                                height={100}
-                                                                className="mt-3 origin-top-center rotate-90"
-                                                            />
-                                                        </span>
+                                                        </div>
 
-                                                        {/* engine */}
-                                                        <span
-                                                            className={`md:flex hidden absolute bottom-60 left-25 flex justify-center items-start transition-all duration-300 ${isActive
+                                                        {/* ENGINE */}
+                                                        <div
+                                                            className={`hidden lg:flex absolute top-40 left-4 transition-all duration-300 ${isActive
                                                                 ? "opacity-100 translate-y-0"
-                                                                : "opacity-0 translate-y-2 pointer-events-none"
+                                                                : "opacity-0 translate-y-2"
                                                                 }`}
                                                         >
-                                                            <p className="capitalize text-white/60 px-4 py-1 bg-[var(--secondary-background-color)] rounded-full text-[14px]">
-                                                                engine:
-                                                                <span className="text-white pl-1">
-                                                                    {car.metaData?.engine}
-                                                                </span>
+                                                            <p className="text-[14px] lg:text-[16px] text-white/60 px-4 py-1.5 bg-black rounded-full capitalize shadow-[0px_0px_1px_.5px_rgba(240,11,31,.5)]">
+                                                                engine : <span className="text-white">{car.specs?.engine}</span>
                                                             </p>
-                                                            <Image
-                                                                src="svg/Frame 2147238816.svg"
-                                                                alt="svg"
-                                                                width={100}
-                                                                height={100}
-                                                                className="mt-3"
-                                                            />
-                                                        </span>
+                                                        </div>
 
                                                     </CardContent>
                                                 </Card>
                                             </div>
                                         </CarouselItem>
-                                    )
+                                    );
                                 })}
                             </CarouselContent>
                         </Carousel>
@@ -200,7 +172,7 @@ export default function Hero() {
                 <div className="w-full flex items-center justify-center absolute bottom-0 px-1 md:px-0">
                     <Button
                         onClick={() => api?.scrollPrev()}
-                        className="center bg-[rgba(240,11,31,0.1)] px-3 md:px-6 py-4 md:py-3 rounded-xl"
+                        className="cursor-pointer center bg-[rgba(240,11,31,0.1)] px-3 md:px-6 py-4 md:py-3 rounded-xl"
                     >
                         <Image src="svg/Arrow Right.svg" width={22} height={22} alt="svg" />
                     </Button>
@@ -209,16 +181,16 @@ export default function Hero() {
 
                         <div className="flex justify-between md:flex-col flex-row">
                             <p className="font-semibold text-[20px] text-[rgba(33,33,33,1)]">
-                                {carsCarousel[current]?.name}
+                                {carousel[current]?.title}
                             </p>
                             <p className="text-[24px] font-semibold text-[var(--primary-text-color)]">
-                                <Price value={carsCarousel[current]?.price} />
+                                <Price value={carousel[current]?.price || 0} />
                             </p>
                         </div>
 
                         <div className="grid grid-cols-[auto_1fr] gap-2 w-auto mt-2 md:mt-0">
                             <CustomButton
-                                path="/"
+                                path={`/inventory/${carousel[current]?.id}-${carousel[current]?.slug}`}
                                 text="Details"
                                 types="secondary"
                             />
@@ -234,7 +206,7 @@ export default function Hero() {
 
                     <Button
                         onClick={() => api?.scrollNext()}
-                        className="center bg-[rgba(240,11,31,0.1)] px-3 md:px-6 py-4 md:py-3 rounded-xl"
+                        className="cursor-pointer center bg-[rgba(240,11,31,0.1)] px-3 md:px-6 py-4 md:py-3 rounded-xl"
                     >
                         <Image
                             src="svg/Arrow Right.svg"

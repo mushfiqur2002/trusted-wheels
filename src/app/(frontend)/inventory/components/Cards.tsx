@@ -8,8 +8,21 @@ import { useState } from "react";
 
 
 export default function Cards() {
-    const { totalCar } = useCars({})
-    const [isClicked, setIsClicked] = useState(false)
+
+    const [isClicked, setIsClicked] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(e.target.value);
+    }
+
+
+    const { data, totalPage, totalCar } = useCars({
+        search: searchTerm
+    })
+
+    console.log(searchTerm);
+
     return (
         <div className="w-full xl:px-12 px-6 lg:mt-16 mt-12 flex flex-col lg:gap-8 gap-2 relative">
             {/* upper section */}
@@ -18,6 +31,8 @@ export default function Cards() {
                     <div className="xl:w-[320px] lg:w-[200px] w-full">
                         <h1 className="capitalize text-[24px] font-semibold">In Stock Vehicles</h1>
                     </div>
+
+                    {/* dekstop */}
                     <div className="lg:flex hidden">
                         <div
                             id="search"
@@ -35,6 +50,8 @@ export default function Cards() {
                                 type="text"
                                 placeholder="Search...."
                                 className="w-full h-full text-xl mr-6 border-none outline-none"
+                                onChange={handleSearch}
+                                value={searchTerm}
                             />
                         </div>
                     </div>
@@ -43,6 +60,7 @@ export default function Cards() {
                     </div>
                 </div>
 
+                {/* mobile  */}
                 <div className="w-full center lg:hidden! justify-between! gap-3">
                     <div
                         id="search"
@@ -60,6 +78,7 @@ export default function Cards() {
                             type="text"
                             placeholder="Search...."
                             className="w-full h-full text-xl mr-6 border-none outline-none"
+                            onChange={handleSearch}
                         />
                     </div>
                     <div>
@@ -87,7 +106,7 @@ export default function Cards() {
 
                 {/* car card  */}
                 <div className="w-full">
-                    <CarCard />
+                    <CarCard data={data} totalPage={totalPage} />
                 </div>
             </div>
         </div>

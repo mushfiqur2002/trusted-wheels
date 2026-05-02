@@ -58,7 +58,7 @@ const NavBar = ({ change = false }: PropsType) => {
                     <div className="hidden lg:flex">
                         <ul className="center 2xl:gap-12 gap-6">
                             {navLinks.map((link, index) => {
-                                const isActive = pathname === link.href;
+                                const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
 
                                 return (
                                     <li
@@ -128,7 +128,7 @@ const NavBar = ({ change = false }: PropsType) => {
                                 className="flex flex-col items-center justify-center w-full h-[100vh] gap-6"
                             >
                                 {navLinks.map((link, index) => {
-                                    const isActive = pathname === link.href;
+                                    const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
                                     return (
                                         <motion.a
                                             key={index}

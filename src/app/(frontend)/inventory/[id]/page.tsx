@@ -5,6 +5,8 @@ import ImageGallery from "@/components/ImageGallery";
 import { CarInfo, carInfo } from "@/constants";
 import Image from "next/image";
 import { useParams } from "next/navigation";
+import { useState } from "react";
+import ScheduleForm from "../components/ScheduleForm";
 
 function formatTitle(title: string): string {
     return title
@@ -42,12 +44,8 @@ export default function InventoryDetails({ }) {
     const slugId = typeof id === 'string' ? id.split('-') : []
     const ID = slugId[0]
     const data = carInfo.find((item) => item.id === ID);
-
     const aboutCar = data ? getAboutCar(data) : [];
-
-    console.log(aboutCar);
-
-
+    const [isScheduleFormOpen, setScheduleFormOpen] = useState(false)
     return (
         <div className="w-full flex flex-col xl:px-12 md:px-6 px-4 mt-20 text-[var(--secondary-text-color)] bg-[var(--primary-background-color)] gap-6">
             <h1 className="capitalize flex gap-1 text-[18px] font-medium">
@@ -56,87 +54,102 @@ export default function InventoryDetails({ }) {
                 <span className="text-[rgba(240,11,31,1)]">details</span>
             </h1>
 
-            <div className="grid md:grid-cols-[1fr_.5fr] grid-cols-1 xl:gap-12 gap-6">
+            {/* first section  */}
+            <div className="relative grid md:grid-cols-[1fr_.5fr] grid-cols-1 xl:gap-12 gap-6">
                 {/* image gallery */}
                 <div>
                     <ImageGallery gallery={data?.images?.gallery ?? []} />
                 </div>
+                {/* information  */}
 
-                <div className="w-full flex flex-col lg:gap-6 gap-4">
-                    <div className="flex flex-col gap-1">
-                        <h2 className="uppercase lg:text-[18px] md:text-[16px] text-[14px] font-semibold">vin : {data?.vin}</h2>
-                        <h1 className="lg:text-[36px] md:text-[24px] text-[28px] font-semibold">{data?.title}</h1>
-                    </div>
-                    <div className="bg-white lg:p-4 md:p-2 p-3.5 rounded-xl capitalize flex flex-col lg:gap-8 gap-4">
-                        <div className='bg-[#f5f5f5] center justify-between! px-3 p-2 rounded-lg'>
-                            <p className="lg:text-[18px] text-[16px] font-semibold">
-                                price
-                            </p>
-                            <p className='center gap-1 text-[rgba(33,33,33,1)] lg:text-[24px] md:text-[20px] text-[24px] font-semibold'>
-                                $ {
-                                    data?.price ? (
-                                        data?.discount !== undefined && data?.discount > 0 ? (
-                                            <span className="flex gap-2 center text-[rgba(240,11,31,1)]">
-                                                <span>
-                                                    {Math.round(data?.price - (data?.price * data?.discount) / 100).toLocaleString()}
-                                                </span>
-                                                <span className="text-gray-400 line-through text-[16px]">
-                                                    {data?.price.toLocaleString()}
-                                                </span>
-                                            </span>
-                                        ) : (
-                                            <span className="text-[rgba(240,11,31,1)]">{data?.price.toLocaleString()}</span>
-                                        )
-                                    ) : (
-                                        <span>Price not available</span>
-                                    )
-                                }
-                            </p>
-                        </div>
-                        <div className="flex flex-col lg:gap-4 gap-2">
-                            <CustomButton
-                                path="/"
-                                text="appointment"
-                                types="primary"
-                                fullWidth={true}
-                            />
-                            <CustomButton
-                                path="/"
-                                text="contact us"
-                                types="secondary"
-                                fullWidth={true}
-                            />
-                            <div className="center">
-                                <div className='w-full h-[1.5px] bg-[linear-gradient(90deg,rgba(33,33,33,0)1%,rgba(33,33,33,.4)100%)] rotate-0 rounded-full' />
-                                <p className="uppercase lg:text-[18px] text-[16px] font-medium px-4">or</p>
-                                <div className='w-full h-[1.5px] bg-[linear-gradient(90deg,rgba(33,33,33,.4)1%,rgba(33,33,33,0)100%)] rounded-full' />
+                <div className="relative">
+                    {
+                        isScheduleFormOpen ? (
+                            <div className="absolute top-0 left-0 w-full max-w-lg bg-white rounded-2xl">
+                                <div className="center justify-end! absolute top-4 right-6">
+                                    <button onClick={() => setScheduleFormOpen(!isScheduleFormOpen)} className="cursor-pointer text-2xl font-bold text-[rgba(240,11,31,1)]">x</button>
+                                </div>
+                                <ScheduleForm />
                             </div>
-                            <CustomButton
-                                path="/"
-                                text="View Video"
-                                types="normal"
-                                fullWidth={true}
-                            />
-                            <CustomButton
-                                path="/"
-                                text="Schedule a Test Drive"
-                                types="normal"
-                                fullWidth={true}
-                            />
+                        ) : (
+                            <div className="w-full flex flex-col lg:gap-6 gap-4">
+                                <div className="flex flex-col gap-1">
+                                    <h2 className="uppercase lg:text-[18px] md:text-[16px] text-[14px] font-semibold">vin : {data?.vin}</h2>
+                                    <h1 className="lg:text-[36px] md:text-[24px] text-[28px] font-semibold">{data?.title}</h1>
+                                </div>
+                                <div className="bg-white lg:p-4 md:p-2 p-3.5 rounded-xl capitalize flex flex-col lg:gap-8 gap-4">
+                                    <div className='bg-[#f5f5f5] center justify-between! px-3 p-2 rounded-lg'>
+                                        <p className="lg:text-[18px] text-[16px] font-semibold">
+                                            price
+                                        </p>
+                                        <p className='center gap-1 text-[rgba(33,33,33,1)] lg:text-[24px] md:text-[20px] text-[24px] font-semibold'>
+                                            $ {
+                                                data?.price ? (
+                                                    data?.discount !== undefined && data?.discount > 0 ? (
+                                                        <span className="flex gap-2 center text-[rgba(240,11,31,1)]">
+                                                            <span>
+                                                                {Math.round(data?.price - (data?.price * data?.discount) / 100).toLocaleString()}
+                                                            </span>
+                                                            <span className="text-gray-400 line-through text-[16px]">
+                                                                {data?.price.toLocaleString()}
+                                                            </span>
+                                                        </span>
+                                                    ) : (
+                                                        <span className="text-[rgba(240,11,31,1)]">{data?.price.toLocaleString()}</span>
+                                                    )
+                                                ) : (
+                                                    <span>Price not available</span>
+                                                )
+                                            }
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col lg:gap-4 gap-2">
+                                        <CustomButton
+                                            path="/financing"
+                                            text="appointment"
+                                            types="primary"
+                                            fullWidth={true}
+                                        />
+                                        <CustomButton
+                                            text="contact us"
+                                            types="secondary"
+                                            fullWidth={true}
+                                            contactButText={true}
+                                            blankTarget={true}
+                                        />
+                                        <div className="center">
+                                            <div className='w-full h-[1.5px] bg-[linear-gradient(90deg,rgba(33,33,33,0)1%,rgba(33,33,33,.4)100%)] rotate-0 rounded-full' />
+                                            <p className="uppercase lg:text-[18px] text-[16px] font-medium px-4">or</p>
+                                            <div className='w-full h-[1.5px] bg-[linear-gradient(90deg,rgba(33,33,33,.4)1%,rgba(33,33,33,0)100%)] rounded-full' />
+                                        </div>
+                                        <CustomButton
+                                            path="/"
+                                            text="View Video"
+                                            types="normal"
+                                            fullWidth={true}
+                                        />
+                                        <button
+                                            onClick={() => setScheduleFormOpen(!isScheduleFormOpen)}
+                                            className="w-auto px-4.5 py-3.5 flex items-center justify-center gap-2 md:text-[16px] text-[14px] capitalize font-semibold cursor-pointer! rounded-lg bg-white border border-[rgba(33,33,33,.1)] text-[rgba(33,33,33,1)]"
+                                        >
+                                            Schedule a Test Drive
+                                        </button>
 
-
-                        </div>
-                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
 
+            {/* second section  */}
             <div className="bg-white px-6 py-4 flex flex-col gap-4">
                 <h1 className="capitalize font-semibold text-[24px]">about vehicles</h1>
+                {/* short info about the car */}
                 <div className="w-full grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:gap-6 gap-4">
                     {
                         aboutCar.map((item, index) => {
-                            console.log(item.title, item.value);
-
                             return (
                                 <AboutCarShortCard key={index} title={item.title} value={item.value} />
                             )
@@ -145,6 +158,7 @@ export default function InventoryDetails({ }) {
                 </div>
             </div>
 
+            {/* third section  */}
             <div className="bg-white px-6 py-4 flex flex-col gap-6">
                 {/* description */}
                 <div className="flex flex-col gap-2">
@@ -180,6 +194,7 @@ export default function InventoryDetails({ }) {
                 </div>
             </div>
 
+            {/* forth section  */}
             <div className="bg-white px-6 py-4 flex flex-col gap-6">
                 {
                     data?.options?.map((i, index) => (
