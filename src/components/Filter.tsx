@@ -9,7 +9,15 @@ import {
 } from "@/components/ui/accordion"
 import { uniqueBodyStyle, uniqueBrand, uniqueEngine, uniqueFuelType, uniqueTransmission } from "@/constants/filterData";
 
-type FilterCategories = {
+type Props = {
+    selected: FilterCategories;
+    setSelected: React.Dispatch<React.SetStateAction<FilterCategories>>;
+    price: number;
+    setPrice: (val: number) => void;
+    min: number;
+    max: number;
+};
+export type FilterCategories = {
     bodyStyle: string[]
     brand: string[]
     fuelType: string[]
@@ -17,17 +25,14 @@ type FilterCategories = {
     engine: string[]
 }
 
-export default function Filter() {
-    const min = 0, max = 1000;
-    const [price, setPrice] = useState<number>(500);
-    const [selected, setSelected] = useState<FilterCategories>({
-        bodyStyle: [],
-        brand: [],
-        fuelType: [],
-        transmission: [],
-        engine: []
-    })
-
+export default function Filter({
+    price,
+    setPrice,
+    selected,
+    setSelected,
+    min,
+    max
+}: Props) {
     const toggle = (item: string, category: keyof FilterCategories) => {
         setSelected((prev) => ({
             ...prev,

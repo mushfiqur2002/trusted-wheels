@@ -10,6 +10,7 @@ type PropsType = {
         fuel?: string[];
         transmission?: string[];
         bodyStyle?: string[];
+        brand?: string[];
     };
 };
 export function useCars({
@@ -23,7 +24,7 @@ export function useCars({
     const filteredData = useMemo(() => {
         let result = [...carInfo];
 
-        // 🔍 SEARCH
+        // 🔍 SEARCH FIRST
         if (search) {
             const q = search.toLowerCase();
 
@@ -35,33 +36,36 @@ export function useCars({
             );
         }
 
-        // 🏷️ BRAND (from params)
-        if (brand) {
-            result = result.filter(
-                (car) => car.brand?.toLowerCase() === brand.toLowerCase()
-            );
-        }
+        // 🔥 COMBINED FILTER (THIS FIXES YOUR ISSUE)
+        result = result.filter((car) => {
+            const brandParamMatch =
+                !brand ||
+                car.brand?.toLowerCase() === brand.toLowerCase();
 
-        // ⛽ FUEL
-        if (filters.fuel?.length) {
-            result = result.filter((car) =>
-                filters.fuel?.includes(car.specs?.fuelType || "")
-            );
-        }
+            const brandMatch =
+                !filters.brand?.length ||
+                filters.brand.includes(car.brand || "");
 
-        // ⚙️ TRANSMISSION
-        if (filters.transmission?.length) {
-            result = result.filter((car) =>
-                filters.transmission!.includes(car.specs?.transmission || "")
-            );
-        }
+            const fuelMatch =
+                !filters.fuel?.length ||
+                filters.fuel.includes(car.specs?.fuelType || "");
 
-        // 🚙 BODY STYLE
-        if (filters.bodyStyle?.length) {
-            result = result.filter((car) =>
-                filters.bodyStyle!.includes(car.bodyStyle || "")
+            const transmissionMatch =
+                !filters.transmission?.length ||
+                filters.transmission.includes(car.specs?.transmission || "");
+
+            const bodyMatch =
+                !filters.bodyStyle?.length ||
+                filters.bodyStyle.includes(car.bodyStyle || "");
+
+            return (
+                brandParamMatch &&
+                brandMatch &&
+                fuelMatch &&
+                transmissionMatch &&
+                bodyMatch
             );
-        }
+        });
 
         return result;
     }, [search, brand, filters]);

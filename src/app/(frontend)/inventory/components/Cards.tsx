@@ -1,27 +1,37 @@
 "use client"
 import CarCard from '@/components/CarCard'
-import Filter from '@/components/Filter'
+import Filter, { FilterCategories } from '@/components/Filter'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { useCars } from "@/app/hooks/cars/useCars";
 import { useState } from "react";
+import { useSearchParams } from 'next/navigation'
 
 
 export default function Cards() {
-
     const [isClicked, setIsClicked] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
+    const [filters, setFilters] = useState<FilterCategories>({
+        bodyStyle: [],
+        brand: [],
+        fuelType: [],
+        transmission: [],
+        engine: []
+    });
+
+    const [price, setPrice] = useState(500);
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
     }
 
+    const params = useSearchParams()
 
     const { data, totalPage, totalCar } = useCars({
-        search: searchTerm
+        search: searchTerm,
+        brand: params.get('brand') || "",
+        filters: filters
     })
-
-    console.log(searchTerm);
 
     return (
         <div className="w-full xl:px-12 px-6 lg:mt-16 mt-12 flex flex-col lg:gap-8 gap-2 relative">
@@ -101,7 +111,14 @@ export default function Cards() {
             <div className={`w-full flex flex-row xl:gap-6 gap-3 relative ${isClicked ? 'flex-col!' : 'flex-row'}`}>
                 {/* filter */}
                 <div className={`sticky top-16 xl:w-[320px] lg:w-[200px] w-full h-fit bg-white lg:flex hidden ${isClicked ? 'flex! relative! top-0!' : 'hidden'}`}>
-                    <Filter />
+                    <Filter
+                        selected={filters}
+                        setSelected={setFilters}
+                        price={price}
+                        setPrice={setPrice}
+                        min={0}
+                        max={1000}
+                    />
                 </div>
 
                 {/* car card  */}
