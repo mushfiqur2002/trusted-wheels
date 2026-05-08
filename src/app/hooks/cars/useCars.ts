@@ -1,7 +1,18 @@
 "use client";
 
-import { carInfo } from "@/constants";
-import { useMemo } from "react";
+import { getCars } from "@/app/api/fetchData/fetchingData";
+import { useMemo, useState, useEffect } from "react";
+
+export interface Car {
+    title?: string;
+    brand?: string;
+    bodyStyle?: string;
+    specs?: {
+        fuelType?: string;
+        transmission?: string;
+        engine?: string;
+    };
+}
 type PropsType = {
     page?: number;
     search?: string;
@@ -11,6 +22,7 @@ type PropsType = {
         transmission?: string[];
         bodyStyle?: string[];
         brand?: string[];
+        engine?: string[];
     };
 };
 export function useCars({
@@ -20,6 +32,19 @@ export function useCars({
     filters = {},
 }: PropsType) {
     const limit = 12;
+    const [carInfo, setCarInfo] = useState<Car[]>([]);
+    const [loading, setLoading] = useState(true);
+    // 🔥 FETCH DATA
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            const data = await getCars(); // already transformed
+            setCarInfo(data);
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
 
     const filteredData = useMemo(() => {
         let result = [...carInfo];
@@ -32,7 +57,9 @@ export function useCars({
                 car.title?.toLowerCase().includes(q) ||
                 car.brand?.toLowerCase().includes(q) ||
                 car.bodyStyle?.toLowerCase().includes(q) ||
-                car.specs?.fuelType?.toLowerCase().includes(q)
+                car.specs?.fuelType?.toLowerCase().includes(q) ||
+                car.specs?.transmission?.toLowerCase().includes(q) ||
+                car.specs?.engine?.toLowerCase().includes(q)
             );
         }
 
@@ -58,17 +85,22 @@ export function useCars({
                 !filters.bodyStyle?.length ||
                 filters.bodyStyle.includes(car.bodyStyle || "");
 
+            const engineMatch =
+                !filters.engine?.length ||
+                filters.engine.includes(car.specs?.engine || "");
+
             return (
                 brandParamMatch &&
                 brandMatch &&
                 fuelMatch &&
                 transmissionMatch &&
-                bodyMatch
+                bodyMatch &&
+                engineMatch
             );
         });
 
         return result;
-    }, [search, brand, filters]);
+    }, [search, brand, filters, carInfo]);
 
     // 📄 PAGINATION AFTER FILTER
     const totalPage = Math.ceil(filteredData.length / limit);
@@ -83,6 +115,6 @@ export function useCars({
         totalPage,
         totalCar: filteredData.length,
         currentPage: page,
-        limit,
+        limit
     };
 }

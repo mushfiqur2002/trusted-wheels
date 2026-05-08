@@ -2,17 +2,17 @@
 import AboutCarShortCard from "@/components/AboutCarShortCard";
 import CustomButton from "@/components/CustomButton";
 import ImageGallery from "@/components/ImageGallery";
-import { CarInfo, carInfo } from "@/constants";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import ScheduleForm from "../components/ScheduleForm";
+import { carInfo, CarInfoType } from "@/constants";
 
 function formatTitle(title: string): string {
     return title
         .replace(/([A-Z])/g, " $1").toLowerCase()
 }
-function getAboutCar(data: CarInfo) {
+function getAboutCar(data: CarInfoType) {
     if (!data) return []
 
     const result: { title: string; value: string }[] = []

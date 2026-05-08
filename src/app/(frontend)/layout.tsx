@@ -1,6 +1,6 @@
 "use client"
 
-import "./globals.css"
+import '../globals.css'
 import { Urbanist } from "next/font/google"
 import { useState } from "react"
 import Intro from "@/components/Intro"

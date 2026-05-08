@@ -41,7 +41,7 @@ export type CarImages = {
 }
 
 // 🔹 Main Car Type
-export type CarInfo = {
+export type CarInfoType = {
     id?: string
     slug?: string
     carousel?: boolean
@@ -217,7 +217,7 @@ export const socailLink = [
     }
 ]
 
-export const carInfo: CarInfo[] = [
+export const carInfo: CarInfoType[] = [
     {
         id: "1",
         slug: "2026-nissan-kicks-sv-awd",

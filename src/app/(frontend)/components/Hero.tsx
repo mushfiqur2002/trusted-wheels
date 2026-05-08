@@ -9,11 +9,13 @@ import type { EmblaCarouselType } from "embla-carousel";
 import Title from "../../../components/Title";
 import CustomButton from "@/components/CustomButton";
 import { motion } from "motion/react";
-import { carousel } from "@/constants/filterData";
+import { getCarDerivedData } from "@/constants/filterData";
+import { CarInfoType } from "@/constants";
+import { getCars } from "@/app/api/fetchData/fetchingData";
 
 export default function Hero() {
-    const [current, setCurrent] = useState(0)
-    const [api, setApi] = useState<EmblaCarouselType>()
+    const [current, setCurrent] = useState<number>(0)
+    const [api, setApi] = useState<EmblaCarouselType | undefined>(undefined)
 
     useEffect(() => {
         if (!api) return
@@ -32,6 +34,21 @@ export default function Hero() {
             api.off("select", onSelect)
         }
     }, [api])
+
+    const [carInfo, setCarInfo] = useState<CarInfoType[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getCars();
+            setCarInfo(data as unknown as CarInfoType[]);
+        };
+
+        fetchData();
+    }, []);
+
+    const {
+        carousel
+    } = getCarDerivedData(carInfo);
 
     return (
         <div className="w-full h-auto md:pt-28 pt-20 center flex-col relative overflow-hidden bg-[linear-gradient(90deg,rgba(22,_22,_22,_1)_0%,_rgba(37,_37,_37,_1)_53%,_rgba(22,_22,_22,_1)_100%)] z-1">

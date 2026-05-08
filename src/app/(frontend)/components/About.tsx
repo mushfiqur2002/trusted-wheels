@@ -1,12 +1,28 @@
 "use client"
-import { cardList, companyInfoList } from '@/constants'
+import { cardList, CarInfoType, companyInfoList } from '@/constants'
 import Image from 'next/image'
 import Title from '../../../components/Title'
 import NumberFormat from '../../../components/NumberFormat'
 import CustomButton from '../../../components/CustomButton'
 import { motion } from "framer-motion"
-import { uniqueBrand } from '@/constants/filterData'
+import { getCarDerivedData } from '@/constants/filterData'
+import { useEffect, useState } from 'react'
+import { getCars } from '@/app/api/fetchData/fetchingData'
 export default function About() {
+    const [carInfo, setCarInfo] = useState<CarInfoType[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getCars();
+            setCarInfo(data as unknown as CarInfoType[]);
+        };
+
+        fetchData();
+    }, []);
+
+    const {
+        uniqueBrand
+    } = getCarDerivedData(carInfo);
     // const [activeTab, setActiveTab] = useState<"brands" | "types">("brands");
     return (
         <div className='max-w-[1440px] mx-auto w-full h-auto lg:py-22 md:py-16 py-12 text-[var(--secondary-text-color)] flex flex-col lg:gap-22 md:gap-16 gap-12'>
@@ -45,7 +61,7 @@ export default function About() {
 
             {/* 2nd section -> inventory */}
             <div className='w-full flex flex-col lg:gap-16 md:gap-12 gap-8 md:px-8 px-6'>
-                <div className='flex justify-between lg:items-center md:items-start items-center lg:gap-0 md:gap-6 gap-4'>
+                <div className='flex justify-between lg:items-center md:items-start items-center md:flex-row flex-col lg:gap-0 md:gap-6 gap-4'>
                     <Title header='Find Your' highlighted='Perfect Fit' paragraph='Shop our extensive inventory by your favorite brand or vehicle type.' />
 
                     {/* slider for brands and types */}
@@ -75,19 +91,19 @@ export default function About() {
                             explore types
                         </Button>
                     </div> */}
-                    <div className='text-white px-6 py-4 md:text-[16px] text-[14px] font-semibold capitalize bg-[rgba(240,11,31,1)] rounded-lg'>explore brands</div>
+                    <div className='text-white px-6 lg:py-4 py-3 md:text-[16px] text-[14px] font-semibold capitalize bg-[rgba(240,11,31,1)] rounded-lg'>explore brands</div>
 
                 </div>
 
-                <div className='w-full grid lg:grid-cols-4 grid-cols-3 gap-4'>
+                <div className='w-full grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4'>
                     {
                         uniqueBrand.map((item, index) => (
                             <div
                                 key={index}
                                 className='bg-white rounded-lg center flex-col px-3.5 py-3 cursor-pointer hover:bg-[rgba(240,11,31,.1)] hover:shadow-[0px_0px_5px_.5px_rgba(240,11,31,.2)] transition-shadow duration-300'
-                                onClick={() => (window.location.href = `/inventory?brand=${item?.toLocaleLowerCase()}`)}>
+                                onClick={() => (window.location.href = `/inventory?brand=${(item as string)?.toLocaleLowerCase()}`)}>
                                 <div className='w-full center justify-between!'>
-                                    <h1 className='capitalize font-semibold text-[18px]'>{item}</h1>
+                                    <h1 className='capitalize font-semibold text-[18px]'>{item as string}</h1>
                                     <Image
                                         width={16}
                                         height={16}
@@ -98,7 +114,7 @@ export default function About() {
                                 <div className='w-full rounded-lg h-[130px] bg-[#f5f5f5] mt-3 center relative'>
                                     <Image
                                         fill
-                                        src={`/images/brand/${item?.toLowerCase()}.png`}
+                                        src={`/images/brand/${(item as string)?.toLowerCase()}.png`}
                                         alt='brands'
                                         objectFit="contain"
                                         objectPosition="center"

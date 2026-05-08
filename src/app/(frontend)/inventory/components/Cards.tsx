@@ -33,6 +33,8 @@ export default function Cards() {
         filters: filters
     })
 
+
+
     return (
         <div className="w-full xl:px-12 px-6 lg:mt-16 mt-12 flex flex-col lg:gap-8 gap-2 relative">
             {/* upper section */}

@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { getCars } from "@/app/api/fetchData/fetchingData";
 import { Checkbox } from "./ui/checkbox";
 import {
     Accordion,
@@ -7,7 +7,9 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
-import { uniqueBodyStyle, uniqueBrand, uniqueEngine, uniqueFuelType, uniqueTransmission } from "@/constants/filterData";
+import { getCarDerivedData } from "@/constants/filterData";
+import { CarInfoType } from "@/constants";
+import { useEffect, useState } from "react";
 
 type Props = {
     selected: FilterCategories;
@@ -33,6 +35,25 @@ export default function Filter({
     min,
     max
 }: Props) {
+    const [carInfo, setCarInfo] = useState<CarInfoType[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getCars();
+            setCarInfo(data as unknown as CarInfoType[]);
+        };
+
+        fetchData();
+    }, []);
+
+    const {
+        uniqueBodyStyle,
+        uniqueFuelType,
+        uniqueTransmission,
+        uniqueEngine,
+        uniqueBrand
+    } = getCarDerivedData(carInfo);
+
     const toggle = (item: string, category: keyof FilterCategories) => {
         setSelected((prev) => ({
             ...prev,

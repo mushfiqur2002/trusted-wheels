@@ -1,12 +1,17 @@
-import { carInfo } from ".";
+import { CarInfoType } from ".";
 
-const uniqueBodyStyle = [...new Set(carInfo.map(car => car.bodyStyle))]
-const uniqueFuelType = [...new Set(carInfo.map(car => car.specs?.fuelType))]
-const uniqueTransmission = [...new Set(carInfo.map(car => car.specs?.transmission))]
-const uniqueEngine = [...new Set(carInfo.map(car => car.specs?.engine))]
-const uniqueBrand = [...new Set(carInfo.map(car => car.brand))]
+export function getCarDerivedData(carInfo: CarInfoType[]) {
+    return {
+        uniqueBodyStyle: [...new Set(carInfo.map(car => car.bodyStyle).filter(Boolean))],
 
-const carousel = carInfo.filter(car => car.carousel === true)
+        uniqueFuelType: [...new Set(carInfo.map(car => car.specs?.fuelType).filter(Boolean))],
 
+        uniqueTransmission: [...new Set(carInfo.map(car => car.specs?.transmission).filter(Boolean))],
 
-export { uniqueBodyStyle, uniqueFuelType, uniqueTransmission, uniqueEngine, uniqueBrand, carousel }
+        uniqueEngine: [...new Set(carInfo.map(car => car.specs?.engine).filter(Boolean))],
+
+        uniqueBrand: [...new Set(carInfo.map(car => car.brand).filter(Boolean))],
+
+        carousel: carInfo.filter(car => car.carousel === true),
+    };
+}
