@@ -45,6 +45,7 @@ export default function InventoryDetails({ }) {
     const ID = slugId[0]
     const data = carInfo.find((item) => item.id === ID);
     const aboutCar = data ? getAboutCar(data) : [];
+    
     const [isScheduleFormOpen, setScheduleFormOpen] = useState(false)
     return (
         <div className="w-full flex flex-col xl:px-12 md:px-6 px-4 mt-20 text-[var(--secondary-text-color)] bg-[var(--primary-background-color)] gap-6">
