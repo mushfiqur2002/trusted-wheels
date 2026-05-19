@@ -5,82 +5,82 @@ import { OAuthProvider } from "appwrite";
 import { useState, useEffect } from "react";
 
 export default function AdminLogin() {
-    const [id, setId] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [locked, setLocked] = useState(false);
+    // const [id, setId] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [error, setError] = useState("");
+    // const [locked, setLocked] = useState(false);
 
-    const MAX_ATTEMPTS = 3;
-    const LOCK_MINUTES = 15;
+    // const MAX_ATTEMPTS = 3;
+    // const LOCK_MINUTES = 15;
 
-    const inputStyle = "w-full p-4 shadow-[0px_0px_0px_1px_rgba(33,33,33,.15)] rounded-lg border-none outline-none text-[18px] focus:shadow-[0px_0px_0px_2px_rgba(0,0,0,0.4)] transition";
-    useEffect(() => {
-        const lockedUntil = localStorage.getItem("lockedUntil");
+    // const inputStyle = "w-full p-4 shadow-[0px_0px_0px_1px_rgba(33,33,33,.15)] rounded-lg border-none outline-none text-[18px] focus:shadow-[0px_0px_0px_2px_rgba(0,0,0,0.4)] transition";
+    // useEffect(() => {
+    //     const lockedUntil = localStorage.getItem("lockedUntil");
 
-        if (
-            lockedUntil &&
-            new Date(lockedUntil) > new Date()
-        ) {
-            setLocked(true);
-        } else {
-            localStorage.removeItem("lockedUntil");
-            localStorage.removeItem("attempts");
-        }
-    }, []);
+    //     if (
+    //         lockedUntil &&
+    //         new Date(lockedUntil) > new Date()
+    //     ) {
+    //         setLocked(true);
+    //     } else {
+    //         localStorage.removeItem("lockedUntil");
+    //         localStorage.removeItem("attempts");
+    //     }
+    // }, []);
 
-    const handleLogin = () => {
-        if (locked) {
-            setError("Login temporarily locked. Try later.");
-            return;
-        }
+    // const handleLogin = () => {
+    //     if (locked) {
+    //         setError("Login temporarily locked. Try later.");
+    //         return;
+    //     }
 
-        let attempts = Number(
-            localStorage.getItem("attempts") || 0
-        );
+    //     let attempts = Number(
+    //         localStorage.getItem("attempts") || 0
+    //     );
 
-        // compare with your env values
-        const ADMIN_ID = process.env.NEXT_PUBLIC_ADMIN_ID;
-        const ADMIN_PASS = process.env.NEXT_PUBLIC_ADMIN_PASS;
+    //     // compare with your env values
+    //     const ADMIN_ID = process.env.NEXT_PUBLIC_ADMIN_ID;
+    //     const ADMIN_PASS = process.env.NEXT_PUBLIC_ADMIN_PASS;
 
-        if (
-            id === ADMIN_ID &&
-            password === ADMIN_PASS
-        ) {
-            localStorage.removeItem("attempts");
-            localStorage.removeItem("lockedUntil");
+    //     if (
+    //         id === ADMIN_ID &&
+    //         password === ADMIN_PASS
+    //     ) {
+    //         localStorage.removeItem("attempts");
+    //         localStorage.removeItem("lockedUntil");
 
-            alert("Login successful");
-            return;
-        }
+    //         alert("Login successful");
+    //         return;
+    //     }
 
-        attempts++;
-        localStorage.setItem(
-            "attempts",
-            attempts.toString()
-        );
+    //     attempts++;
+    //     localStorage.setItem(
+    //         "attempts",
+    //         attempts.toString()
+    //     );
 
-        if (attempts >= MAX_ATTEMPTS) {
-            const lockTime = new Date();
-            lockTime.setMinutes(
-                lockTime.getMinutes() + LOCK_MINUTES
-            );
+    //     if (attempts >= MAX_ATTEMPTS) {
+    //         const lockTime = new Date();
+    //         lockTime.setMinutes(
+    //             lockTime.getMinutes() + LOCK_MINUTES
+    //         );
 
-            localStorage.setItem(
-                "lockedUntil",
-                lockTime.toISOString()
-            );
+    //         localStorage.setItem(
+    //             "lockedUntil",
+    //             lockTime.toISOString()
+    //         );
 
-            setLocked(true);
-            setError(
-                `Too many attempts. Locked for ${LOCK_MINUTES} minutes`
-            );
-        } else {
-            setError(
-                `Wrong credentials. Remaining attempts: ${MAX_ATTEMPTS - attempts
-                }`
-            );
-        }
-    };
+    //         setLocked(true);
+    //         setError(
+    //             `Too many attempts. Locked for ${LOCK_MINUTES} minutes`
+    //         );
+    //     } else {
+    //         setError(
+    //             `Wrong credentials. Remaining attempts: ${MAX_ATTEMPTS - attempts
+    //             }`
+    //         );
+    //     }
+    // };
 
     const googleLogin = async () => {
         try {
@@ -117,16 +117,16 @@ export default function AdminLogin() {
                     </button>
                 </div>
 
-                <div className="relative mb-6">
+                {/* <div className="relative mb-6">
                     <hr />
                     <span className="absolute left-1/2 -translate-x-1/2 -top-3 bg-white px-3 text-sm">
                         OR
                     </span>
-                </div>
+                </div> */}
 
                 {/* ID + Password Section */}
 
-                <div className="space-y-4">
+                {/* <div className="space-y-4">
                     <input
                         className={inputStyle}
                         value={id}
@@ -151,7 +151,7 @@ export default function AdminLogin() {
                     </button>
 
                     {error && <p>{error}</p>}
-                </div>
+                </div> */}
             </div>
         </div>
     );
