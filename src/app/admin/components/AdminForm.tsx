@@ -54,13 +54,17 @@ export default function AdminForm() {
     const handleGalleryImages = (
         e: React.ChangeEvent<HTMLInputElement>
     ) => {
-        if (!e.target.files) return
+        const files = e.target.files;
+
+        if (!files) return;
+
+        const fileArray = Array.from(files);
 
         setGalleryImages((prev) => [
             ...prev,
-            ...Array.from(e.target.files),
-        ])
-    }
+            ...fileArray,
+        ]);
+    };
 
     const removeDisplayImage = () => {
         setDisplayImage(null)
@@ -340,13 +344,6 @@ export default function AdminForm() {
                         <input
                             key={field}
                             name={field}
-                            type={
-                                ["year", "price", "discount", "quantity", "mileage"].includes(
-                                    field
-                                )
-                                    ? "number"
-                                    : "text"
-                            }
                             placeholder={field}
                             value={form[field as keyof typeof form]}
                             onChange={handleChange}
