@@ -31,6 +31,31 @@ export default function AdminForm() {
         features: "",
         notes: "",
     });
+    const fields = [
+        "title",
+        "slug",
+        "brand",
+        "model",
+        "year",
+        "price",
+        "discount",
+        "quantity",
+        "location",
+        "vin",
+        "mileage",
+        "condition",
+        "bodyStyle",
+        "fuelType",
+        "transmission",
+        "engine",
+    ] as const;
+
+    const numberFields = [
+        "price",
+        "discount",
+        "quantity",
+        "mileage",
+    ];
 
     const [displayImage, setDisplayImage] = useState<File | null>(null)
 
@@ -77,14 +102,23 @@ export default function AdminForm() {
     }
 
     const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+        e: React.ChangeEvent<
+            HTMLInputElement | HTMLTextAreaElement
+        >
     ) => {
         const { name, value, type } = e.target;
-        const checked = "checked" in e.target ? e.target.checked : false;
+
+        const checked =
+            "checked" in e.target
+                ? e.target.checked
+                : false;
 
         setForm((prev) => ({
             ...prev,
-            [name]: type === "checkbox" ? checked : value,
+            [name]:
+                type === "checkbox"
+                    ? checked
+                    : value,
         }));
     };
 
@@ -323,29 +357,19 @@ export default function AdminForm() {
 
                 {/* INPUT GRID */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {[
-                        "title",
-                        "slug",
-                        "brand",
-                        "model",
-                        "year",
-                        "price",
-                        "discount",
-                        "quantity",
-                        "location",
-                        "vin",
-                        "mileage",
-                        "condition",
-                        "bodyStyle",
-                        "fuelType",
-                        "transmission",
-                        "engine",
-                    ].map((field) => (
+                    {fields.map((field) => (
                         <input
                             key={field}
                             name={field}
+                            type={
+                                numberFields.includes(
+                                    field as typeof numberFields[number]
+                                )
+                                    ? "number"
+                                    : "text"
+                            }
                             placeholder={field}
-                            value={form[field as keyof typeof form]}
+                            value={form[field]}
                             onChange={handleChange}
                             className={inputStyle}
                         />
