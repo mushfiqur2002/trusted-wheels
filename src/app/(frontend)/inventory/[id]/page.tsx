@@ -6,7 +6,8 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import ScheduleForm from "../components/ScheduleForm";
-import { carInfo, CarInfoType } from "@/constants";
+import { CarInfoType } from "@/constants";
+import { useCar } from "@/app/hooks/cars/useCar";
 
 function formatTitle(title: string): string {
     return title
@@ -43,10 +44,10 @@ export default function InventoryDetails({ }) {
     const { id } = useParams()
     const slugId = typeof id === 'string' ? id.split('-') : []
     const ID = slugId[0]
-    const data = carInfo.find((item) => item.id === ID);
-    const aboutCar = data ? getAboutCar(data) : [];
-    
+    const { car: singleCar, loading } = useCar(ID)
+    const aboutCar = singleCar ? getAboutCar(singleCar) : [];
     const [isScheduleFormOpen, setScheduleFormOpen] = useState(false)
+
     return (
         <div className="w-full flex flex-col xl:px-12 md:px-6 px-4 mt-20 text-[var(--secondary-text-color)] bg-[var(--primary-background-color)] gap-6">
             <h1 className="capitalize flex gap-1 text-[18px] font-medium">
@@ -59,7 +60,14 @@ export default function InventoryDetails({ }) {
             <div className="relative grid md:grid-cols-[1fr_.5fr] grid-cols-1 xl:gap-12 gap-6">
                 {/* image gallery */}
                 <div>
-                    <ImageGallery gallery={data?.images?.gallery ?? []} />
+                    {loading ? (
+                        <div className="w-full h-full center">
+                            <p>loading...</p>
+                        </div>
+                    ) : (
+                        <ImageGallery gallery={singleCar?.images?.gallery ?? []} />
+                    )}
+
                 </div>
                 {/* information  */}
 
@@ -75,34 +83,40 @@ export default function InventoryDetails({ }) {
                         ) : (
                             <div className="w-full flex flex-col lg:gap-6 gap-4">
                                 <div className="flex flex-col gap-1">
-                                    <h2 className="uppercase lg:text-[18px] md:text-[16px] text-[14px] font-semibold">vin : {data?.vin}</h2>
-                                    <h1 className="lg:text-[36px] md:text-[24px] text-[28px] font-semibold">{data?.title}</h1>
+                                    <h2 className="uppercase lg:text-[18px] md:text-[16px] text-[14px] font-semibold">vin : {singleCar?.vin}</h2>
+                                    <h1 className="lg:text-[36px] md:text-[24px] text-[28px] font-semibold capitalize">{singleCar?.title}</h1>
                                 </div>
                                 <div className="bg-white lg:p-4 md:p-2 p-3.5 rounded-xl capitalize flex flex-col lg:gap-8 gap-4">
                                     <div className='bg-[#f5f5f5] center justify-between! px-3 p-2 rounded-lg'>
-                                        <p className="lg:text-[18px] text-[16px] font-semibold">
-                                            price
-                                        </p>
-                                        <p className='center gap-1 text-[rgba(33,33,33,1)] lg:text-[24px] md:text-[20px] text-[24px] font-semibold'>
-                                            $ {
-                                                data?.price ? (
-                                                    data?.discount !== undefined && data?.discount > 0 ? (
-                                                        <span className="flex gap-2 center text-[rgba(240,11,31,1)]">
-                                                            <span>
-                                                                {Math.round(data?.price - (data?.price * data?.discount) / 100).toLocaleString()}
-                                                            </span>
-                                                            <span className="text-gray-400 line-through text-[16px]">
-                                                                {data?.price.toLocaleString()}
-                                                            </span>
-                                                        </span>
-                                                    ) : (
-                                                        <span className="text-[rgba(240,11,31,1)]">{data?.price.toLocaleString()}</span>
-                                                    )
-                                                ) : (
-                                                    <span>Price not available</span>
-                                                )
-                                            }
-                                        </p>
+                                        {loading ? (
+                                            <p>loading...</p>
+                                        ) : (
+                                            <>
+                                                <p className="lg:text-[18px] text-[16px] font-semibold">
+                                                    price
+                                                </p>
+                                                <p className='center gap-1 text-[rgba(33,33,33,1)] lg:text-[24px] md:text-[20px] text-[24px] font-semibold'>
+                                                    $ {
+                                                        singleCar?.price ? (
+                                                            singleCar?.discount !== undefined && singleCar?.discount > 0 ? (
+                                                                <span className="flex gap-2 center text-[rgba(240,11,31,1)]">
+                                                                    <span>
+                                                                        {Math.round(singleCar?.price - (singleCar?.price * singleCar?.discount) / 100).toLocaleString()}
+                                                                    </span>
+                                                                    <span className="text-gray-400 line-through text-[16px]">
+                                                                        {singleCar?.price.toLocaleString()}
+                                                                    </span>
+                                                                </span>
+                                                            ) : (
+                                                                <span className="text-[rgba(240,11,31,1)]">{singleCar?.price.toLocaleString()}</span>
+                                                            )
+                                                        ) : (
+                                                            <span>Price not available</span>
+                                                        )
+                                                    }
+                                                </p>
+                                            </>
+                                        )}
                                     </div>
                                     <div className="flex flex-col lg:gap-4 gap-2">
                                         <CustomButton
@@ -165,11 +179,11 @@ export default function InventoryDetails({ }) {
                 <div className="flex flex-col gap-2">
                     <h1 className="capitalize font-semibold text-[24px]">description</h1>
                     <h1 className="text-[20px] font-medium">
-                        {data?.description}
+                        {singleCar?.description}
                     </h1>
                     <ul className="flex flex-col gap-1">
-                        {data?.notes?.map((i, index) => (
-                            <li className="text-[18px] font-medium" key={index}>- {i}</li>
+                        {singleCar?.notes?.map((i, index) => (
+                            <li className="text-[18px] font-medium capitalize" key={index}>- {i}</li>
                         ))}
                     </ul>
                 </div>
@@ -178,9 +192,9 @@ export default function InventoryDetails({ }) {
                     <h1 className="capitalize font-semibold text-[24px] md:relative sticky md:top-0 top-19 z-2 bg-white">features</h1>
 
                     <ul className="md:gap-3 gap-4 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
-                        {data?.features?.map((i, index) => (
+                        {singleCar?.features?.map((i, index) => (
                             <li
-                                className="text-[18px] font-medium center justify-start! gap-2 bg-white md:relative sticky md:top-0 top-32"
+                                className="capitalize text-[18px] font-medium center justify-start! gap-2 bg-white md:relative sticky md:top-0 top-32"
                                 key={index}>
                                 <Image
                                     width={12}
@@ -198,14 +212,14 @@ export default function InventoryDetails({ }) {
             {/* forth section  */}
             <div className="bg-white px-6 py-4 flex flex-col gap-6">
                 {
-                    data?.options?.map((i, index) => (
+                    singleCar?.options?.map((i, index) => (
                         <div
                             className="flex flex-col gap-2 relative"
                             key={index}>
                             <h1 className="capitalize font-semibold text-[24px] md:relative sticky md:top-0 top-20 z-2 bg-white">{i.title}</h1>
                             <ul className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1">
                                 {i.items?.map((n, index) => (
-                                    <li className="text-[18px] font-medium border border-[rgba(33,33,33,.25)] bg-white p-3 md:relative sticky md:top-0 top-32" key={index}> {n}</li>
+                                    <li className="capitalize text-[18px] font-medium border border-[rgba(33,33,33,.25)] bg-white p-3 md:relative sticky md:top-0 top-32" key={index}> {n}</li>
                                 ))}
                             </ul>
                         </div>

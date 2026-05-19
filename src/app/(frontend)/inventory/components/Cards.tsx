@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useCars } from "@/app/hooks/cars/useCars";
 import { useState } from "react";
 import { useSearchParams } from 'next/navigation'
+import CarCardCollection from '@/components/CarCardCollection'
 
 
 export default function Cards() {
@@ -27,7 +28,7 @@ export default function Cards() {
 
     const params = useSearchParams()
 
-    const { data, totalPage, totalCar } = useCars({
+    const { cars, totalPage, totalCars } = useCars({
         search: searchTerm,
         brand: params.get('brand') || "",
         filters: filters
@@ -68,7 +69,7 @@ export default function Cards() {
                         </div>
                     </div>
                     <div className="lg:w-[200px] center justify-end!">
-                        <p className="text-[var(--primary-text-color)] text-[18px] font-semibold">{totalCar} Vehicles</p>
+                        <p className="text-[var(--primary-text-color)] text-[18px] font-semibold">{totalCars} Vehicles</p>
                     </div>
                 </div>
 
@@ -125,7 +126,7 @@ export default function Cards() {
 
                 {/* car card  */}
                 <div className="w-full">
-                    <CarCard data={data} totalPage={totalPage} />
+                    <CarCardCollection data={cars} totalPage={totalPage} />
                 </div>
             </div>
         </div>

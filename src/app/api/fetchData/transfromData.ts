@@ -5,7 +5,7 @@ const BUCKET_ID = process.env.NEXT_PUBLIC_APPWRITE_BUCKET_ID || "";
 export interface CarDocument {
     $id: string;
     slug: string;
-    carousel: string;
+    carousel: boolean;
     brand: string;
     model: string;
     year: number;

@@ -44,7 +44,7 @@ export type CarImages = {
 export type CarInfoType = {
     id?: string
     slug?: string
-    carousel?: boolean
+    carousel?: boolean | undefined
 
     brand?: string
     model?: string

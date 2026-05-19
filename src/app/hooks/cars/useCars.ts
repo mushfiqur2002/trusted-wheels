@@ -1,18 +1,10 @@
 "use client";
 
 import { getCars } from "@/app/api/fetchData/fetchingData";
-import { useMemo, useState, useEffect } from "react";
+import { CarInfoType } from "@/constants";
+import { useEffect, useMemo, useState } from "react";
 
-export interface Car {
-    title?: string;
-    brand?: string;
-    bodyStyle?: string;
-    specs?: {
-        fuelType?: string;
-        transmission?: string;
-        engine?: string;
-    };
-}
+
 type PropsType = {
     page?: number;
     search?: string;
@@ -25,50 +17,57 @@ type PropsType = {
         engine?: string[];
     };
 };
+
 export function useCars({
     page = 1,
     search = "",
     brand = "",
     filters = {},
 }: PropsType) {
+
     const limit = 12;
-    const [carInfo, setCarInfo] = useState<Car[]>([]);
+
+    const [cars, setCars] = useState<CarInfoType[]>([]);
     const [loading, setLoading] = useState(true);
-    // 🔥 FETCH DATA
+
+    // FETCH
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchCars = async () => {
             setLoading(true);
-            const data = await getCars(); // already transformed
-            setCarInfo(data);
+
+            const data = await getCars();
+
+            setCars(data as []);
+
             setLoading(false);
         };
 
-        fetchData();
+        fetchCars();
     }, []);
 
-    const filteredData = useMemo(() => {
-        let result = [...carInfo];
+    // FILTER
+    const filteredCars = useMemo(() => {
 
-        // 🔍 SEARCH FIRST
-        if (search) {
+        return cars.filter((car) => {
+
+            // SEARCH
             const q = search.toLowerCase();
 
-            result = result.filter((car) =>
+            const searchMatch =
+                !search ||
                 car.title?.toLowerCase().includes(q) ||
                 car.brand?.toLowerCase().includes(q) ||
                 car.bodyStyle?.toLowerCase().includes(q) ||
                 car.specs?.fuelType?.toLowerCase().includes(q) ||
                 car.specs?.transmission?.toLowerCase().includes(q) ||
-                car.specs?.engine?.toLowerCase().includes(q)
-            );
-        }
+                car.specs?.engine?.toLowerCase().includes(q);
 
-        // 🔥 COMBINED FILTER (THIS FIXES YOUR ISSUE)
-        result = result.filter((car) => {
+            // BRAND PARAM
             const brandParamMatch =
                 !brand ||
                 car.brand?.toLowerCase() === brand.toLowerCase();
 
+            // FILTERS
             const brandMatch =
                 !filters.brand?.length ||
                 filters.brand.includes(car.brand || "");
@@ -79,7 +78,9 @@ export function useCars({
 
             const transmissionMatch =
                 !filters.transmission?.length ||
-                filters.transmission.includes(car.specs?.transmission || "");
+                filters.transmission.includes(
+                    car.specs?.transmission || ""
+                );
 
             const bodyMatch =
                 !filters.bodyStyle?.length ||
@@ -90,6 +91,7 @@ export function useCars({
                 filters.engine.includes(car.specs?.engine || "");
 
             return (
+                searchMatch &&
                 brandParamMatch &&
                 brandMatch &&
                 fuelMatch &&
@@ -99,22 +101,23 @@ export function useCars({
             );
         });
 
-        return result;
-    }, [search, brand, filters, carInfo]);
+    }, [cars, search, brand, filters]);
 
-    // 📄 PAGINATION AFTER FILTER
-    const totalPage = Math.ceil(filteredData.length / limit);
+    // PAGINATION
+    const totalPage = Math.ceil(filteredCars.length / limit);
 
-    const data = useMemo(() => {
+    const paginatedCars = useMemo(() => {
+
         const start = (page - 1) * limit;
-        return filteredData.slice(start, start + limit);
-    }, [filteredData, page]);
+
+        return filteredCars.slice(start, start + limit);
+
+    }, [filteredCars, page]);
 
     return {
-        data,
+        cars: paginatedCars,
+        totalCars: filteredCars.length,
         totalPage,
-        totalCar: filteredData.length,
-        currentPage: page,
-        limit
+        loading,
     };
 }

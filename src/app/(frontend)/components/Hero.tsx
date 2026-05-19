@@ -197,11 +197,30 @@ export default function Hero() {
                     <div className="w-full md:w-[540px] max-w-[540px] md:flex grid grid-cols-1 md:justify-between md:items-center items-start p-4 md:p-6 mx-2 md:mx-6 bg-white shadow-[0px_-5px_5px_1px_rgba(240,_11,_31,_.1)] rounded-t-2xl">
 
                         <div className="flex justify-between md:flex-col flex-row">
-                            <p className="font-semibold text-[20px] text-[rgba(33,33,33,1)]">
+                            <p className="capitalize font-semibold text-[20px] text-[rgba(33,33,33,1)]">
                                 {carousel[current]?.title}
                             </p>
                             <p className="text-[24px] font-semibold text-[var(--primary-text-color)]">
-                                <Price value={carousel[current]?.price || 0} />
+                                <p className='center gap-1 text-[rgba(33,33,33,1)] lg:text-[24px] md:text-[20px] text-[24px] font-semibold'>
+                                    $ {
+                                        carousel[current]?.price ? (
+                                            carousel[current]?.discount !== undefined && carousel[current]?.discount > 0 ? (
+                                                <span className="flex gap-2 center text-[rgba(240,11,31,1)]">
+                                                    <span>
+                                                        {Math.round(carousel[current]?.price - (carousel[current]?.price * carousel[current]?.discount) / 100).toLocaleString()}
+                                                    </span>
+                                                    <span className="text-gray-400 line-through text-[16px]">
+                                                        {carousel[current]?.price.toLocaleString()}
+                                                    </span>
+                                                </span>
+                                            ) : (
+                                                <span className="text-[rgba(240,11,31,1)]">{carousel[current]?.price.toLocaleString()}</span>
+                                            )
+                                        ) : (
+                                            <span>Price not available</span>
+                                        )
+                                    }
+                                </p>
                             </p>
                         </div>
 

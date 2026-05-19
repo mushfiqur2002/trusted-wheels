@@ -8,6 +8,7 @@ import { motion } from "framer-motion"
 import { getCarDerivedData } from '@/constants/filterData'
 import { useEffect, useState } from 'react'
 import { getCars } from '@/app/api/fetchData/fetchingData'
+import CarCard from '@/components/CarCard'
 export default function About() {
     const [carInfo, setCarInfo] = useState<CarInfoType[]>([]);
 
@@ -20,9 +21,7 @@ export default function About() {
         fetchData();
     }, []);
 
-    const {
-        uniqueBrand
-    } = getCarDerivedData(carInfo);
+    const { uniqueBrand } = getCarDerivedData(carInfo);
     // const [activeTab, setActiveTab] = useState<"brands" | "types">("brands");
     return (
         <div className='max-w-[1440px] mx-auto w-full h-auto lg:py-22 md:py-16 py-12 text-[var(--secondary-text-color)] flex flex-col lg:gap-22 md:gap-16 gap-12'>
@@ -56,6 +55,14 @@ export default function About() {
                             </div>
                         )
                     })}
+                </div>
+
+                <div className='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4'>
+                    {
+                        carInfo.slice(0, 4).map((item, index) => (
+                            <CarCard key={index} item={item} />
+                        ))
+                    }
                 </div>
             </div>
 
