@@ -30,6 +30,10 @@ export default function AdminForm() {
         engine: "",
         features: "",
         notes: "",
+        exteriorColor: "",
+        interiorColor: "",
+        doors: "",
+        seats: "",
     });
     const fields = [
         "title",
@@ -48,6 +52,10 @@ export default function AdminForm() {
         "fuelType",
         "transmission",
         "engine",
+        "exteriorColor",
+        "interiorColor",
+        "doors",
+        "seats"
     ] as const;
 
     const numberFields = [
@@ -126,10 +134,7 @@ export default function AdminForm() {
         e: React.FormEvent<HTMLFormElement>
     ) => {
         e.preventDefault()
-
-        // =========================
         // VALIDATION
-        // =========================
 
         if (
             !form.title ||
@@ -149,10 +154,7 @@ export default function AdminForm() {
         setSuccess(null)
 
         try {
-            // =========================
             // UPLOAD IMAGES
-            // =========================
-
             let uploadedDisplayImage = ""
             const uploadedGalleryImages: string[] = []
 
@@ -174,41 +176,38 @@ export default function AdminForm() {
                     ID.unique(),
                     file
                 )
-
                 uploadedGalleryImages.push(res.$id)
             }
 
-            // =========================
-            // PREPARE SPECS
-            // =========================
+            // PREPARE appearance
+            const appearance = {
+                exteriorColor: form.exteriorColor,
+                interiorColor: form.interiorColor,
+                doors: form.doors,
+                seats: form.seats
+            }
 
+            // SPECS 
             const specs = {
                 fuelType: form.fuelType,
                 transmission: form.transmission,
                 engine: form.engine,
             }
 
-            // =========================
             // CLEAN OPTIONS
-            // =========================
-
-            const cleanedOptions = options
-                .map((section) => ({
-                    title: section.title.trim(),
-                    items: section.items
-                        .map((item) => item.trim())
-                        .filter(Boolean),
-                }))
+            const cleanedOptions = options.map((section) => ({
+                title: section.title.trim(),
+                items: section.items
+                    .map((item) => item.trim())
+                    .filter(Boolean),
+            }))
                 .filter(
                     (section) =>
                         section.title &&
                         section.items.length > 0
                 )
 
-            // =========================
             // CREATE DOCUMENT
-            // =========================
-
             await databases.createDocument(
                 process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID || "",
                 process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID || "",
@@ -243,7 +242,9 @@ export default function AdminForm() {
 
                     specs: JSON.stringify(specs),
 
-                    option: JSON.stringify(cleanedOptions),
+                    appearance: JSON.stringify(appearance),
+
+                    options: JSON.stringify(cleanedOptions),
 
                     features: form.features
                         .split(",")
@@ -261,16 +262,9 @@ export default function AdminForm() {
                     }),
                 }
             )
-
-            // =========================
             // SUCCESS
-            // =========================
 
             setSuccess(true)
-
-            // =========================
-            // RESET FORM
-            // =========================
 
             setForm({
                 title: "",
@@ -300,6 +294,11 @@ export default function AdminForm() {
 
                 features: "",
                 notes: "",
+
+                exteriorColor: "",
+                interiorColor: "",
+                doors: "",
+                seats: ""
             })
 
             // reset images
@@ -320,8 +319,7 @@ export default function AdminForm() {
             }, 5000)
 
         } catch (err) {
-            console.error(err)
-
+            alert(err)
             setSuccess(false)
 
             // auto hide error message

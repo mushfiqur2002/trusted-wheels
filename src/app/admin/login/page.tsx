@@ -2,7 +2,6 @@
 
 import { account } from "@/lib/appwrite";
 import { OAuthProvider } from "appwrite";
-import { useState, useEffect } from "react";
 
 export default function AdminLogin() {
     // const [id, setId] = useState("");

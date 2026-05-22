@@ -1,6 +1,7 @@
 "use client"
 import '../globals.css'
 import { Urbanist } from "next/font/google"
+import AdminNavBar from './components/AdminNavBar'
 
 const urbanist = Urbanist({
     subsets: ["latin"],
@@ -13,7 +14,9 @@ export default function AdminLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en" className={urbanist.variable}>
+        <html
+            lang="en"
+            className="min-h-full font-[var(--font-urbanist)]">
             <head>
                 <title>Trusted Wheels Admin</title>
                 <meta name="description" content="Trusted Wheels is a car dealership website that offers a wide range of high-quality vehicles. We are committed to providing our customers with the best possible service and ensuring that they find the perfect car for their needs." />

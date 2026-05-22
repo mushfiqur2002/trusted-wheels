@@ -1,40 +1,82 @@
-import { storage } from "@/lib/appwrite";
+import {
+    CarInfoType,
+    CarSpecs,
+    CarAppearance,
+    CarOption,
+    CarImages
+} from "@/constants";
 
-const BUCKET_ID = process.env.NEXT_PUBLIC_APPWRITE_BUCKET_ID || "";
 
-export interface CarDocument {
-    $id: string;
-    slug: string;
-    carousel: boolean;
-    brand: string;
-    model: string;
-    year: number;
-    title: string;
-    price: number;
-    discount?: number;
-    quantity: number;
-    location: string;
-    vin: string;
-    mileage: number;
-    condition: string;
-    bodyStyle: string;
-    specs?: string;
-    appearance?: string;
-    description: string;
-    notes?: string[];
-    features?: string[];
-    options?: string;
-    images?: string;
-}
+// Safe JSON parser
 
-export function transformCar(doc: CarDocument) {
-    const specs = doc.specs ? JSON.parse(doc.specs) : {};
-    const appearance = doc.appearance ? JSON.parse(doc.appearance) : {};
-    const options = doc.options ? JSON.parse(doc.options) : [];
-    const images = doc.images ? JSON.parse(doc.images) : {};
+const safeParse = <T>(
+    value: string | T | undefined,
+    fallback: T
+): T => {
+
+    try {
+
+        // already object/array
+        if (typeof value !== "string") {
+            return value || fallback;
+        }
+
+        // empty string
+        if (value.trim() === "") {
+            return fallback;
+        }
+
+        return JSON.parse(value);
+
+    }
+
+    catch {
+
+        return fallback;
+
+    }
+
+};
+
+
+
+export function transformCar(
+    doc: CarInfoType
+) {
+
+    const specs =
+        safeParse<CarSpecs>(
+            doc.specs,
+            {}
+        );
+
+    const appearance =
+        safeParse<CarAppearance>(
+            doc.appearance,
+            {}
+        );
+
+    const options =
+        safeParse<CarOption[]>(
+            doc.options,
+            []
+        );
+
+    const images =
+        safeParse<CarImages>(
+            doc.images,
+            {
+                display: "",
+                gallery: []
+            }
+        );
+
+
 
     return {
-        id: doc.$id,
+
+        id: doc.id,
+
         slug: doc.slug,
         carousel: doc.carousel,
 
@@ -58,18 +100,26 @@ export function transformCar(doc: CarDocument) {
         appearance,
 
         description: doc.description,
-        notes: doc.notes || [],
-        features: doc.features || [],
+
+        notes:
+            doc.notes || [],
+
+        features:
+            doc.features || [],
 
         options,
 
         images: {
-            display: images?.display
-                ? storage.getFileView(BUCKET_ID, images.display)
-                : "",
-            gallery: images?.gallery?.map((id: string) =>
-                storage.getFileView(BUCKET_ID, id)
-            ) || [],
-        },
+
+            // already URLs
+            display:
+                images.display || "",
+
+            gallery:
+                images.gallery || []
+
+        }
+
     };
+
 }

@@ -4,7 +4,6 @@ import { getCars } from "@/app/api/fetchData/fetchingData";
 import { CarInfoType } from "@/constants";
 import { useEffect, useMemo, useState } from "react";
 
-
 type PropsType = {
     page?: number;
     search?: string;
@@ -27,31 +26,41 @@ export function useCars({
 
     const limit = 12;
 
-    const [cars, setCars] = useState<CarInfoType[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [cars, setCars] =
+        useState<CarInfoType[]>([]);
 
-    // FETCH
-    useEffect(() => {
-        const fetchCars = async () => {
+    const [loading, setLoading] =
+        useState(true);
+
+
+    // Fetch function
+
+    const fetchCars = async () => {
+        try {
             setLoading(true);
-
             const data = await getCars();
+            setCars(data);
+        }
+        catch (error) { console.log(error); }
+        finally { setLoading(false); }
+    };
 
-            setCars(data as []);
 
-            setLoading(false);
-        };
+    useEffect(() => {
 
         fetchCars();
+
     }, []);
 
+
     // FILTER
+
     const filteredCars = useMemo(() => {
 
         return cars.filter((car) => {
 
-            // SEARCH
-            const q = search.toLowerCase();
+            const q =
+                search.toLowerCase();
 
             const searchMatch =
                 !search ||
@@ -62,19 +71,26 @@ export function useCars({
                 car.specs?.transmission?.toLowerCase().includes(q) ||
                 car.specs?.engine?.toLowerCase().includes(q);
 
-            // BRAND PARAM
+
             const brandParamMatch =
                 !brand ||
-                car.brand?.toLowerCase() === brand.toLowerCase();
+                car.brand?.toLowerCase()
+                === brand.toLowerCase();
 
-            // FILTERS
+
             const brandMatch =
                 !filters.brand?.length ||
-                filters.brand.includes(car.brand || "");
+                filters.brand.includes(
+                    car.brand || ""
+                );
+
 
             const fuelMatch =
                 !filters.fuel?.length ||
-                filters.fuel.includes(car.specs?.fuelType || "");
+                filters.fuel.includes(
+                    car.specs?.fuelType || ""
+                );
+
 
             const transmissionMatch =
                 !filters.transmission?.length ||
@@ -82,13 +98,19 @@ export function useCars({
                     car.specs?.transmission || ""
                 );
 
+
             const bodyMatch =
                 !filters.bodyStyle?.length ||
-                filters.bodyStyle.includes(car.bodyStyle || "");
+                filters.bodyStyle.includes(
+                    car.bodyStyle || ""
+                );
+
 
             const engineMatch =
                 !filters.engine?.length ||
-                filters.engine.includes(car.specs?.engine || "");
+                filters.engine.includes(
+                    car.specs?.engine || ""
+                );
 
             return (
                 searchMatch &&
@@ -99,25 +121,45 @@ export function useCars({
                 bodyMatch &&
                 engineMatch
             );
+
         });
 
-    }, [cars, search, brand, filters]);
+    }, [
+        cars,
+        search,
+        brand,
+        filters
+    ]);
 
-    // PAGINATION
-    const totalPage = Math.ceil(filteredCars.length / limit);
 
-    const paginatedCars = useMemo(() => {
+    const totalPage =
+        Math.ceil(
+            filteredCars.length / limit
+        );
 
-        const start = (page - 1) * limit;
 
-        return filteredCars.slice(start, start + limit);
+    const paginatedCars =
+        useMemo(() => {
 
-    }, [filteredCars, page]);
+            const start =
+                (page - 1) * limit;
+
+            return filteredCars.slice(
+                start,
+                start + limit
+            );
+
+        },
+            [filteredCars, page]
+        );
+
 
     return {
         cars: paginatedCars,
         totalCars: filteredCars.length,
         totalPage,
         loading,
+        refetch: fetchCars
     };
+
 }
