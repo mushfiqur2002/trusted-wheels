@@ -43,7 +43,7 @@ export function useCar(id: string) {
 
             catch (error) {
 
-                console.log(error);
+                console.error(error);
 
             }
 

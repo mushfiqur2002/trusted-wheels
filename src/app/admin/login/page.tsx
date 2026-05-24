@@ -89,7 +89,7 @@ export default function AdminLogin() {
                 `${window.location.origin}/admin/login`
             );
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 

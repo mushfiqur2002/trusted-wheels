@@ -27,10 +27,6 @@ export default function ScheduleForm() {
         const day = selectedDate.getDay();
         const hours = selectedDate.getHours();
 
-        console.log("Date:", selectedDate);
-        console.log("Day:", day);
-        console.log("Hours:", hours);
-
         if (day === 5 || day === 6) {
             setPopup("error");
             setMessage("We are closed on Fridays and Saturdays. Please select another day.");

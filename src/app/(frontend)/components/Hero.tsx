@@ -37,7 +37,6 @@ export default function Hero() {
     }, [api])
 
     const [carInfo, setCarInfo] = useState<CarInfoType[]>([]);
-    console.log(carInfo);
 
 
     useEffect(() => {

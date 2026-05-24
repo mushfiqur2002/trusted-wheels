@@ -29,9 +29,6 @@ export function useCars({
     const [cars, setCars] =
         useState<CarInfoType[]>([]);
 
-    console.log('cars', cars);
-
-
     const [loading, setLoading] =
         useState(true);
 
@@ -44,7 +41,7 @@ export function useCars({
             const data = await getCars();
             setCars(data);
         }
-        catch (error) { console.log(error); }
+        catch (error) { console.error(error); }
         finally { setLoading(false); }
     };
 

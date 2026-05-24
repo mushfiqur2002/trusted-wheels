@@ -51,10 +51,6 @@ export default function AdminTable() {
     const [galleryImageIds, setGalleryImageIds] = useState<string[]>([]);
     const [showImageSelector, setShowImageSelector] = useState({ display: false, gallery: false });
 
-    console.log('all image', allImages);
-    console.log('displayID image', displayImageId);
-    console.log('gallery id', galleryImageIds);
-
 
     // Fetch all images from Appwrite
     const fetchImages = useCallback(async () => {
@@ -182,7 +178,7 @@ export default function AdminTable() {
             setEditOpen(false);
         }
         catch (error) {
-            console.log(error);
+            console.error(error);
             alert(error);
         }
         finally {
@@ -202,7 +198,7 @@ export default function AdminTable() {
             alert("Deleted successfully");
         }
         catch (error) {
-            console.log(error);
+            console.error(error);
             alert("Failed to delete");
         }
     };
