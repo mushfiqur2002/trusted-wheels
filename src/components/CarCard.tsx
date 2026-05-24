@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import CustomButton from './CustomButton'
 import { CarInfoType } from '@/constants';
+import { getImageUrl } from '@/app/hooks/image/getImageUrl';
 
 
 export default function CarCard({ item }: { item: CarInfoType }) {
@@ -19,7 +20,7 @@ export default function CarCard({ item }: { item: CarInfoType }) {
             </div>
             <div>
                 <div className='w-full h-[160px] center bg-[#F5F5F5] rounded-lg overflow-hidden relative'>
-                    <Image fill src={item.images?.display || "/images/placeholder.png"} alt="Car image" className="object-contain py-4" />
+                    <img src={getImageUrl(item.images?.display || "")} alt="Car image" className="w-full h-full object-contain py-4" />
                 </div>
                 <div className='flex flex-col gap-3 mt-2'>
                     <h1 className='capitalize text-[20px] font-semibold'>{item.title}</h1>
@@ -69,7 +70,7 @@ export default function CarCard({ item }: { item: CarInfoType }) {
                             }
                         </p>
                         <CustomButton
-                            path={`/inventory/${item.id}-${item.slug}`}
+                            path={`/inventory/${item.$id}-${item.slug}`}
                             text='details'
                             types='secondary'
                         />

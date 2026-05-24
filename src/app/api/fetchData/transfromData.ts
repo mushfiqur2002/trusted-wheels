@@ -75,7 +75,7 @@ export function transformCar(
 
     return {
 
-        id: doc.id,
+        $id: doc.$id,
 
         slug: doc.slug,
         carousel: doc.carousel,

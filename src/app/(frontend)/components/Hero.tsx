@@ -12,6 +12,7 @@ import { motion } from "motion/react";
 import { getCarDerivedData } from "@/constants/filterData";
 import { CarInfoType } from "@/constants";
 import { getCars } from "@/app/api/fetchData/fetchingData";
+import { getImageUrl } from "@/app/hooks/image/getImageUrl";
 
 export default function Hero() {
     const [current, setCurrent] = useState<number>(0)
@@ -36,6 +37,8 @@ export default function Hero() {
     }, [api])
 
     const [carInfo, setCarInfo] = useState<CarInfoType[]>([]);
+    console.log(carInfo);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -130,11 +133,10 @@ export default function Hero() {
 
                                                         {/* Image */}
                                                         <div className="relative w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[420px]">
-                                                            <Image
-                                                                src={`${car.images?.display}`}
+                                                            <img
+                                                                src={getImageUrl(car.images?.display || "")}
                                                                 alt="car"
-                                                                fill
-                                                                className="object-contain object-top"
+                                                                className="w-full h-full object-contain object-top"
                                                             />
                                                         </div>
 
@@ -201,7 +203,7 @@ export default function Hero() {
                                 {carousel[current]?.title}
                             </p>
                             <p className="text-[24px] font-semibold text-[var(--primary-text-color)]">
-                                <p className='center gap-1 text-[rgba(33,33,33,1)] lg:text-[24px] md:text-[20px] text-[24px] font-semibold'>
+                                <span className='center gap-1 text-[rgba(33,33,33,1)] lg:text-[24px] md:text-[20px] text-[24px] font-semibold'>
                                     $ {
                                         carousel[current]?.price ? (
                                             carousel[current]?.discount !== undefined && carousel[current]?.discount > 0 ? (
@@ -220,13 +222,13 @@ export default function Hero() {
                                             <span>Price not available</span>
                                         )
                                     }
-                                </p>
+                                </span>
                             </p>
                         </div>
 
                         <div className="grid grid-cols-[auto_1fr] gap-2 w-auto mt-2 md:mt-0">
                             <CustomButton
-                                path={`/inventory/${carousel[current]?.id}-${carousel[current]?.slug}`}
+                                path={`/inventory/${carousel[current]?.$id}-${carousel[current]?.slug}`}
                                 text="Details"
                                 types="secondary"
                             />

@@ -32,7 +32,7 @@ export function useCar(id: string) {
                 const foundCar =
                     cars.find(
                         (item) =>
-                            item.id === id
+                            item.$id === id
                     );
 
                 setCar(

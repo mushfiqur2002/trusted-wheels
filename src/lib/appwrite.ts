@@ -1,4 +1,4 @@
-import { Account, Client, Databases, Storage } from "appwrite";
+import { Account, Client, Databases, ID, Storage } from "appwrite";
 
 const client = new Client()
     .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || "") // or your self-hosted
@@ -7,3 +7,4 @@ const client = new Client()
 export const databases = new Databases(client);
 export const storage = new Storage(client);
 export const account = new Account(client);
+export { ID }

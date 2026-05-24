@@ -42,7 +42,7 @@ export type CarImages = {
 
 // 🔹 Main Car Type
 export type CarInfoType = {
-    id?: string
+    $id?: string
     slug?: string
     carousel?: boolean | undefined
 
@@ -98,7 +98,8 @@ export const navLinks = [
 
 export const adminNavLinks = [
     { name: "Home", href: "/admin" },
-    { name: "Table", href: "/admin/table" }
+    { name: "Table", href: "/admin/table" },
+    { name: "Upload Photo", href: "/admin/photo" }
 ]
 
 export const cardList = [
