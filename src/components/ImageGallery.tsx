@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react"
 import Image from "next/image"
+import { getImageUrl } from "@/app/hooks/image/getImageUrl";
 
 
 export default function ImageGallery({ gallery }: { gallery: string[] }) {
@@ -39,7 +40,7 @@ export default function ImageGallery({ gallery }: { gallery: string[] }) {
                     onMouseMove={handleMouseMove}
                 >
                     <Image
-                        src={gallery[active]}
+                        src={getImageUrl(gallery[active])}
                         alt="car"
                         fill
                         className="object-cover"
@@ -48,7 +49,7 @@ export default function ImageGallery({ gallery }: { gallery: string[] }) {
                 <div
                     className={`absolute inset-0 pointer-events-none bg-no-repeat transition-opacity duration-200 ${hover ? 'opacity-100' : 'opacity-0'}`}
                     style={{
-                        backgroundImage: `url(${gallery[active]})`,
+                        backgroundImage: `url(${getImageUrl(gallery[active])})`,
                         backgroundSize: "200%",
                         backgroundPosition: `${percentage.x}% ${percentage.y}%`,
                     }}
@@ -67,7 +68,7 @@ export default function ImageGallery({ gallery }: { gallery: string[] }) {
 
                     >
                         <Image
-                            src={img}
+                            src={getImageUrl(img)}
                             alt="thumb"
                             fill
                             className="object-cover rounded-md"

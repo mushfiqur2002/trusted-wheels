@@ -329,11 +329,11 @@ export default function AdminForm() {
     const selectedGalleryImages = allImages.filter(img => galleryImageIds.includes(img.$id));
 
     return (
-        <div className="max-w-6xl mx-auto p-6">
+        <div className="w-full mx-auto py-6">
             <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Success/Error Toast */}
                 {success !== null && (
-                    <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 animate-in fade-in slide-in-from-top-5 duration-300">
+                    <div className="fixed top-22 left-1/2 transform -translate-x-1/2 z-50 animate-in fade-in slide-in-from-top-5 duration-300">
                         <div className={`px-6 py-3 rounded-lg shadow-lg ${success ? 'bg-green-500' : 'bg-red-500'} text-white font-medium`}>
                             {success ? '✅ Car added successfully!' : '❌ Failed to add car'}
                         </div>
@@ -341,12 +341,12 @@ export default function AdminForm() {
                 )}
 
                 {/* Basic Information Section */}
-                <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <div className="w-full bg-white rounded-2xl border border-gray-200 overflow-hidden">
                     <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
                         <h2 className="text-lg font-semibold text-gray-800">Basic Information</h2>
                     </div>
                     <div className="p-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {fields.map((field) => (
                                 <input
                                     key={field}
