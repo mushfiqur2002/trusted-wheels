@@ -11,7 +11,7 @@ export default function MapCard() {
                         width={100}
                         height={100}
                         alt="image"
-                        src="/images/image 6.png"
+                        src="/images/section/image 6.png"
                         className='w-full h-full object-cover'
                     />
                     <div className="absolute top-2.5 right-3 p-[2px] rounded-full bg-[rgba(255,255,255,.15)] backdrop-blur-[5px] center">

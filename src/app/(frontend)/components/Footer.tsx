@@ -93,7 +93,7 @@ export default function Footer() {
                                             <Image width={16} height={16} alt="svg" src="/svg/Phone White.svg" />
                                         </span>
                                         <span>
-                                            306-952-1270
+                                            +13064304118
                                         </span>
                                     </h2>
                                     <h2 className="center md:justify-end! gap-1 text-[14px] font-normal">
