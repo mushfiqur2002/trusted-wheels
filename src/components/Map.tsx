@@ -67,13 +67,13 @@ function OffsetView() {
 
 export default function Map() {
     const [pos, setPos] = useState({ x: 0, y: 0 })
-    const latlng: [number, number] = [23.793277151862455, 90.35327911362343]
+    const latlng: [number, number] = [52.1595983444141, -106.66252390674616]
     return (
         <div className="w-full lg:h-[700px] md:h-[600px] h-[550px] relative">
             <MapContainer
                 center={latlng}
-                zoom={13}
-                scrollWheelZoom={false}
+                zoom={15}
+                scrollWheelZoom={true}
                 className="w-full h-full"
             >
                 <TileLayer
