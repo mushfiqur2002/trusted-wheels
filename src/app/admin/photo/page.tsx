@@ -52,7 +52,7 @@ export default function AdminPhotoPage() {
 
     const validateFile = (file: File): boolean => {
         const acceptedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-        const maxSizeMB = 5;
+        const maxSizeMB = 10; // 10MB
 
         if (!acceptedTypes.includes(file.type)) {
             setError(`Unsupported file type. Allowed: ${acceptedTypes.join(', ')}`);
@@ -165,7 +165,7 @@ export default function AdminPhotoPage() {
                                 Image Gallery
                             </h3>
                             <p className="text-sm text-gray-500 mt-1">
-                                Upload up to 5 images • Max 5MB each
+                                Upload up to 5 images • Max 10MB each
                             </p>
                         </div>
 
