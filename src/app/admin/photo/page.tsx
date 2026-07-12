@@ -5,6 +5,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Trash, Upload, X, ImageIcon, Loader2 } from 'lucide-react';
 import { storage, ID } from '@/lib/appwrite';
 import AdminNavBar from '../components/AdminNavBar';
+import { Query } from 'appwrite';
 
 interface AppwriteImage {
     $id: string;
@@ -21,11 +22,12 @@ export default function AdminPhotoPage() {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const bucketId = process.env.NEXT_PUBLIC_APPWRITE_BUCKET_ID!;
+    const limit = 1000;
 
     // ✅ Wrap fetchImages in useCallback to prevent recreation
     const fetchImages = useCallback(async () => {
         try {
-            const response = await storage.listFiles(bucketId);
+            const response = await storage.listFiles(bucketId, [Query.limit(limit)]);
             const imageList = await Promise.all(
                 response.files.map(async (file) => {
                     const url = storage.getFileView(bucketId, file.$id);
