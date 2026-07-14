@@ -1,7 +1,7 @@
 "use client";
 
 import { databases, storage } from "@/lib/appwrite";
-import { ID } from "appwrite";
+import { ID, Query } from "appwrite";
 import { Trash, Check, Image as ImageIcon, Plus, X } from "lucide-react";
 import Image from "next/image";
 import React, { useState, useEffect, useCallback } from "react";
@@ -89,7 +89,7 @@ export default function AdminForm() {
         try {
             setImagesLoading(true);
             const bucketId = process.env.NEXT_PUBLIC_APPWRITE_BUCKET_ID || "";
-            const response = await storage.listFiles(bucketId);
+            const response = await storage.listFiles(bucketId, [Query.limit(1000)]);
             const imageList = await Promise.all(
                 response.files.map(async (file) => {
                     const url = storage.getFileView(bucketId, file.$id);
@@ -491,7 +491,7 @@ export default function AdminForm() {
                     <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
                         <h2 className="text-lg font-semibold text-gray-800">Display Image <span className="text-red-500 text-sm">*</span></h2>
                     </div>
-                    <div className="p-6">
+                    <div className="p-3 md:p-6">
                         {imagesLoading ? (
                             <div className="flex justify-center py-12">
                                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
@@ -516,7 +516,7 @@ export default function AdminForm() {
 
                                 <div>
                                     <p className="text-sm text-gray-600 mb-3">Click an image to select as display</p>
-                                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
+                                    <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-2">
                                         {allImages.map((image) => (
                                             <div
                                                 key={image.$id}
@@ -593,7 +593,7 @@ export default function AdminForm() {
 
                                 <div>
                                     <p className="text-sm text-gray-600 mb-3">Click to select/deselect gallery images</p>
-                                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
+                                    <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-2">
                                         {allImages.map((image) => (
                                             <div
                                                 key={image.$id}

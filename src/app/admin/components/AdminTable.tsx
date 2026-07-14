@@ -6,6 +6,7 @@ import { useState, SetStateAction, Dispatch, useEffect, useCallback } from "reac
 import { Eye, Pencil, Trash2, X, ImageIcon, Check, Plus } from "lucide-react";
 import { CarInfoType } from "@/constants";
 import { getImageUrl } from "@/app/hooks/image/getImageUrl";
+import { Query } from "appwrite";
 
 const DATABASE_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
 const COLLECTION_ID = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
@@ -56,7 +57,7 @@ export default function AdminTable() {
     const fetchImages = useCallback(async () => {
         try {
             setImagesLoading(true);
-            const response = await storage.listFiles(BUCKET_ID);
+            const response = await storage.listFiles(BUCKET_ID, [Query.limit(1000)]);
             const imageList = await Promise.all(
                 response.files.map(async (file) => {
                     const url = storage.getFileView(BUCKET_ID, file.$id);

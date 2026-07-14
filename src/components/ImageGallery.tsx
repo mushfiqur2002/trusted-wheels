@@ -30,10 +30,10 @@ export default function ImageGallery({ gallery }: { gallery: string[] }) {
     }
     return (
         <div className="grid gap-4">
-            <div className="w-full lg:h-[450px] md:h-[400px] h-[300px] rounded-lg overflow-hidden center relative cursor-zoom-in">
+            <div className="w-full lg:h-[500px] md:h-[450px] h-[350px] rounded-lg overflow-hidden center relative cursor-zoom-in">
                 {/* MAIN IMAGE */}
                 <div
-                    className="w-full h-full"
+                    className="w-full h-full border-1 border-gray-300 rounded-lg overflow-hidden relative"
                     ref={divRef}
                     onMouseEnter={() => setHover(true)}
                     onMouseLeave={() => setHover(false)}
@@ -43,7 +43,7 @@ export default function ImageGallery({ gallery }: { gallery: string[] }) {
                         src={getImageUrl(gallery[active])}
                         alt="car"
                         fill
-                        className="object-cover"
+                        className="object-contain"
                     />
                 </div>
                 <div
